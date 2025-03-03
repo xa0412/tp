@@ -332,6 +332,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  The program should work on both 32-bit and 64-bit environments.
+5.  The response to any use action should become visible within 5 seconds.
+6.  The program should be usable by a novice who has never used a contact book application.
+7.  The source code should be open source.
+8.  The user interface should be intuitive enough for users who are not IT-savvy.
+9.  The command parameters should follow _CLI_-like conventions to ensure familiarity and minimize the learning curve for users.
+10. The program actions should be performed primarily using CLI so as to tailor to users who can type fast and prefer typing to other means of input.
+11. The data should be stored locally and should be in a human editable text file.
+12. The program should be for a single user.
+13. The program should work on a computer that has version 17 of Java.
+14. The program should work without requiring an installer.
 
 *{More to be added}*
 
@@ -339,6 +350,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Command Line Interface (CLI)**: A software mechanism used to interact with operating system using keyboard
 
 --------------------------------------------------------------------------------------------------------------------
 
