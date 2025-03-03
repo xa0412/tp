@@ -11,15 +11,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Xiao Ao
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/xa0412.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
+[[github](https://github.com/johndoehttps://github.com/xa0412/tp)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Project Advisor
+* Role: Deliverables and deadlines
 
 ### Jane Doe
 
