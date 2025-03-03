@@ -11,6 +11,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+### Baizhou
+
+<img src="images/windofbitter.png" width="200px">
+
+[[github](https://github.com/windofbitter)]
+
+* Role: Documentation, ChatGpt Expert, Claude Expert, Deepseek Expert, Gemini Expert, Grok3 Expert
+
 ### Xiao Ao
 
 <img src="images/xa0412.png" width="200px">
