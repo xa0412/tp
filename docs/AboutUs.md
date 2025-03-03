@@ -31,7 +31,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Tiew Jia Liang
 
 <img src="images/tiewjialiang.png" width="200px">
 
