@@ -274,27 +274,44 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+`1` looking for course mate to discuss schoolwork with
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+`2` looking for a way to store their course mate contacts
+
+`3` has a need to manage a significant number of contacts
+
+`4` prefer desktop apps over other types 
+
+`5` can type fast
+
+`6` prefers typing than mouse interactions
+
+**Value proposition**:
+
+* Provide quick access to students who are taking similar modules
+* Provide a friendly command line format for users who prefer CLI application
+* Organise students’ contacts in a relevant & friendly format
+
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a …​      | I want to …​                               | So that I can…​                                                                                             |
+|----------|--------------|--------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| `* * *`  | NUS student  | Find relevant course mate's email          | I can contact them for study sessions                                                                       |
+| `* * *`  | NUS student  | Find relevant course mate's phone numbers  | I can contact them for study sessions                                                                       |
+| `* * *`  | NUS student  | Find relevant course mate's module         | I can know which friends take the same module                                                               |
+| `* * *`  | NUS student  | Add course mate                            | I can add course mate's contact                                                                             |
+| `* * *`  | NUS student  | Delete course mates                        | I can delete unwanted course mate                                                                           |
+| `* * *`  | CLI lover    | Type command to organize contacts          | I can organize them in a friendly way                                                                       |
+| `* * *`  | NUS Student  | Add module tags to Course mates            | I can easily track which modules my friends are taking and contact the course mate's to discuss school work |
+| `* *`    | NUS Student  | Update course mate phone                   | I can correct them if there is a typo                                                                       |
+| `* *`    | NUS Student  | Update course mate address                 | I can correct them if there is a typo                                                                       |
+| `* *`    | NUS student  | Update course mate name                    | I can correct them if there is a typo                                                                       |
+| `* *`    | NUS Student  | Toggle the colour theme of the application | So that my eyes are comfortable while using the app                                                         |
+| `*`      | NUS Student  | Import contacts from a spreadsheet         | I can quickly add contacts I have collected                                                                 |
 
 *{More to be added}*
 
