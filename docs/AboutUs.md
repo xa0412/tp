@@ -50,12 +50,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Xavier Lee
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/xavierlhm.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](https://github.com/Xavierlhm)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role and Responsibility: Code Quality
