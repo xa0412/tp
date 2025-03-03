@@ -4,7 +4,7 @@
 
 # NUSMeet
 
-## Description
+# Description
 * NUSMeet is a **Command Line Interface (CLI) application** designed for NUS students to efficiently manage and organize their contacts. It focuses on helping users find coursemates for study discussions, with tagging and filtering features tailored to student life.
 
 # Key Features
@@ -19,5 +19,5 @@
 # Setup
 * In your project folder, open a terminal and run the command `./gradlew run` to start the application
 
-## Acknowledgements
+# Acknowledgements
 * This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
