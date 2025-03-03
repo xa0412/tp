@@ -45,7 +45,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/TiewJiaLiang)] [[portfolio](team/johndoe.md)]
 
-* Role: Scheduling and Tracking 
+* Role: Scheduling and Tracking
 * Responsibilities: In charge of defining, assigning and tracking project tasks
 
 ### Jean Doe
