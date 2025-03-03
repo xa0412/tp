@@ -11,15 +11,23 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Baizhou
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/windofbitter.png" width="200px">
+
+[[github](https://github.com/windofbitter)]
+
+* Role: Documentation, ChatGpt Expert, Claude Expert, Deepseek Expert, Gemini Expert, Grok3 Expert
+
+### Xiao Ao
+
+<img src="images/xa0412.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
+[[github](https://github.com/johndoehttps://github.com/xa0412/tp)]
 [[portfolio](team/johndoe.md)]
 
-- Role: Project Advisor
+* Role: Deliverables and deadlines
 
 ### Joshua
 
@@ -31,14 +39,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 - Role: Team Lead
 - Responsibilities: Testing
 
-### Johnny Doe
+### Tiew Jia Liang
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/tiewjialiang.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/TiewJiaLiang)] [[portfolio](team/johndoe.md)]
 
-- Role: Developer
-- Responsibilities: Data
+* Role: Scheduling and Tracking 
+* Responsibilities: In charge of defining, assigning and tracking project tasks
 
 ### Jean Doe
 
@@ -50,12 +58,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 - Role: Developer
 - Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Xavier Lee
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/xavierlhm.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](https://github.com/Xavierlhm)]
 [[portfolio](team/johndoe.md)]
 
-- Role: Developer
-- Responsibilities: UI
+* Role and Responsibility: Code Quality
