@@ -33,12 +33,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Johnny Doe
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/tiewjialiang.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/TiewJiaLiang)] [[portfolio](team/johndoe.md)]
 
-* Role: Developer
-* Responsibilities: Data
+* Role: Scheduling and Tracking 
+* Responsibilities: In charge of defining, assigning and tracking project tasks
 
 ### Jean Doe
 
