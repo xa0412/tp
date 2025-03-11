@@ -41,7 +41,6 @@ public class Person {
         this.tags.addAll(tags);
         this.courses.addAll(courses);
         this.friendship = friendshipType;
-        this.previousCourses.add(new PreviousCourse("NIL"));
 
     }
 

@@ -1,6 +1,7 @@
 package seedu.address.ui;
 
 import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import javafx.fxml.FXML;
@@ -60,8 +61,17 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
-        previousCourses.setText("Previous Courses: " + person.getPreviousCourses()
-                .stream().map(Object::toString).collect(Collectors.joining(", ")));
+        List<String> previousCoursesList = person.getPreviousCourses()
+                .stream().map(Object::toString).collect(Collectors.toList());
+
+        String previousCoursesText = previousCoursesList.isEmpty()
+                ? "NIL"
+                : previousCoursesList.size() == 1
+                ? previousCoursesList.get(0)
+                : String.join(", ", previousCoursesList);
+
+
+        previousCourses.setText("Previous Courses: " + previousCoursesText);
         // Add tags with default styling
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
