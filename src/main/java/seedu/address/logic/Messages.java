@@ -45,7 +45,9 @@ public class Messages {
                 .append(person.getAddress())
                 .append("; Friendship: ")
                 .append(person.getFriendType())
-                .append("; Courses: ");
+                .append("; Courses: ")
+                .append("; Previous Courses: ");
+        person.getPreviousCourses().forEach(previousCourse -> builder.append(previousCourse).append(", "));
         person.getCourses().forEach(course -> builder.append(course).append(" "));
         builder.append("; Tags: ");
         person.getTags().forEach(builder::append);
