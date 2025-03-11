@@ -116,8 +116,8 @@ class JsonAdaptedPerson {
         for (String course : courses) {
             modelCourses.add(new Course(course));
         }
-        
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelCourses, 
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelCourses,
                 new Friendship(Friendship.Level.FRIEND));
     }
 

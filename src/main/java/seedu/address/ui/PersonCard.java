@@ -56,7 +56,7 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
-        
+
         // Add tags with default styling
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
@@ -65,12 +65,12 @@ public class PersonCard extends UiPart<Region> {
                     tagLabel.getStyleClass().add("tag");
                     tags.getChildren().add(tagLabel);
                 });
-        
+
         // Add friendship with red styling
         Label friendshipLabel = new Label(person.getFriendType().toString());
         friendshipLabel.getStyleClass().add("friendship");
         friendship.getChildren().add(friendshipLabel);
-        
+
         // Add courses with yellow styling
         person.getCourses().stream()
                 .sorted(Comparator.comparing(course -> course.toString()))

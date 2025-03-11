@@ -38,7 +38,7 @@ public class PersonUtil {
         person.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
-        
+
         // Add courses if present, otherwise add a default course
         if (person.getCourses().isEmpty()) {
             sb.append(PREFIX_COURSE + "CS2103T ");
@@ -47,7 +47,7 @@ public class PersonUtil {
                 s -> sb.append(PREFIX_COURSE + s.toString() + " ")
             );
         }
-        
+
         return sb.toString();
     }
 
