@@ -4,7 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Friendship;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -26,6 +28,8 @@ public class PersonBuilder {
     private Email email;
     private Address address;
     private Set<Tag> tags;
+    private Set<Course> courses;
+    private Friendship friendship;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -36,6 +40,8 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
+        courses = new HashSet<>();
+        friendship = new Friendship(Friendship.Level.FRIEND);
     }
 
     /**
@@ -47,6 +53,8 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         tags = new HashSet<>(personToCopy.getTags());
+        courses = new HashSet<>(personToCopy.getCourses());
+        friendship = personToCopy.getFriendType();
     }
 
     /**
@@ -62,6 +70,14 @@ public class PersonBuilder {
      */
     public PersonBuilder withTags(String ... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
+        return this;
+    }
+
+    /**
+     * Parses the {@code courses} into a {@code Set<Course>} and set it to the {@code Person} that we are building.
+     */
+    public PersonBuilder withCourses(String ... courses) {
+        this.courses = SampleDataUtil.getCourseSet(courses);
         return this;
     }
 
@@ -89,8 +105,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Friendship} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withFriendship(Friendship.Level level) {
+        this.friendship = new Friendship(level);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags);
+        return new Person(name, phone, email, address, tags, courses, friendship);
     }
 
 }
