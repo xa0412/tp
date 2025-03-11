@@ -2,7 +2,7 @@ package seedu.address.model.person;
 
 public class Friend {
     public enum FriendType {
-        FRIEND, CLOSE_FRIEND, ACQUAINTANCE
+        ACQUAINTANCE, FRIEND, CLOSE_FRIEND
     }
 
     private final FriendType friendType;
