@@ -10,7 +10,9 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Friendship;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
@@ -120,5 +122,45 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String course} into a {@code Course}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code course} is invalid.
+     */
+    public static Course parseCourse(String course) throws ParseException {
+        requireNonNull(course);
+        String trimmedCourse = course.trim();
+        return new Course(trimmedCourse);
+    }
+
+    /**
+     * Parses {@code Collection<String> courses} into a {@code Set<Course>}.
+     */
+    public static Set<Course> parseCourses(Collection<String> courses) throws ParseException {
+        requireNonNull(courses);
+        final Set<Course> courseSet = new HashSet<>();
+        for (String courseName : courses) {
+            courseSet.add(parseCourse(courseName));
+        }
+        return courseSet;
+    }
+
+    /**
+     * Parses a {@code String friendship} into a {@code Friendship}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code friendship} is invalid.
+     */
+    public static Friendship parseFriendship(String friendship) throws ParseException {
+        requireNonNull(friendship);
+        String trimmedFriendship = friendship.trim().toUpperCase();
+        try {
+            return new Friendship(Friendship.Level.valueOf(trimmedFriendship));
+        } catch (IllegalArgumentException e) {
+            throw new ParseException("Invalid friendship level. Valid values are: ACQUAINTANCE, FRIEND, CLOSE_FRIEND");
+        }
     }
 }
