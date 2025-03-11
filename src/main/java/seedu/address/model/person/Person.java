@@ -24,20 +24,34 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
-    private final Set<Course> course = new HashSet<>();
-    private final Friend friendType;
+    private final Set<Course> courses = new HashSet<>();
+    private final Friendship friendship;
+
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<Course> course, Friend friendType) {
-        requireAllNonNull(name, phone, email, address, tags, course, friendType);
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                  Set<Course> courses, Friendship friendshipType) {
+        requireAllNonNull(name, phone, email, address, tags, courses, friendshipType);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
-        this.course.addAll(course);
-        this.friendType = friendType;
+        this.courses.addAll(courses);
+        this.friendship = friendshipType;
+    }
+
+    /**
+     * TODO: Remove this constructor
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.friendship = new Friendship(Friendship.Level.FRIEND);
     }
 
     public Name getName() {
@@ -56,12 +70,12 @@ public class Person {
         return address;
     }
 
-    public Friend getFriendType() {
-        return friendType;
+    public Friendship getFriendType() {
+        return friendship;
     }
 
-    public Set<Course> getCourse() {
-        return Collections.unmodifiableSet(course);
+    public Set<Course> getCourses() {
+        return Collections.unmodifiableSet(courses);
     }
 
     /**

@@ -1,22 +1,54 @@
 package seedu.address.model.person;
 
-public class Friend {
-    public enum FriendType {
+/**
+ * Represents a Person's friendship in the address book
+ * Guarantees: immutable
+ */
+public class Friendship implements Comparable<Friendship> {
+
+    /**
+     * Represents a Person's friendship closeness level
+     */
+    public enum Level {
         ACQUAINTANCE, FRIEND, CLOSE_FRIEND
     }
 
-    private final FriendType friendType;
+    private final Level value;
 
-    public Friend(FriendType friendType) {
-        this.friendType = friendType;
+    /**
+     * Constructs a {@code Friendship}
+     * @param level A measure of the friendship's closeness level
+     */
+    public Friendship(Level level) {
+        value = level;
     }
 
-    public FriendType getFriendType() {
-        return friendType;
+    @Override
+    public int compareTo(Friendship other) {
+        return value.compareTo(other.value);
     }
 
     @Override
     public String toString() {
-        return friendType.toString();
+        return value.toString();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Friendship)) {
+            return false;
+        }
+
+        Friendship otherFriendship = (Friendship) other;
+        return value.equals(otherFriendship.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }
