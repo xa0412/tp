@@ -40,6 +40,10 @@ public class PersonCard extends UiPart<Region> {
     private Label email;
     @FXML
     private FlowPane tags;
+    @FXML
+    private FlowPane courses;
+    @FXML
+    private FlowPane friendship;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -52,8 +56,46 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+        
+        // Add tags with default styling
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+                .forEach(tag -> {
+                    Label tagLabel = new Label(tag.tagName);
+                    tagLabel.getStyleClass().add("tag");
+                    tags.getChildren().add(tagLabel);
+                });
+        
+        // Add friendship with red styling
+        Label friendshipLabel = new Label(person.getFriendType().toString());
+        friendshipLabel.getStyleClass().add("friendship");
+        friendship.getChildren().add(friendshipLabel);
+        
+        // Add courses with yellow styling
+        person.getCourses().stream()
+                .sorted(Comparator.comparing(course -> course.toString()))
+                .forEach(course -> {
+                    Label courseLabel = new Label(course.toString());
+                    courseLabel.getStyleClass().add("course");
+                    courses.getChildren().add(courseLabel);
+                });
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof PersonCard)) {
+            return false;
+        }
+
+        // state check
+        PersonCard card = (PersonCard) other;
+        return id.getText().equals(card.id.getText())
+                && person.equals(card.person);
     }
 }
