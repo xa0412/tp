@@ -52,17 +52,18 @@ public class AddCommandParser implements Parser<AddCommand> {
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Set<Course> courseList = ParserUtil.parseCourses(argMultimap.getAllValues(PREFIX_COURSE));
+        Friendship friendship = ParserUtil.parseFriendship(argMultimap.getValue(PREFIX_FRIENDSHIP).get());
 
         // Set default friendship level to FRIEND if not specified
-        Friendship friendship = argMultimap.getValue(PREFIX_FRIENDSHIP)
-                .map(value -> {
-                    try {
-                        return ParserUtil.parseFriendship(value);
-                    } catch (ParseException e) {
-                        return new Friendship(Friendship.Level.FRIEND);
-                    }
-                })
-                .orElse(new Friendship(Friendship.Level.FRIEND));
+        // Friendship friendship = argMultimap.getValue(PREFIX_FRIENDSHIP)
+        //         .map(value -> {
+        //             try {
+        //                 return ParserUtil.parseFriendship(value);
+        //             } catch (ParseException e) {
+        //                 return new Friendship(Friendship.Level.FRIEND);
+        //             }
+        //         })
+        //         .orElse(new Friendship(Friendship.Level.FRIEND));
 
         Person person = new Person(name, phone, email, address, tagList, courseList, friendship);
 
