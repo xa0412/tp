@@ -26,6 +26,7 @@ public class Person {
     private final Set<Tag> tags = new HashSet<>();
     private final Set<Course> courses = new HashSet<>();
     private final Friendship friendship;
+    private final Set<PreviousCourse> previousCourses = new HashSet<>();
 
     /**
      * Every field must be present and not null.
@@ -40,6 +41,7 @@ public class Person {
         this.tags.addAll(tags);
         this.courses.addAll(courses);
         this.friendship = friendshipType;
+
     }
 
     /**
@@ -76,6 +78,10 @@ public class Person {
 
     public Set<Course> getCourses() {
         return Collections.unmodifiableSet(courses);
+    }
+
+    public Set<PreviousCourse> getPreviousCourses() {
+        return Collections.unmodifiableSet(previousCourses);
     }
 
     /**
