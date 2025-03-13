@@ -54,7 +54,7 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         tags = new HashSet<>(personToCopy.getTags());
         courses = new HashSet<>(personToCopy.getCourses());
-        friendship = personToCopy.getFriendType();
+        friendship = personToCopy.getFriendship();
     }
 
     /**
@@ -108,7 +108,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Friendship} of the {@code Person} that we are building.
      */
-    public PersonBuilder withFriendship(Friendship.Level level) {
+    public PersonBuilder withFriendship(String level) {
         this.friendship = new Friendship(level);
         return this;
     }

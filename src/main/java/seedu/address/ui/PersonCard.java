@@ -82,7 +82,7 @@ public class PersonCard extends UiPart<Region> {
                 });
 
         // Add friendship with red styling
-        Label friendshipLabel = new Label(person.getFriendType().toString());
+        Label friendshipLabel = new Label(person.getFriendship().toString());
         friendshipLabel.getStyleClass().add("friendship");
         friendship.getChildren().add(friendshipLabel);
 

@@ -32,6 +32,7 @@ class JsonAdaptedPerson {
     private final String address;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final List<String> courses = new ArrayList<>();
+    private final String friendship;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -39,7 +40,8 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags, @JsonProperty("courses") List<String> courses) {
+            @JsonProperty("tags") List<JsonAdaptedTag> tags,
+            @JsonProperty("courses") List<String> courses, @JsonProperty("friendship") String friendship) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -50,6 +52,7 @@ class JsonAdaptedPerson {
         if (courses != null) {
             this.courses.addAll(courses);
         }
+        this.friendship = friendship;
     }
 
     /**
@@ -66,6 +69,7 @@ class JsonAdaptedPerson {
         courses.addAll(source.getCourses().stream()
                 .map(course -> course.toString())
                 .collect(Collectors.toList()));
+        friendship = source.getFriendship().toString();
     }
 
     /**
@@ -112,13 +116,23 @@ class JsonAdaptedPerson {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
+
         final Set<Course> modelCourses = new HashSet<>();
         for (String course : courses) {
             modelCourses.add(new Course(course));
         }
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelCourses,
-                new Friendship(Friendship.Level.FRIEND));
+        if (friendship == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Friendship.class.getSimpleName()));
+        }
+        if (!Friendship.isValidFriendship(friendship)) {
+            throw new IllegalValueException(Friendship.MESSAGE_CONSTRAINTS);
+        }
+
+        final Friendship modelFriendship = new Friendship(friendship);
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelCourses, modelFriendship);
     }
 
 }

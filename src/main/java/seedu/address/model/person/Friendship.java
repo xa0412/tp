@@ -1,10 +1,17 @@
 package seedu.address.model.person;
 
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
+import java.util.Arrays;
+
 /**
  * Represents a Person's friendship in the address book
  * Guarantees: immutable
  */
 public class Friendship implements Comparable<Friendship> {
+
+    public static final String MESSAGE_CONSTRAINTS =
+            "Friendship should be \"ACQUAINTANCE\" or \"FRIEND\" or \"CLOSE_FRIEND\" and not be blank";
 
     /**
      * Represents a Person's friendship closeness level
@@ -17,10 +24,27 @@ public class Friendship implements Comparable<Friendship> {
 
     /**
      * Constructs a {@code Friendship}
+     * @param level A measure of the friendship's closeness level as a string
+     */
+    public Friendship(String level) {
+        checkArgument(isValidFriendship(level), MESSAGE_CONSTRAINTS);
+        value = Level.valueOf(level);
+    }
+
+    /**
+     * Constructs a {@code Friendship}
      * @param level A measure of the friendship's closeness level
      */
     public Friendship(Level level) {
         value = level;
+    }
+
+
+    /**
+     * Returns true if a given string is a valid friendship closeness level.
+     */
+    public static boolean isValidFriendship(String test) {
+        return Arrays.stream(Level.values()).anyMatch(level -> level.name().equals(test));
     }
 
     @Override
