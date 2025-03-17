@@ -18,14 +18,6 @@ public class Course {
         value = course;
     }
 
-    /**
-     * Returns the CourseName
-     * @return String
-     */
-    public String getCourseName() {
-        return this.value;
-    }
-
     @Override
     public String toString() {
         return value;

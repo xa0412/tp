@@ -42,7 +42,7 @@ public class AutoUpdatePerson {
 
         //Set Previous Course to Current Courses
         previousCourses.addAll(currentCourses.stream().map(course
-                -> new PreviousCourse(course.getCourseName())).collect(Collectors.toSet()));
+                -> new PreviousCourse(course.toString())).collect(Collectors.toSet()));
 
         //Clear Current Courses
         Set<Course> emptyCourses = new HashSet<>();
