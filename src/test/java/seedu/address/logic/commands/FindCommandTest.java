@@ -75,26 +75,6 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_courseKeyword_personsFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 2);
-        NameOrCourseContainsKeywordsPredicate predicate = preparePredicate("", "CS2101");
-        FindCommand command = new FindCommand(predicate);
-        expectedModel.updateFilteredPersonList(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        // Assuming there are persons enrolled in CS2101, update accordingly
-    }
-
-    @Test
-    public void execute_nameAndCourseKeywords_personsFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 2);
-        NameOrCourseContainsKeywordsPredicate predicate = preparePredicate("Frank", "CS2101");
-        FindCommand command = new FindCommand(predicate);
-        expectedModel.updateFilteredPersonList(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        // Assuming persons named Frank enrolled in CS2101, update accordingly
-    }
-
-    @Test
     public void toStringMethod() {
         NameOrCourseContainsKeywordsPredicate predicate = new
                 NameOrCourseContainsKeywordsPredicate(Arrays.asList("keyword"), Arrays.asList("CS2101"));

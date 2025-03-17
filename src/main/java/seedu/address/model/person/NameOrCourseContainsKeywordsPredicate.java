@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
+import seedu.address.commons.util.ToStringBuilder;
 
 /**
  * Tests that a {@code Person}'s {@code Name} or {@code Course} matches any of the keywords given.
@@ -50,4 +51,13 @@ public class NameOrCourseContainsKeywordsPredicate implements Predicate<Person> 
         NameOrCourseContainsKeywordsPredicate otherPredicate = (NameOrCourseContainsKeywordsPredicate) other;
         return nameKeywords.equals(otherPredicate.nameKeywords) && courseKeywords.equals(otherPredicate.courseKeywords);
     }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("nameKeywords", nameKeywords)
+                .add("courseKeywords", courseKeywords)
+                .toString();
+    }
+
 }
