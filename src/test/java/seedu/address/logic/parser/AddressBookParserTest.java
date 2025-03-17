@@ -8,6 +8,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.NameOrCourseContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
@@ -70,10 +71,28 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("foo", "bar", "baz");
+        List<String> nameKeywords = Arrays.asList("foo", "bar");
+        List<String> courseKeywords = Arrays.asList("CS2101", "CS2103");
+
+        // Only name keywords
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+                FindCommand.COMMAND_WORD + " n/" + nameKeywords.stream().collect(
+                        Collectors.joining(" ")));
+        assertEquals(new FindCommand(new NameOrCourseContainsKeywordsPredicate(nameKeywords,
+                Collections.emptyList())), command);
+
+        // Only course keywords
+        FindCommand commandWithCourse = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " c/CS2101 CS2103");
+        assertEquals(new FindCommand(new NameOrCourseContainsKeywordsPredicate(
+                Collections.emptyList(), courseKeywords)), commandWithCourse);
+
+        // Both name and course keywords
+        FindCommand commandWithBoth = (FindCommand) parser.parseCommand(
+                FindCommand.COMMAND_WORD + " n/ " + nameKeywords.stream().collect(
+                        Collectors.joining(" ")) + " c/CS2101 CS2103");
+        assertEquals(new FindCommand(new NameOrCourseContainsKeywordsPredicate(nameKeywords, courseKeywords)),
+                commandWithBoth);
     }
 
     @Test
