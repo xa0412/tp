@@ -198,8 +198,10 @@ Furthermore, certain edits can cause the NUSMeet to behave in unexpected ways (e
 </box>
 
 ### 11. Automatic Courses Archival
+
 Once the semester ends, all entries in the contact book will be updated. A friend's current courses will be cleared, and their current courses will be automatically moved to the previous courses section.
 This enhances efficiency, as users no longer need to manually update all their contacts.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
