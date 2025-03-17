@@ -47,4 +47,9 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Update the user previous courses automatically once semester has ended;
+     */
+    void updatePreviousCourses() throws CommandException;
 }

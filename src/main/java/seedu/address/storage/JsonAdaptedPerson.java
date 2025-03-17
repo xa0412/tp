@@ -17,6 +17,7 @@ import seedu.address.model.person.Friendship;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.PreviousCourse;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -32,6 +33,7 @@ class JsonAdaptedPerson {
     private final String address;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final List<String> courses = new ArrayList<>();
+    private final List<String> previousCourses = new ArrayList<>();
     private final String friendship;
 
     /**
@@ -41,7 +43,9 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("tags") List<JsonAdaptedTag> tags,
-            @JsonProperty("courses") List<String> courses, @JsonProperty("friendship") String friendship) {
+            @JsonProperty("courses") List<String> courses,
+            @JsonProperty("friendship") String friendship,
+            @JsonProperty("previousCourses") List<String> previousCourses) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -52,8 +56,12 @@ class JsonAdaptedPerson {
         if (courses != null) {
             this.courses.addAll(courses);
         }
+        if (previousCourses != null) {
+            this.previousCourses.addAll(previousCourses);
+        }
         this.friendship = friendship;
     }
+
 
     /**
      * Converts a given {@code Person} into this class for Jackson use.
@@ -68,6 +76,9 @@ class JsonAdaptedPerson {
                 .collect(Collectors.toList()));
         courses.addAll(source.getCourses().stream()
                 .map(course -> course.toString())
+                .collect(Collectors.toList()));
+        previousCourses.addAll(source.getPreviousCourses().stream()
+                .map(previousCourse -> previousCourse.toString())
                 .collect(Collectors.toList()));
         friendship = source.getFriendship().toString();
     }
@@ -118,6 +129,8 @@ class JsonAdaptedPerson {
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         final Set<Course> modelCourses = new HashSet<>();
+        final Set<PreviousCourse> modelPreviousCourses = previousCourses.stream()
+                .map(PreviousCourse::new).collect(Collectors.toSet());
         for (String course : courses) {
             modelCourses.add(new Course(course));
         }
@@ -132,7 +145,8 @@ class JsonAdaptedPerson {
 
         final Friendship modelFriendship = new Friendship(friendship);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelCourses, modelFriendship);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags,
+                modelCourses, modelFriendship, modelPreviousCourses);
     }
 
 }

@@ -2,6 +2,7 @@ package seedu.address;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -65,6 +66,17 @@ public class MainApp extends Application {
         logic = new LogicManager(model, storage);
 
         ui = new UiManager(logic);
+
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDateTime endSemesterDateTime = LocalDateTime.of(2025, 8, 4, 0, 0);
+
+        if (currentDateTime.isAfter(endSemesterDateTime)) {
+            logger.info("Semester has ended!");
+            logic.updatePreviousCourses();
+
+        } else {
+            logger.info("Semester is still ongoing!");
+        }
     }
 
     /**
