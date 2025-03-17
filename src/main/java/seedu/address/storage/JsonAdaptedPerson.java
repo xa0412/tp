@@ -34,6 +34,7 @@ class JsonAdaptedPerson {
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final List<String> courses = new ArrayList<>();
     private final List<String> previousCourses = new ArrayList<>();
+    private final String friendship;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -41,8 +42,8 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags, @JsonProperty("courses") List<String> courses,
-            @JsonProperty("previousCourses") List<String> previousCourses) {
+            @JsonProperty("tags") List<JsonAdaptedTag> tags,
+            @JsonProperty("courses") List<String> courses, @JsonProperty("friendship") String friendship, @JsonProperty("previousCourses") List<String> previousCourses) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -56,6 +57,7 @@ class JsonAdaptedPerson {
         if (previousCourses != null) {
             this.previousCourses.addAll(previousCourses);
         }
+        this.friendship = friendship;
     }
 
 
@@ -76,6 +78,7 @@ class JsonAdaptedPerson {
         previousCourses.addAll(source.getPreviousCourses().stream()
                 .map(previousCourse -> previousCourse.toString())
                 .collect(Collectors.toList()));
+        friendship = source.getFriendship().toString();
     }
 
     /**
@@ -122,6 +125,7 @@ class JsonAdaptedPerson {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
+
         final Set<Course> modelCourses = new HashSet<>();
         final Set<PreviousCourse> modelPreviousCourses = previousCourses.stream()
                 .map(PreviousCourse::new).collect(Collectors.toSet());
@@ -129,8 +133,17 @@ class JsonAdaptedPerson {
             modelCourses.add(new Course(course));
         }
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelCourses,
-                new Friendship(Friendship.Level.FRIEND), modelPreviousCourses);
+        if (friendship == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Friendship.class.getSimpleName()));
+        }
+        if (!Friendship.isValidFriendship(friendship)) {
+            throw new IllegalValueException(Friendship.MESSAGE_CONSTRAINTS);
+        }
+
+        final Friendship modelFriendship = new Friendship(friendship);
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelCourses, modelFriendship, modelPreviousCourses);
     }
 
 }

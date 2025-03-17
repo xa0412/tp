@@ -32,30 +32,30 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                  Set<Course> courses, Friendship friendshipType) {
-        requireAllNonNull(name, phone, email, address, tags, courses, friendshipType);
+                  Set<Course> courses, Friendship friendship) {
+        requireAllNonNull(name, phone, email, address, tags, courses, friendship);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
         this.courses.addAll(courses);
-        this.friendship = friendshipType;
         // For testing purposes: To check whether the previous semester module is added on instead of cleared and create
         //this.previousCourses.add(new PreviousCourse("2030S"));
+        this.friendship = friendship;
     }
 
-    /**
-     * TODO: Remove this constructor
-     */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
-        this.friendship = new Friendship(Friendship.Level.FRIEND);
-    }
+    // /**
+    //  * TODO: Remove this constructor
+    //  */
+    // public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+    //     this.name = name;
+    //     this.phone = phone;
+    //     this.email = email;
+    //     this.address = address;
+    //     this.tags.addAll(tags);
+    //     this.friendship = new Friendship(Friendship.Level.FRIEND);
+    // }
 
     /**
      * Represents a new Constructor to update the previous courses
@@ -97,7 +97,7 @@ public class Person {
         return address;
     }
 
-    public Friendship getFriendType() {
+    public Friendship getFriendship() {
         return friendship;
     }
 
