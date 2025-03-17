@@ -35,7 +35,7 @@ public class AutoUpdatePerson {
         Email email = person.getEmail();
         Address address = person.getAddress();
         Set<Tag> tags = person.getTags();
-        Friendship friendship = person.getFriendType();
+        Friendship friendship = person.getFriendship();
         // Used for testing when courses should not be cleared.
         //Set<Course> emptyCourses = person.getCourses();
         Set<PreviousCourse> previousCourses = new HashSet<>(person.getPreviousCourses());

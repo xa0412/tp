@@ -43,7 +43,9 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("tags") List<JsonAdaptedTag> tags,
-            @JsonProperty("courses") List<String> courses, @JsonProperty("friendship") String friendship, @JsonProperty("previousCourses") List<String> previousCourses) {
+            @JsonProperty("courses") List<String> courses,
+            @JsonProperty("friendship") String friendship,
+            @JsonProperty("previousCourses") List<String> previousCourses) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -143,7 +145,8 @@ class JsonAdaptedPerson {
 
         final Friendship modelFriendship = new Friendship(friendship);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelCourses, modelFriendship, modelPreviousCourses);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags,
+                modelCourses, modelFriendship, modelPreviousCourses);
     }
 
 }
