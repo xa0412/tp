@@ -159,7 +159,8 @@ public class AddCommandParserTest {
 
         // invalid address
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC
-                + COURSE_DESC_CS + TAG_DESC_HUSBAND + TAG_DESC_FRIEND + FRIENDSHIP_DESC_BOB, Address.MESSAGE_CONSTRAINTS);
+                + COURSE_DESC_CS + TAG_DESC_HUSBAND + TAG_DESC_FRIEND + FRIENDSHIP_DESC_BOB,
+                Address.MESSAGE_CONSTRAINTS);
 
         // invalid tag
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
