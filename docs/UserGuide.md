@@ -47,13 +47,13 @@
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**[Add](#adding-a-friend-add)**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**[Clear](#clearing-all-entries--clear)**  | `clear`
-**[Delete](#deleting-a-person--delete)** | `delete INDEX`<br> e.g., `delete 3`
-**[Edit](#editing-a-person--edit)**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**[Find](#locating-persons-by-name-find)**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**[List](#listing-all-persons--list)**   | `list`
-**[Help](#viewing-help--help)**   | `help`
+**[Add](#2-adding-a-friend-add)**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**[Clear](#7-clearing-all-entries--clear)**  | `clear`
+**[Delete](#6-deleting-a-person--delete)** | `delete INDEX`<br> e.g., `delete 3`
+**[Edit](#4-editing-a-person--edit)**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**[Find](#5-locating-persons-by-name-find)**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**[List](#3-listing-all-persons--list)**   | `list`
+**[Help](#1-viewing-help--help)**   | `help`
 
 
 
