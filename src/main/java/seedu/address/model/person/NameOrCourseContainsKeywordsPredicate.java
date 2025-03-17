@@ -2,6 +2,7 @@ package seedu.address.model.person;
 
 import java.util.List;
 import java.util.function.Predicate;
+
 import seedu.address.commons.util.StringUtil;
 
 /**
@@ -11,6 +12,14 @@ public class NameOrCourseContainsKeywordsPredicate implements Predicate<Person> 
     private final List<String> nameKeywords;
     private final List<String> courseKeywords;
 
+    /**
+     * Constructs a {@code NameOrCourseContainsKeywordsPredicate} with the given keywords for name and course filtering.
+     *
+     * @param nameKeywords A list of keywords used to filter contacts by name.
+     *                     If empty, no name-based filtering is applied.
+     * @param courseKeywords A list of keywords used to filter contacts by course.
+     *                       If empty, no course-based filtering is applied.
+     */
     public NameOrCourseContainsKeywordsPredicate(List<String> nameKeywords, List<String> courseKeywords) {
         this.nameKeywords = nameKeywords;
         this.courseKeywords = courseKeywords;
