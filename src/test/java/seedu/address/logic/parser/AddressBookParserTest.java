@@ -77,17 +77,21 @@ public class AddressBookParserTest {
         // Only name keywords
         FindCommand command = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " " + nameKeywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameOrCourseContainsKeywordsPredicate(nameKeywords, Collections.emptyList())), command);
+        assertEquals(new FindCommand(new NameOrCourseContainsKeywordsPredicate(nameKeywords,
+                Collections.emptyList())), command);
 
         // Only course keywords
         FindCommand commandWithCourse = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " c/CS2101 c/CS2103");
-        assertEquals(new FindCommand(new NameOrCourseContainsKeywordsPredicate(Collections.emptyList(), courseKeywords)), commandWithCourse);
+        assertEquals(new FindCommand(new NameOrCourseContainsKeywordsPredicate(
+                Collections.emptyList(), courseKeywords)), commandWithCourse);
 
         // Both name and course keywords
         FindCommand commandWithBoth = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + nameKeywords.stream().collect(Collectors.joining(" ")) + " c/CS2101 c/CS2103");
-        assertEquals(new FindCommand(new NameOrCourseContainsKeywordsPredicate(nameKeywords, courseKeywords)), commandWithBoth);
+                FindCommand.COMMAND_WORD + " " + nameKeywords.stream().collect(
+                        Collectors.joining(" ")) + " c/CS2101 c/CS2103");
+        assertEquals(new FindCommand(new NameOrCourseContainsKeywordsPredicate(nameKeywords, courseKeywords)),
+                commandWithBoth);
     }
 
     @Test

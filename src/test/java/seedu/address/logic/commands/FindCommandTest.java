@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.NameOrCourseContainsKeywordsPredicate ;
+import seedu.address.model.person.NameOrCourseContainsKeywordsPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
@@ -31,7 +31,7 @@ public class FindCommandTest {
     public void equals() {
         NameOrCourseContainsKeywordsPredicate firstPredicate =
                 new NameOrCourseContainsKeywordsPredicate(Collections.singletonList("first"), Collections.emptyList());
-        NameOrCourseContainsKeywordsPredicate  secondPredicate =
+        NameOrCourseContainsKeywordsPredicate secondPredicate =
                 new NameOrCourseContainsKeywordsPredicate(Collections.singletonList("second"), Collections.emptyList());
 
         FindCommand findFirstCommand = new FindCommand(firstPredicate);

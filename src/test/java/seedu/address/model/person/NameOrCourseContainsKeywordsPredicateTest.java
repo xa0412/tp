@@ -52,7 +52,8 @@ public class NameOrCourseContainsKeywordsPredicateTest {
         assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").withCourses("CS2101").build()));
 
         // One course keyword
-        predicate = new NameOrCourseContainsKeywordsPredicate(Collections.emptyList(), Collections.singletonList("CS2101"));
+        predicate = new NameOrCourseContainsKeywordsPredicate(
+                Collections.emptyList(), Collections.singletonList("CS2101"));
         assertTrue(predicate.test(new PersonBuilder().withName("John Doe").withCourses("CS2101").build()));
 
         // Multiple name keywords
@@ -60,11 +61,13 @@ public class NameOrCourseContainsKeywordsPredicateTest {
         assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").withCourses("CS2103").build()));
 
         // Multiple course keywords
-        predicate = new NameOrCourseContainsKeywordsPredicate(Collections.emptyList(), Arrays.asList("CS2101", "CS2103"));
+        predicate = new NameOrCourseContainsKeywordsPredicate(
+                Collections.emptyList(), Arrays.asList("CS2101", "CS2103"));
         assertTrue(predicate.test(new PersonBuilder().withName("Charlie").withCourses("CS2103").build()));
 
         // One matching keyword in name and one in course
-        predicate = new NameOrCourseContainsKeywordsPredicate(Arrays.asList("Alice", "Charlie"), Arrays.asList("CS2101"));
+        predicate = new NameOrCourseContainsKeywordsPredicate(
+                Arrays.asList("Alice", "Charlie"), Arrays.asList("CS2101"));
         assertTrue(predicate.test(new PersonBuilder().withName("Charlie Brown").withCourses("CS2101").build()));
 
         // Mixed-case name keyword
@@ -92,7 +95,8 @@ public class NameOrCourseContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").withCourses("CS2101").build()));
 
         // Keywords match phone, email, and address but not name or course
-        predicate = new NameOrCourseContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"), Collections.emptyList());
+        predicate = new NameOrCourseContainsKeywordsPredicate(
+                Arrays.asList("12345", "alice@email.com", "Main", "Street"), Collections.emptyList());
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("Main Street").withCourses("CS2101").build()));
     }
@@ -101,7 +105,8 @@ public class NameOrCourseContainsKeywordsPredicateTest {
     public void toStringMethod() {
         List<String> nameKeywords = List.of("Alice", "Bob");
         List<String> courseKeywords = List.of("CS2101");
-        NameOrCourseContainsKeywordsPredicate predicate = new NameOrCourseContainsKeywordsPredicate(nameKeywords, courseKeywords);
+        NameOrCourseContainsKeywordsPredicate predicate = new NameOrCourseContainsKeywordsPredicate(nameKeywords,
+                courseKeywords);
 
         String expected = NameOrCourseContainsKeywordsPredicate.class.getCanonicalName()
                 + "{nameKeywords=" + nameKeywords + ", courseKeywords=" + courseKeywords + "}";
