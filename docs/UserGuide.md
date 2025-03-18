@@ -30,7 +30,7 @@ Follow these steps to install and run NUSMeet on your computer!
     A **Graphical User Interface (GUI)** similar to the one shown below should appear in a few seconds.<br>
    ![Ui](images/Ui.png)
 
-5. Type the [command](#command-summary) in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the [command](#-command-overview) in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    
 
 6. Refer to the [Features](#features) below for details of each command.
