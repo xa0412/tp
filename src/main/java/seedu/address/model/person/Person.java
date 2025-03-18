@@ -48,19 +48,6 @@ public class Person {
         this.friendship = friendship;
     }
 
-    // /**
-    // * TODO: Remove this constructor
-    // */
-    // public Person(Name name, Phone phone, Email email, Address address, Set<Tag>
-    // tags) {
-    // this.name = name;
-    // this.phone = phone;
-    // this.email = email;
-    // this.address = address;
-    // this.tags.addAll(tags);
-    // this.friendship = new Friendship(Friendship.Level.FRIEND);
-    // }
-
     /**
      * Represents a new Constructor to update the previous courses
      *
