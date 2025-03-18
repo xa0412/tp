@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.course;
 
 import static java.util.Objects.requireNonNull;
 
@@ -11,6 +11,7 @@ public class Course {
 
     /**
      * Constructs a {@code Course}
+     *
      * @param course A string corresponding to a course code
      */
     public Course(String course) {

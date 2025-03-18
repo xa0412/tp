@@ -3,8 +3,8 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.model.course.Course;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Friendship;
 import seedu.address.model.person.Name;
@@ -66,17 +66,19 @@ public class PersonBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
+     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are
+     * building.
      */
-    public PersonBuilder withTags(String ... tags) {
+    public PersonBuilder withTags(String... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }
 
     /**
-     * Parses the {@code courses} into a {@code Set<Course>} and set it to the {@code Person} that we are building.
+     * Parses the {@code courses} into a {@code Set<Course>} and set it to the {@code Person} that
+     * we are building.
      */
-    public PersonBuilder withCourses(String ... courses) {
+    public PersonBuilder withCourses(String... courses) {
         this.courses = SampleDataUtil.getCourseSet(courses);
         return this;
     }
