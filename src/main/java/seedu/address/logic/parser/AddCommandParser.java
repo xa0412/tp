@@ -9,7 +9,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -53,21 +52,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        Set<Course> courseList = argMultimap.getValue(PREFIX_COURSE).isPresent()
-                ? ParserUtil.parseCourses(argMultimap.getAllValues(PREFIX_COURSE))
-                : new HashSet<>();
+        Set<Course> courseList = ParserUtil.parseCourses(argMultimap.getAllValues(PREFIX_COURSE));
         Friendship friendship = ParserUtil.parseFriendship(argMultimap.getValue(PREFIX_FRIENDSHIP).get());
-
-        // Set default friendship level to FRIEND if not specified
-        // Friendship friendship = argMultimap.getValue(PREFIX_FRIENDSHIP)
-        // .map(value -> {
-        // try {
-        // return ParserUtil.parseFriendship(value);
-        // } catch (ParseException e) {
-        // return new Friendship(Friendship.Level.FRIEND);
-        // }
-        // })
-        // .orElse(new Friendship(Friendship.Level.FRIEND));
 
         Person person = new Person(name, phone, email, address, tagList, courseList, friendship);
 
