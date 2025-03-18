@@ -12,47 +12,42 @@
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## 🛠️ Quick start
+Follow these steps to install and run NUSMeet on your computer!
+1. Before running NUSMeet, ensure that you have **Java `17` or above** installed in your Computer.<br>
+   * **Windows users:** Install the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html).
+   * **Mac users:** Install the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+   * **Linux users** Install the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html).
 
-1. Ensure that Java `17` or above installed in your Computer.<br>
-   * **Windows users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html).
-   * **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
-   * **Linux users** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html).
-2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T13-3/tp/releases).
 
-3. Copy the downloaded file to a folder that you want to use as the _home folder_ for your NUSMeet application.
+2. Download the latest `.jar` file  [here](https://github.com/AY2425S2-CS2103T-T13-3/tp/releases).
 
-4. Open a command terminal, navigate to the folder where you placed the JAR file using `cd /path/to/your/folder`, and use the `java -jar nusmeet.jar` command to run the application.<br>
-   A Graphical User Interface (GUI) similar to the one shown below should appear in a few seconds.<br>
+
+3. Move the downloaded file to a folder of your choice to be used as the _home folder_ for your NUSMeet application.
+
+
+4. Open a command terminal and navigate to the folder where you placed the `.jar` file using `cd /path/to/your/folder`. Type the `java -jar nusmeet.jar` command to run the application.<br>
+    A **Graphical User Interface (GUI)** similar to the one shown below should appear in a few seconds.<br>
    ![Ui](images/Ui.png)
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
-
-   * `list` : Lists all contacts.
-
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 c/CS2103T c/CS2101 t/friends t/owesMoney f/CLOSE_FRIEND` : Adds a contact named `John Doe` to the Address Book.
-
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
-
-   * `clear` : Deletes all contacts.
-
-   * `exit` : Exits the app.
+5. Type the [command](#command-summary) in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+   
 
 6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command Summary
+## ⌨️ Command Overview
+Now that you have set up NUSMeet, let’s explore the key commands you can use!
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**[Add](#2-adding-a-friend-add)**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**[Add](#2-adding-a-friend-add)**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [c/COURSE]…​ [t/TAG]…​ [f/FRIENDSHIP_LEVEL]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
 **[Clear](#7-clearing-all-entries--clear)**  | `clear`
-**[Delete](#6-deleting-a-person--delete)** | `delete INDEX`<br> e.g., `delete 3`
-**[Edit](#4-editing-a-person--edit)**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**[Find](#5-locating-persons-by-name-find)**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**[List](#3-listing-all-persons--list)**   | `list`
+**[Delete](#6-deleting-a-friend--delete)** | `delete INDEX`<br> e.g., `delete 3`
+**[Edit](#4-editing-a-friend--edit)**   | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**[Find](#5-finding-friends-find)**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**[List](#3-listing-all-friends--list)**   | `list`
 **[Help](#1-viewing-help--help)**   | `help`
 
 
@@ -66,16 +61,16 @@ Action     | Format, Examples
  * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
-#### 2. Square Brackets ([ ])
-* Items in square brackets are optional.<br>
+#### 2. Square Brackets `[ ]`
+* Items in square brackets are *optional*.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
-#### 3. Triple Dots (…​)
-* Items with `…`​ after them can be used multiple times including zero times.<br>
+#### 3. Triple Dots `…​`
+* Items with `…`​ after them can be used *multiple times* including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 #### 4. Ordering
-* Parameters can be in any order.<br>
+* Parameters can be in *any order*.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
 #### 5. Parameters
@@ -87,11 +82,11 @@ Action     | Format, Examples
 </box>
 
 
-## Features
+## 🚀 Features
 
 ### 1. Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -100,47 +95,47 @@ Format: `help`
 
 ### 2. Adding a friend: `add`
 
-Adds a friend to the contact book.
+Adds a friend to your contact book.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [c/COURSE]…​ [t/TAG]…​ [f/FRIENDSHIP_LEVEL]`
 
 <box type="tip" seamless>
 
-**Tip:** A friend can have any number of tags & course (including 0)
-</box>
 
-**Note:** The Friend Tag can only be one of the following `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCES`
+**Note:** 
+- The Friend Tag can only be one of the following `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCES`
+- A friend can have any number of tags & courses (including 0)
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 c/CS2103T c/CS2101 t/friends t/owesMoney f/CLOSE_FRIEND`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 f/FRIEND`
 
-### 3. Listing all persons : `list`
+### 3. Listing all friends : `list`
 
-Shows a list of all friends in the contact book.
+Shows a list of all your friends in your contact book.
 
 Format: `list`
 
-### 4. Editing a person : `edit`
+### 4. Editing a friend : `edit`
 
-Edits an existing friend in the contact book.
+Edits an existing friend's details in your contact book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP] [t/TAG]…​`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the friend at the specified `INDEX`. The index refers to the index number shown in the displayed friend list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
+* When editing tags, the existing tags of the friend will be removed i.e adding of tags is not cumulative.
+* You can remove all the friend’s tags by typing `t/` without
     specifying any tags after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st friend to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd friend to be `Betsy Crower` and clears all existing tags.
 
-### 5. Locating persons by name: `find`
+### 5. Finding friends: `find`
 
-Finds friends whose names contain any of the given keywords.
+Finds friends who contain any of the given keywords and courses.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
@@ -156,23 +151,23 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### 6. Deleting a person : `delete`
+### 6. Deleting a friend : `delete`
 
-Deletes the specified friend from the contact book.
+Deletes the specified friend from your contact book.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Deletes the friend at the specified `INDEX`.
+* The index refers to the index number shown in the displayed friend list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list` followed by `delete 2` deletes the 2nd friend in the address book.
+* `find Betsy` followed by `delete 1` deletes the 1st friend in the results of the `find` command.
 
 ### 7. Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from your contact book.
 
 Format: `clear`
 
@@ -182,36 +177,35 @@ Exits the program.
 
 Format: `exit`
 
-### 9. Saving the data
+### 9. Saving your data
 
-NUSMeet data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+NUSMeet automatically saves all changes to disk. There is no need to manually save your data.
 
 ### 10. Editing the data file
 
-NUSMeet data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+NUSMeet automatically stores data as a JSON file at: `[JAR file location]/data/addressbook.json`.
+You can manually edit this file.
 
-<box type="warning" seamless>
 
-**Caution:**
-If your changes to the data file makes its format invalid, NUSMeet will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the NUSMeet to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</box>
+**⚠️Caution:**
+- If file format is **invalid**, NUSMeet will **discard** all data and start with an empty data file at the next run. 
+- Certain **incorrect** edits can cause **unexpected** behavior (e.g., invalid values).
+- Recommended to **backup** the file before making any changes
 
 ### 11. Automatic Courses Archival
 
-Once the semester ends, all entries in the contact book will be updated. A friend's current courses will be cleared, and their current courses will be automatically moved to the previous courses section.
-This enhances efficiency, as users no longer need to manually update all their contacts.
+At the end of each semester, NUSMeet will automatically update all entries in your contact book. A friend's current courses will be cleared and moved to the "Previous Courses" section. This saves you time and effort, as you no longer need to manually update each contact.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ
+## 📝 FAQ 
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous NUSMeet home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Known issues
+## ❗Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
@@ -219,7 +213,7 @@ This enhances efficiency, as users no longer need to manually update all their c
 --------------------------------------------------------------------------------------------------------------------
 
 
-## Glossary
+## 📖 Glossary
 
 Word    | Meaning
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
