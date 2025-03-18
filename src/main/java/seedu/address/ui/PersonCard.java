@@ -44,11 +44,6 @@ public class PersonCard extends UiPart<Region> {
     private Label previousCourses;
     @FXML
     private FlowPane tags;
-    @FXML
-    private FlowPane courses;
-    @FXML
-    private FlowPane friendship;
-
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -70,29 +65,31 @@ public class PersonCard extends UiPart<Region> {
                 ? previousCoursesList.get(0)
                 : String.join(", ", previousCoursesList);
 
-
         previousCourses.setText("Previous Courses: " + previousCoursesText);
-        // Add tags with default styling
+
+        // Add general tags (Blue)
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> {
                     Label tagLabel = new Label(tag.tagName);
-                    tagLabel.getStyleClass().add("tag");
+                    tagLabel.getStyleClass().add("tag-general"); // Apply blue color
                     tags.getChildren().add(tagLabel);
                 });
 
-        // Add friendship with red styling
-        Label friendshipLabel = new Label(person.getFriendship().toString());
-        friendshipLabel.getStyleClass().add("friendship");
-        friendship.getChildren().add(friendshipLabel);
+        // Add friendship tag (Red)
+        if (person.getFriendship() != null && !person.getFriendship().toString().isEmpty()) {
+            Label friendshipLabel = new Label(person.getFriendship().toString());
+            friendshipLabel.getStyleClass().add("tag-friendship"); // Apply red color
+            tags.getChildren().add(friendshipLabel);
+        }
 
-        // Add courses with yellow styling
+        // Add courses (Yellow)
         person.getCourses().stream()
                 .sorted(Comparator.comparing(course -> course.toString()))
                 .forEach(course -> {
                     Label courseLabel = new Label(course.toString());
-                    courseLabel.getStyleClass().add("course");
-                    courses.getChildren().add(courseLabel);
+                    courseLabel.getStyleClass().add("tag-course"); // Apply yellow color
+                    tags.getChildren().add(courseLabel);
                 });
     }
 
