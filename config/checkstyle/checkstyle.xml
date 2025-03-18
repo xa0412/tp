@@ -37,6 +37,18 @@
   <!-- All Java AST specific tests live under TreeWalker module. -->
   <module name="TreeWalker">
 
+    <!-- Suppresses indentation check for lambda-style switch statements -->
+    <module name="SuppressionXpathSingleFilter">
+        <property name="checks" value="Indentation"/>
+        <property name="query" value="//SWITCH_RULE/descendant-or-self::node()"/>
+    </module>
+
+    <!-- Suppresses indentation check for array initialization -->
+    <!-- <module name="SuppressionXpathSingleFilter">
+        <property name="checks" value="Indentation"/>
+        <property name="query" value="//ARRAY_INIT/descendant-or-self::node()"/>
+    </module> -->
+
     <!-- Required to allow exceptions in code style -->
     <module name="SuppressionCommentFilter">
       <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)"/>
@@ -344,6 +356,7 @@
     <module name="Indentation">
       <property name="caseIndent" value="0" />
       <property name="throwsIndent" value="8" />
+      <property name="arrayInitIndent" value="8" />
     </module>
 
     <module name="NoWhitespaceBefore">
