@@ -9,14 +9,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.course.Course;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Friendship;
 import seedu.address.model.person.Name;
@@ -32,12 +31,13 @@ public class AddCommandParser implements Parser<AddCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
      * and returns an AddCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_COURSE, PREFIX_TAG, PREFIX_FRIENDSHIP);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
+                PREFIX_ADDRESS,
+                PREFIX_COURSE, PREFIX_TAG, PREFIX_FRIENDSHIP);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_FRIENDSHIP)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -52,21 +52,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        Set<Course> courseList = argMultimap.getValue(PREFIX_COURSE).isPresent()
-                ? ParserUtil.parseCourses(argMultimap.getAllValues(PREFIX_COURSE))
-                : new HashSet<>();
+        Set<Course> courseList = ParserUtil.parseCourses(argMultimap.getAllValues(PREFIX_COURSE));
         Friendship friendship = ParserUtil.parseFriendship(argMultimap.getValue(PREFIX_FRIENDSHIP).get());
-
-        // Set default friendship level to FRIEND if not specified
-        // Friendship friendship = argMultimap.getValue(PREFIX_FRIENDSHIP)
-        //         .map(value -> {
-        //             try {
-        //                 return ParserUtil.parseFriendship(value);
-        //             } catch (ParseException e) {
-        //                 return new Friendship(Friendship.Level.FRIEND);
-        //             }
-        //         })
-        //         .orElse(new Friendship(Friendship.Level.FRIEND));
 
         Person person = new Person(name, phone, email, address, tagList, courseList, friendship);
 
@@ -74,7 +61,8 @@ public class AddCommandParser implements Parser<AddCommand> {
     }
 
     /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * Returns true if none of the prefixes contains empty {@code Optional} values
+     * in the given
      * {@code ArgumentMultimap}.
      */
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {

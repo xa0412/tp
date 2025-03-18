@@ -8,11 +8,13 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.course.Course;
 import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Person in the address book.
- * Guarantees: details are present and not null, field values are validated, immutable.
+ * Guarantees: details are present and not null, field values are validated,
+ * immutable.
  */
 public class Person {
 
@@ -32,7 +34,7 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                  Set<Course> courses, Friendship friendship) {
+            Set<Course> courses, Friendship friendship) {
         requireAllNonNull(name, phone, email, address, tags, courses, friendship);
         this.name = name;
         this.phone = phone;
@@ -40,25 +42,15 @@ public class Person {
         this.address = address;
         this.tags.addAll(tags);
         this.courses.addAll(courses);
-        // For testing purposes: To check whether the previous semester module is added on instead of cleared and create
-        //this.previousCourses.add(new PreviousCourse("2030S"));
+        // For testing purposes: To check whether the previous semester module is added
+        // on instead of cleared and create
+        // this.previousCourses.add(new PreviousCourse("2030S"));
         this.friendship = friendship;
     }
 
-    // /**
-    //  * TODO: Remove this constructor
-    //  */
-    // public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-    //     this.name = name;
-    //     this.phone = phone;
-    //     this.email = email;
-    //     this.address = address;
-    //     this.tags.addAll(tags);
-    //     this.friendship = new Friendship(Friendship.Level.FRIEND);
-    // }
-
     /**
      * Represents a new Constructor to update the previous courses
+     *
      * @param name
      * @param phone
      * @param email
@@ -69,7 +61,7 @@ public class Person {
      * @param previousCourses
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                  Set<Course> courses, Friendship friendshipType, Set<PreviousCourse> previousCourses) {
+            Set<Course> courses, Friendship friendshipType, Set<PreviousCourse> previousCourses) {
         requireAllNonNull(name, phone, email, address, tags, courses, friendshipType);
         this.name = name;
         this.phone = phone;
@@ -81,6 +73,7 @@ public class Person {
         this.previousCourses.addAll(previousCourses);
 
     }
+
     public Name getName() {
         return name;
     }
@@ -110,7 +103,8 @@ public class Person {
     }
 
     /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * Returns an immutable tag set, which throws
+     * {@code UnsupportedOperationException}
      * if modification is attempted.
      */
     public Set<Tag> getTags() {

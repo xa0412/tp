@@ -10,8 +10,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.course.Course;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Course;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Friendship;
 import seedu.address.model.person.Name;
@@ -62,7 +62,6 @@ class JsonAdaptedPerson {
         this.friendship = friendship;
     }
 
-
     /**
      * Converts a given {@code Person} into this class for Jackson use.
      */
@@ -71,22 +70,20 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-        tags.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
-                .collect(Collectors.toList()));
-        courses.addAll(source.getCourses().stream()
-                .map(course -> course.toString())
+        tags.addAll(
+                source.getTags().stream().map(JsonAdaptedTag::new).collect(Collectors.toList()));
+        courses.addAll(source.getCourses().stream().map(course -> course.toString())
                 .collect(Collectors.toList()));
         previousCourses.addAll(source.getPreviousCourses().stream()
-                .map(previousCourse -> previousCourse.toString())
-                .collect(Collectors.toList()));
+                .map(previousCourse -> previousCourse.toString()).collect(Collectors.toList()));
         friendship = source.getFriendship().toString();
     }
 
     /**
      * Converts this Jackson-friendly adapted person object into the model's {@code Person} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted
+     *         person.
      */
     public Person toModelType() throws IllegalValueException {
         final List<Tag> personTags = new ArrayList<>();
@@ -95,7 +92,8 @@ class JsonAdaptedPerson {
         }
 
         if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
         if (!Name.isValidName(name)) {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
@@ -103,7 +101,8 @@ class JsonAdaptedPerson {
         final Name modelName = new Name(name);
 
         if (phone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
         }
         if (!Phone.isValidPhone(phone)) {
             throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
@@ -111,7 +110,8 @@ class JsonAdaptedPerson {
         final Phone modelPhone = new Phone(phone);
 
         if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
         }
         if (!Email.isValidEmail(email)) {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
@@ -119,7 +119,8 @@ class JsonAdaptedPerson {
         final Email modelEmail = new Email(email);
 
         if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
         }
         if (!Address.isValidAddress(address)) {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
@@ -129,15 +130,15 @@ class JsonAdaptedPerson {
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         final Set<Course> modelCourses = new HashSet<>();
-        final Set<PreviousCourse> modelPreviousCourses = previousCourses.stream()
-                .map(PreviousCourse::new).collect(Collectors.toSet());
+        final Set<PreviousCourse> modelPreviousCourses =
+                previousCourses.stream().map(PreviousCourse::new).collect(Collectors.toSet());
         for (String course : courses) {
             modelCourses.add(new Course(course));
         }
 
         if (friendship == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Friendship.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Friendship.class.getSimpleName()));
         }
         if (!Friendship.isValidFriendship(friendship)) {
             throw new IllegalValueException(Friendship.MESSAGE_CONSTRAINTS);
@@ -145,8 +146,8 @@ class JsonAdaptedPerson {
 
         final Friendship modelFriendship = new Friendship(friendship);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags,
-                modelCourses, modelFriendship, modelPreviousCourses);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelCourses,
+                modelFriendship, modelPreviousCourses);
     }
 
 }
