@@ -8,9 +8,12 @@ src/main/resources/docs/
 /out/
 /*.iml
 
-#vscode files
+# vscode files
 .vscode/
 bin/
+.classpath
+.project
+.settings/
 
 # Storage/log files
 /data/
