@@ -161,10 +161,9 @@ public class ParserUtil {
     public static Friendship parseFriendship(String friendship) throws ParseException {
         requireNonNull(friendship);
         String trimmedFriendship = friendship.trim().toUpperCase();
-        try {
-            return new Friendship(Friendship.Level.valueOf(trimmedFriendship));
-        } catch (IllegalArgumentException e) {
-            throw new ParseException("Invalid friendship level. Valid values are: ACQUAINTANCE, FRIEND, CLOSE_FRIEND");
+        if (!Friendship.isValidFriendship(trimmedFriendship)) {
+            throw new ParseException(Friendship.MESSAGE_CONSTRAINTS);
         }
+        return new Friendship(trimmedFriendship);
     }
 }
