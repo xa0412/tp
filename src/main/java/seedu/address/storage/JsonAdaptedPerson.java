@@ -130,8 +130,9 @@ class JsonAdaptedPerson {
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         final Set<Course> modelCourses = new HashSet<>();
-        final Set<PreviousCourse> modelPreviousCourses =
-                previousCourses.stream().map(PreviousCourse::new).collect(Collectors.toSet());
+        final List<PreviousCourse> modelPreviousCourses =
+                previousCourses.stream().map(PreviousCourse::new).collect(Collectors.toList());
+
         for (String course : courses) {
             modelCourses.add(new Course(course));
         }

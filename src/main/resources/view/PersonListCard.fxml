@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.Button?>
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
@@ -33,7 +34,13 @@
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
-      <Label fx:id="previousCourses" styleClass="cell_small_label" text="\$previousCourses" />
+      <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label fx:id="previousCourses" styleClass="cell_small_label" text="\$previousCourses" />
+        <Button fx:id="expandButton" text="▼" onAction="#togglePreviousCourses" styleClass="expand-button" />
+      </HBox>
+      <VBox fx:id="previousCoursesDetails" visible="false" managed="false">
+        <Label fx:id="detailedCourses" text="\$detailedCourses" styleClass="cell_small_label" />
+      </VBox>
     </VBox>
   </GridPane>
 </HBox>

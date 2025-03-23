@@ -3,6 +3,7 @@ package seedu.address.logic;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -98,4 +99,16 @@ public class LogicManager implements Logic {
             throw new CommandException(String.format(FILE_OPS_ERROR_FORMAT, ioe.getMessage()), ioe);
         }
     }
+
+    @Override
+    public void saveLastLogin(LocalDateTime lastLogin, Path filePath) throws CommandException {
+        try {
+            storage.saveLoginBook(lastLogin, filePath);
+        } catch (AccessDeniedException e) {
+            throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
+        } catch (IOException ioe) {
+            throw new CommandException(String.format(FILE_OPS_ERROR_FORMAT, ioe.getMessage()), ioe);
+        }
+    }
+
 }
