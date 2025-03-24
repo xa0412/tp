@@ -362,3 +362,13 @@
     -fx-background-color: #f1c40f;
 }
 
+.expand-button {
+    -fx-background-color: transparent;
+    -fx-font-size: 14px; /* Ensure text is readable */
+    -fx-text-fill: orange;
+    -fx-padding: 2px 4px; /* Adjust padding */
+    -fx-min-width: 24px; /* Ensure enough space */
+    -fx-min-height: 20px;
+    -fx-max-width: 26px;
+    -fx-max-height: 22px;
+}

@@ -1,6 +1,7 @@
 package seedu.address.logic;
 
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
@@ -52,4 +53,10 @@ public interface Logic {
      * Update the user previous courses automatically once semester has ended;
      */
     void updatePreviousCourses() throws CommandException;
+
+    /**
+     * Updates the user last login date time in a json file
+     * @param lastLogin
+     */
+    void saveLastLogin(LocalDateTime lastLogin, Path filePath) throws CommandException;
 }

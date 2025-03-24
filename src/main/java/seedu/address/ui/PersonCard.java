@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import seedu.address.model.person.Person;
 
 /**
@@ -43,7 +45,13 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label previousCourses;
     @FXML
+    private Label detailedCourses;
+    @FXML
     private FlowPane tags;
+    @FXML
+    private VBox previousCoursesDetails;
+    @FXML
+    private Button expandButton;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -65,7 +73,25 @@ public class PersonCard extends UiPart<Region> {
                 ? previousCoursesList.get(0)
                 : String.join(", ", previousCoursesList);
 
-        previousCourses.setText("Previous Courses: " + previousCoursesText);
+
+        String recentCoursesText;
+
+        if (previousCoursesList.isEmpty()) {
+            recentCoursesText = "NIL";
+        } else if (previousCoursesList.size() == 1) {
+            recentCoursesText = previousCoursesList.get(0);
+        } else {
+            // Take only the first 5 courses or fewer if there are less than 5
+            List<String> topCourses = previousCoursesList.subList(0, Math.min(previousCoursesList.size(), 5));
+            recentCoursesText = String.join(", ", topCourses);
+
+            // Append "..." if there are more than 5 courses
+            if (previousCoursesList.size() > 5) {
+                recentCoursesText += "...";
+            }
+        }
+        previousCourses.setText("Previous Courses: " + recentCoursesText);
+        detailedCourses.setText(previousCoursesText);
 
         // Add general tags (Blue)
         person.getTags().stream()
@@ -91,6 +117,14 @@ public class PersonCard extends UiPart<Region> {
                     courseLabel.getStyleClass().add("tag-course"); // Apply yellow color
                     tags.getChildren().add(courseLabel);
                 });
+    }
+
+    @FXML
+    private void togglePreviousCourses() {
+        boolean isVisible = previousCoursesDetails.isVisible();
+        previousCoursesDetails.setVisible(!isVisible);
+        previousCoursesDetails.setManaged(!isVisible); // Ensures it doesn't take up space when hidden
+        expandButton.setText(isVisible ? "▼" : "▲"); // Change button icon
     }
 
     @Override

@@ -16,6 +16,7 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -25,7 +26,9 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonLoginBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.LoginBookStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
@@ -56,29 +59,130 @@ public class MainApp extends Application {
         config = initConfig(appParameters.getConfigPath());
         initLogging(config);
 
+        //Get current DateTime
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
-
+        LoginBookStorage loginBookStorage = new JsonLoginBookStorage(Path.of("data", "lastLogin.json"));
+        storage = new StorageManager(addressBookStorage, userPrefsStorage, loginBookStorage);
         model = initModelManager(storage, userPrefs);
-
         logic = new LogicManager(model, storage);
-
         ui = new UiManager(logic);
+        Path filePath = loginBookStorage.getLoginBookFilePath();
+        LocalDateTime lastLogin = getLastLogin(filePath);
+        updateLastLogin(currentDateTime, filePath);
+        checkSemEnded(lastLogin, currentDateTime);
 
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        LocalDateTime endSemesterDateTime = LocalDateTime.of(2025, 8, 4, 0, 0);
-
-        if (currentDateTime.isAfter(endSemesterDateTime)) {
-            logger.info("Semester has ended!");
-            logic.updatePreviousCourses();
-
-        } else {
-            logger.info("Semester is still ongoing!");
-        }
     }
 
+    /**
+     * Retrieves Last Login
+     * @param filePath
+     * @return LocalDateTime
+     * @throws DataLoadingException
+     * @throws CommandException
+     */
+    public LocalDateTime getLastLogin(Path filePath) throws DataLoadingException, CommandException {
+        LocalDateTime lastLogin = LocalDateTime.now();
+        //Retrieve the last login date time object
+        Optional<LocalDateTime> loginBookOptional = storage.readLoginBook(filePath);
+        //if present, retrieve the last login date time
+        if (loginBookOptional.isPresent()) {
+            logger.info("Last login: " + loginBookOptional.get());
+            lastLogin = loginBookOptional.get();
+        } else {
+            logger.info("No last login data found.");
+        }
+        return lastLogin;
+
+    }
+
+    /**
+     * Update Last Login to json file
+     * @param currentDateTime
+     * @param filePath
+     * @throws CommandException
+     */
+    public void updateLastLogin(LocalDateTime currentDateTime, Path filePath) throws CommandException {
+        logic.saveLastLogin(currentDateTime, filePath);
+    }
+
+    /**
+     * Checks if the current date time has past current semester end datetime
+     * @param lastLogin
+     * @param currentDateTime
+     * @throws CommandException
+     */
+    public void checkSemEnded(LocalDateTime lastLogin, LocalDateTime currentDateTime) throws CommandException {
+        int sem = 0;
+        //Academic year is always fixed as the current year stated in user machine
+        int year = currentDateTime.getYear();
+        // Fix Sem 1 end date as 31st Dec, since the actual end of Semester 1 varies but is always around mid-December.
+        // Course registration occurs in January, so clear courses before new registrations.
+        LocalDateTime sem1End = LocalDateTime.of(year, 12, 31, 0, 0);
+        LocalDateTime sem1Start = LocalDateTime.of(year, 8, 1, 0, 0);
+        // Fix Sem 2 end date as 31st May, since the actual end of Semester 2 varies but is always around mid-May.
+        // Course registration occurs in July, so clear courses before new registrations.
+        LocalDateTime sem2End = LocalDateTime.of(year, 5, 31, 0, 0);
+        LocalDateTime sem2Start = LocalDateTime.of(year, 1, 1, 0, 0);
+        LocalDateTime endSemesterDateTime;
+        LocalDateTime startSemesterDateTime;
+        if (currentDateTime.isBefore(sem2End)) {
+            // Currently in Semester 2
+            endSemesterDateTime = sem2End;
+            startSemesterDateTime = sem2Start;
+            logger.info("Currently in Semester 2");
+            sem = 2;
+        } else if (currentDateTime.isAfter(sem2End) && currentDateTime.isBefore(sem1Start)) {
+            // Semester Break (June - July) → Use Sem 2's end date
+            endSemesterDateTime = sem2End;
+            startSemesterDateTime = sem2Start;
+            logger.info("Currently in Semester Break (June - July), using Sem 2 end date");
+        } else if (currentDateTime.isBefore(sem1End)) {
+            // Currently in Semester 1
+            endSemesterDateTime = sem1End;
+            startSemesterDateTime = sem1Start;
+            logger.info("Currently in Semester 1");
+            sem = 1;
+        } else {
+            // Semester Break (December - early January) → Use Sem 1's end date
+            endSemesterDateTime = sem1End;
+            startSemesterDateTime = sem1Start;
+            logger.info("Currently in Semester Break (December - January), using Sem 1 end date");
+        }
+
+        checkEnded(currentDateTime, lastLogin, endSemesterDateTime, startSemesterDateTime, sem);
+    }
+
+    /**
+     * Actual Implementation of the Semester End check
+     * @param currentDateTime
+     * @param lastLogin
+     * @param endSemesterDateTime
+     * @param startSemesterDateTime
+     * @param sem
+     * @throws CommandException
+     */
+    public void checkEnded(LocalDateTime currentDateTime, LocalDateTime lastLogin,
+                           LocalDateTime endSemesterDateTime, LocalDateTime startSemesterDateTime,
+                           int sem) throws CommandException {
+        //if current Date is past the current sem end date, update courses
+        //Possibility that user logins after 1 year e.g. last login was 3/3/2025, new login is 3/3/2026,
+        //this will make the current sem end date time to be that of the current year e.g. 31/5/2026
+        //however it will be inaccurate since the sem should have ended 31/5/2025
+        //thus need check if the last login is before current start sem, if it is, need update courses
+        if ((currentDateTime.isAfter(endSemesterDateTime) && lastLogin.isBefore(endSemesterDateTime))
+                || (lastLogin.isBefore(startSemesterDateTime) && currentDateTime.isAfter(startSemesterDateTime))) {
+            logger.info("Semester " + sem + " has ended!");
+            logger.info("Last login: " + lastLogin);
+            logger.info("Current date: " + currentDateTime);
+            logic.updatePreviousCourses();
+        } else {
+            logger.info("Semester " + sem + " is still ongoing!");
+        }
+    }
     /**
      * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
      * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
