@@ -152,6 +152,22 @@ public class MainApp extends Application {
             startSemesterDateTime = sem1Start;
             logger.info("Currently in Semester Break (December - January), using Sem 1 end date");
         }
+
+        checkEnded(currentDateTime, lastLogin, endSemesterDateTime, startSemesterDateTime, sem);
+    }
+
+    /**
+     * Actual Implementation of the Semester End check
+     * @param currentDateTime
+     * @param lastLogin
+     * @param endSemesterDateTime
+     * @param startSemesterDateTime
+     * @param sem
+     * @throws CommandException
+     */
+    public void checkEnded(LocalDateTime currentDateTime, LocalDateTime lastLogin,
+                           LocalDateTime endSemesterDateTime, LocalDateTime startSemesterDateTime,
+                           int sem) throws CommandException {
         //if current Date is past the current sem end date, update courses
         //Possibility that user logins after 1 year e.g. last login was 3/3/2025, new login is 3/3/2026,
         //this will make the current sem end date time to be that of the current year e.g. 31/5/2026
@@ -160,6 +176,8 @@ public class MainApp extends Application {
         if ((currentDateTime.isAfter(endSemesterDateTime) && lastLogin.isBefore(endSemesterDateTime))
                 || (lastLogin.isBefore(startSemesterDateTime) && currentDateTime.isAfter(startSemesterDateTime))) {
             logger.info("Semester " + sem + " has ended!");
+            logger.info("Last login: " + lastLogin);
+            logger.info("Current date: " + currentDateTime);
             logic.updatePreviousCourses();
         } else {
             logger.info("Semester " + sem + " is still ongoing!");
