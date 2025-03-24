@@ -2,6 +2,7 @@ package seedu.address.storage;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -130,8 +131,9 @@ class JsonAdaptedPerson {
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         final Set<Course> modelCourses = new HashSet<>();
-        final List<PreviousCourse> modelPreviousCourses =
-                previousCourses.stream().map(PreviousCourse::new).collect(Collectors.toList());
+        final LinkedHashSet<PreviousCourse> modelPreviousCourses =
+                previousCourses.stream().map(PreviousCourse::new)
+                        .collect(Collectors.toCollection(LinkedHashSet::new));
 
         for (String course : courses) {
             modelCourses.add(new Course(course));
