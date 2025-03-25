@@ -5,8 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.util.Arrays;
 
 /**
- * Represents a Person's friendship in the address book
- * Guarantees: immutable
+ * Represents a Person's friendship in the address book Guarantees: immutable
  */
 public class Friendship implements Comparable<Friendship> {
 
@@ -17,13 +16,14 @@ public class Friendship implements Comparable<Friendship> {
      * Represents a Person's friendship closeness level
      */
     public enum Level {
-        ACQUAINTANCE, FRIEND, CLOSE_FRIEND
+        CLOSE_FRIEND, FRIEND, ACQUAINTANCE
     }
 
     private final Level value;
 
     /**
      * Constructs a {@code Friendship}
+     *
      * @param level A measure of the friendship's closeness level as a string
      */
     public Friendship(String level) {
@@ -33,6 +33,7 @@ public class Friendship implements Comparable<Friendship> {
 
     /**
      * Constructs a {@code Friendship}
+     *
      * @param level A measure of the friendship's closeness level
      */
     public Friendship(Level level) {
