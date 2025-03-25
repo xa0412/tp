@@ -27,8 +27,6 @@ Class "<<interface>>\nLoginBookStorage" as LoginBookStorage
 Class JsonLoginBookStorage
 Class JsonSerializableLoginBook
 }
-
-
 }
 
 Class HiddenOutside #FFFFFF
