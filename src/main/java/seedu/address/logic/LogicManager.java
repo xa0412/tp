@@ -70,7 +70,7 @@ public class LogicManager implements Logic {
 
     @Override
     public ObservableList<Person> getFilteredPersonList() {
-        return model.getFilteredPersonList();
+        return model.getFilteredThenSortedPersonList();
     }
 
     @Override
@@ -90,7 +90,7 @@ public class LogicManager implements Logic {
 
     @Override
     public void updatePreviousCourses() throws CommandException {
-        Model newModel = new AutoUpdatePerson().updatePreviousCourses(model.getFilteredPersonList(), model);
+        Model newModel = new AutoUpdatePerson().updatePreviousCourses(model.getFilteredThenSortedPersonList(), model);
         try {
             storage.saveAddressBook(newModel.getAddressBook());
         } catch (AccessDeniedException e) {
