@@ -61,7 +61,7 @@ public class FindCommandTest {
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Collections.emptyList(), model.getFilteredPersonList());
+        assertEquals(Collections.emptyList(), model.getFilteredThenSortedPersonList());
     }
 
     @Test
@@ -71,13 +71,13 @@ public class FindCommandTest {
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredPersonList());
+        assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredThenSortedPersonList());
     }
 
     @Test
     public void toStringMethod() {
-        NameOrCourseContainsKeywordsPredicate predicate = new
-                NameOrCourseContainsKeywordsPredicate(Arrays.asList("keyword"), Arrays.asList("CS2101"));
+        NameOrCourseContainsKeywordsPredicate predicate =
+                new NameOrCourseContainsKeywordsPredicate(Arrays.asList("keyword"), Arrays.asList("CS2101"));
         FindCommand findCommand = new FindCommand(predicate);
         String expected = FindCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
         assertEquals(expected, findCommand.toString());
