@@ -274,21 +274,21 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-`1` looking for course mate to discuss schoolwork with
+1. looking for schoolmates to discuss schoolwork with
 
-`2` looking for a way to store their course mate contacts
+2. looking for a way to store schoolmate contacts
 
-`3` has a need to manage a significant number of contacts
+3. has a need to manage a significant number of contacts
 
-`4` prefer desktop apps over other types 
+4. prefer desktop apps over other types 
 
-`5` can type fast
+5. can type fast
 
-`6` prefers typing than mouse interactions
+6. prefers typing than mouse interactions
 
 **Value proposition**:
 
-* Provide quick access to students who are taking similar modules
+* Provide quick access to students who are taking similar courses
 * Provide a friendly command line format for users who prefer CLI application
 * Organise students’ contacts in a relevant & friendly format
 
@@ -298,20 +298,28 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​      | I want to …​                               | So that I can…​                                                                                             |
-|----------|--------------|--------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| `* * *`  | NUS student  | Find relevant course mate's email          | I can contact them for study sessions                                                                       |
-| `* * *`  | NUS student  | Find relevant course mate's phone numbers  | I can contact them for study sessions                                                                       |
-| `* * *`  | NUS student  | Find relevant course mate's module         | I can know which friends take the same module                                                               |
-| `* * *`  | NUS student  | Add course mate                            | I can add course mate's contact                                                                             |
-| `* * *`  | NUS student  | Delete course mates                        | I can delete unwanted course mate                                                                           |
-| `* * *`  | CLI lover    | Type command to organize contacts          | I can organize them in a friendly way                                                                       |
-| `* * *`  | NUS Student  | Add module tags to Course mates            | I can easily track which modules my friends are taking and contact the course mate's to discuss school work |
-| `* *`    | NUS Student  | Update course mate phone                   | I can correct them if there is a typo                                                                       |
-| `* *`    | NUS Student  | Update course mate address                 | I can correct them if there is a typo                                                                       |
-| `* *`    | NUS student  | Update course mate name                    | I can correct them if there is a typo                                                                       |
-| `* *`    | NUS Student  | Toggle the colour theme of the application | So that my eyes are comfortable while using the app                                                         |
-| `*`      | NUS Student  | Import contacts from a spreadsheet         | I can quickly add contacts I have collected                                                                 |
+| Priority | As a …​     | I want to …​                               | So that I can…​                                                                         |
+|----------|-------------|--------------------------------------------|-----------------------------------------------------------------------------------------|
+| `* * *`  | NUS student | Find relevant schoolmate's email           | I can contact them for study sessions                                                   |
+| `* * *`  | NUS student | Find relevant schoolmate's phone numbers   | I can contact them for study sessions                                                   |
+| `* * *`  | NUS student | Find relevant schoolmate's module          | I can know which schoolmates take the same module                                       |
+| `* * *`  | NUS student | Add schoolmates                            | I can add schoolmate's contact to NUSMeet                                               |
+| `* * *`  | NUS student | Delete schoolmates                         | I can delete unwanted schoolmates                                                       |
+| `* * *`  | NUS Student | Add course tags to schoolmates             | I can easily track which course they are taking and contact them to discuss school work |
+| `* * *`  | NUS Student | Add friendship tags to schoolmates         | I can organize schoolmates in a friendship priority order                               |
+| `* * *`  | NUS Student | Add normal tags to schoolmates             | I can make remarks on schoolmates                                                       |
+| `* * *`  | NUS Student | Add previous course to schoolmates         | I can know schoolmates previous course                                                  |
+| `* * *`  | CLI lover   | I want to type most of the time            | I can perform tasks with minimal time                                                   |
+| `* * *`  | CLI lover   | Type command to organize contacts          | I can organize my schoolmates in a friendly way                                         |
+| `* *`    | NUS student | Edit schoolmates name                      | I can correct them if there is a typo                                                   |
+| `* *`    | NUS Student | Edit schoolmates phone                     | I can correct them if there is a typo                                                   |
+| `* *`    | NUS Student | Edit schoolmates email                     | I can correct them if there is a typo                                                   |
+| `* *`    | NUS Student | Edit schoolmates address                   | I can correct them if there is a typo                                                   |
+| `* *`    | NUS Student | Edit schoolmates friendship tag            | I can correct them if there is a typo                                                   |
+| `* *`    | NUS Student | Edit schoolmates course tag                | I can correct them if there is a typo                                                   |
+| `* *`    | NUS Student | Edit schoolmates normal tag                | I can correct them if there is a typo                                                   |
+| `*`      | NUS Student | Toggle the colour theme of the application | So that my eyes are comfortable while using the app                                     |
+| `*`      | NUS Student | Import contacts from a spreadsheet         | I can quickly add contacts I have collected                                             |
 
 *{More to be added}*
 
@@ -319,12 +327,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `NUSMeet` and the **Actor** is the `user`, unless specified otherwise)
 
-### Use case: UC01 – Add Coursemate
+### Use case: UC01 – Add Schoolmate
 **Actor:** NUS Student  
 
 **MSS:**  
-1. User types the command to add a new coursemate along with details.  
-2. NUSMeet validates the input and adds the coursemate.  
+1. User types the command to add a new schoolmate along with details.  
+2. NUSMeet validates the input and adds the schoolmate.  
 3. NUSMeet displays confirmation of successful addition.  
 **Use case ends.**
 
@@ -340,11 +348,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ---
 
-### Use case: UC02 – Tag Coursemates with Modules
+### Use case: UC02 – Tag schoolmates with course
 **Actor:** NUS Student  
 
 **MSS:**  
-1. User types the command to tag existing coursemates with module codes and IDs.  
+1. User types the command to tag existing schoolmates with module codes and IDs.  
 2. NUSMeet validates the input and applies the tags.  
 3. NUSMeet displays confirmation of successful tagging.  
 **Use case ends.**
@@ -361,12 +369,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ---
 
-### Use case: UC03 – Find Coursemates by Module
+### Use case: UC03 – Find schoolmates by Module
 **Actor:** NUS Student  
 
 **MSS:**  
-1. User types the command to find coursemates by module code(s).  
-2. NUSMeet validates the input and displays a list of matching coursemates.  
+1. User types the command to find schoolmates by module code(s).  
+2. NUSMeet validates the input and displays a list of matching schoolmates.  
 **Use case ends.**
 
 **Extensions:**  

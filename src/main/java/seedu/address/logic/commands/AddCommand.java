@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FRIENDSHIP;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PREVIOUS_COURSE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -30,6 +31,7 @@ public class AddCommand extends Command {
             + PREFIX_ADDRESS + "ADDRESS "
             + "[" + PREFIX_COURSE + "COURSE]... "
             + "[" + PREFIX_TAG + "TAG]... "
+            + "[" + PREFIX_PREVIOUS_COURSE + "PREVIOUS_COURSE]... "
             + "[" + PREFIX_FRIENDSHIP + "FRIENDSHIP_LEVEL]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
@@ -40,6 +42,7 @@ public class AddCommand extends Command {
             + PREFIX_COURSE + "CS2101 "
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney "
+            + PREFIX_PREVIOUS_COURSE + "CS1010 "
             + PREFIX_FRIENDSHIP + "CLOSE_FRIEND";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";

@@ -2,10 +2,9 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -30,7 +29,7 @@ public class Person {
     private final Set<Tag> tags = new HashSet<>();
     private final Set<Course> courses = new HashSet<>();
     private final Friendship friendship;
-    private final List<PreviousCourse> previousCourses = new ArrayList<>();
+    private final LinkedHashSet<PreviousCourse> previousCourses = new LinkedHashSet<>();
 
     /**
      * Every field must be present and not null.
@@ -63,7 +62,7 @@ public class Person {
      * @param previousCourses
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-            Set<Course> courses, Friendship friendshipType, List<PreviousCourse> previousCourses) {
+            Set<Course> courses, Friendship friendshipType, LinkedHashSet<PreviousCourse> previousCourses) {
         requireAllNonNull(name, phone, email, address, tags, courses, friendshipType);
         this.name = name;
         this.phone = phone;
@@ -100,9 +99,10 @@ public class Person {
         return Collections.unmodifiableSet(courses);
     }
 
-    public List<PreviousCourse> getPreviousCourses() {
-        return Collections.unmodifiableList(previousCourses);
+    public LinkedHashSet<PreviousCourse> getPreviousCourses() {
+        return new LinkedHashSet<>(previousCourses); // Preserve order but prevent modification
     }
+
 
 
     /**

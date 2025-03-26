@@ -3,7 +3,7 @@ package seedu.address.logic.backend;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -40,19 +40,20 @@ public class AutoUpdatePerson {
         Friendship friendship = person.getFriendship();
         // Used for testing when courses should not be cleared.
         // Set<Course> emptyCourses = person.getCourses();
-        //Used List as there is ordering so recent courses will appear first
-        List<PreviousCourse> previousCourses = new LinkedList<>(person.getPreviousCourses());
-
-        // Convert current courses and add them to the front
-        previousCourses.addAll(0, currentCourses.stream()
+        // Maintain order with LinkedHashSet
+        LinkedHashSet<PreviousCourse> updatedPreviousCourses = new LinkedHashSet<>();
+        // Add new courses first (ensuring they are unique)
+        updatedPreviousCourses.addAll(currentCourses.stream()
                 .map(course -> new PreviousCourse(course.toString()))
                 .collect(Collectors.toList()));
+        // Add previous courses (ensuring order is maintained)
+        updatedPreviousCourses.addAll(person.getPreviousCourses());
 
         // Clear Current Courses
         Set<Course> emptyCourses = new HashSet<>();
 
         // create a new updated person
-        return new Person(name, phone, email, address, tags, emptyCourses, friendship, previousCourses);
+        return new Person(name, phone, email, address, tags, emptyCourses, friendship, updatedPreviousCourses);
     }
     /**
      * Iterates through the person list and updates the person
