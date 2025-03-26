@@ -131,6 +131,7 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+        filteredThenSortedPersons.setComparator(null); // null for unordered
     }
 
     @Override
