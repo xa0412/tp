@@ -1,15 +1,7 @@
----
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
----
-
 # NUSMeet User Guide
+**NUSMeet** is your go-to **Command Line Interface (CLI)** application for **keeping track** of your friends and schoolmates at NUS. No more scrambling to remember who’s taking the same module as you — just **_tag_**, **_filter_**, and **_find_** the right people to study with in seconds.
 
-**NUSMeet** is a **Command Line Interface (CLI)** application designed for **NUS students** to **efficiently manage and organize** their contacts. It focuses on helping users **find coursemates** for study discussions, with **tagging** and **filtering** features tailored to student life.
-
-<!-- * Table of Contents -->
-<page-nav-print />
+Designed for NUS students (by NUS students!) who **wants to meet people to discuss schoolwork** and prefer the speed of typing 🧑‍💻 over clicking 🖱️, NUSMeet makes **organizing your contacts effortless** so you can focus on what really matters — acing your studies with the right people by your side! 👫👫
 
 ---
 
@@ -33,7 +25,8 @@ Follow these steps to install and run NUSMeet on your computer!
 
 5. Type the [command](#-command-overview) in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
 
-6. Refer to the [Features](#features) below for details of each command.
+
+6. Refer to the [Features](#-features) below for details of each command.
 
 ---
 
@@ -190,11 +183,10 @@ NUSMeet automatically saves all changes to disk. There is no need to manually sa
 
 ### 10. Editing the data file
 
-NUSMeet automatically stores data as a JSON file at: `[JAR file location]/data/addressbook.json`.
+NUSMeet automatically stores your contact as a JSON file at: `[JAR file location]/data/addressbook.json`.
 You can manually edit this file.
 
 **⚠️Caution:**
-
 - If file format is **invalid**, NUSMeet will **discard** all data and start with an empty data file at the next run.
 - Certain **incorrect** edits can cause **unexpected** behavior (e.g., invalid values).
 - Recommended to **backup** the file before making any changes
@@ -214,8 +206,8 @@ At the end of each semester, NUSMeet will automatically update all entries in yo
 
 ## ❗Known issues
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. <br> **Solution:** Delete the `preferences.json` file created by the application before running the application again.
+2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. <br> **Solution:** Manually restore the minimized Help Window.
 
 ---
 
