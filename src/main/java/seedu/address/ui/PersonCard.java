@@ -65,7 +65,9 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         List<String> previousCoursesList = person.getPreviousCourses()
-                .stream().map(Object::toString).collect(Collectors.toList());
+                .stream().map(Object::toString)
+                .distinct() // Removes duplicates while maintaining order
+                .collect(Collectors.toList());
 
         String previousCoursesText = previousCoursesList.isEmpty()
                 ? "NIL"
