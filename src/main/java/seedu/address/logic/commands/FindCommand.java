@@ -2,14 +2,21 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
+import seedu.address.logic.backend.PersonCoursesComparator;
 import seedu.address.model.Model;
+import seedu.address.model.course.Course;
 import seedu.address.model.person.NameOrCourseContainsKeywordsPredicate;
+import seedu.address.model.person.Person;
 
 /**
- * Finds and lists all persons in address book whose name contains any of the argument keywords.
- * Keyword matching is case insensitive.
+ * Finds and lists all persons in address book whose name contains any of the argument keywords. Keyword matching is
+ * case insensitive.
  */
 public class FindCommand extends Command {
 
@@ -30,8 +37,18 @@ public class FindCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);
+
+        Set<Course> courses = predicate.getCourseKeywords().stream()
+                .filter(keyword -> Course.isValidCourseName(keyword))
+                .map(keyword -> new Course(keyword))
+                .collect(Collectors.toCollection(HashSet::new));
+
+        model.sortFilteredPersonList(
+                new PersonCoursesComparator(courses).thenComparing(Person::getFriendship));
+
         return new CommandResult(
-                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
+                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
+                        model.getFilteredThenSortedPersonList().size()));
     }
 
     @Override

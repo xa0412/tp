@@ -16,14 +16,22 @@ public class NameOrCourseContainsKeywordsPredicate implements Predicate<Person> 
     /**
      * Constructs a {@code NameOrCourseContainsKeywordsPredicate} with the given keywords for name and course filtering.
      *
-     * @param nameKeywords A list of keywords used to filter contacts by name.
-     *                     If empty, no name-based filtering is applied.
-     * @param courseKeywords A list of keywords used to filter contacts by course.
-     *                       If empty, no course-based filtering is applied.
+     * @param nameKeywords A list of keywords used to filter contacts by name. If empty, no name-based filtering is
+     *        applied.
+     * @param courseKeywords A list of keywords used to filter contacts by course. If empty, no course-based filtering
+     *        is applied.
      */
     public NameOrCourseContainsKeywordsPredicate(List<String> nameKeywords, List<String> courseKeywords) {
         this.nameKeywords = nameKeywords;
         this.courseKeywords = courseKeywords;
+    }
+
+    public List<String> getNameKeywords() {
+        return nameKeywords;
+    }
+
+    public List<String> getCourseKeywords() {
+        return courseKeywords;
     }
 
     @Override
