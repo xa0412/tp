@@ -1,4 +1,5 @@
 # NUSMeet User Guide
+
 **NUSMeet** is your go-to **Command Line Interface (CLI)** application for **keeping track** of your friends and schoolmates at NUS. No more scrambling to remember who’s taking the same module as you — just **_tag_**, **_filter_**, and **_find_** the right people to study with in seconds.
 
 Designed for NUS students (by NUS students!) who **wants to meet people to discuss schoolwork** and prefer the speed of typing 🧑‍💻 over clicking 🖱️, NUSMeet makes **organizing your contacts effortless** so you can focus on what really matters — acing your studies with the right people by your side! 👫👫
@@ -25,7 +26,6 @@ Follow these steps to install and run NUSMeet on your computer!
 
 5. Type the [command](#-command-overview) in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
 
-
 6. Refer to the [Features](#-features) below for details of each command.
 
 ---
@@ -50,7 +50,7 @@ Now that you have set up NUSMeet, let’s explore the key commands you can use!
 
 #### 1. Upper Case
 
-- Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+- Words in `UPPER_CASE` are the parameters you should supply!<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 #### 2. Square Brackets `[ ]`
@@ -99,12 +99,12 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [c/COURSE]…​ [t/TAG]…
 **Note:**
 
 - The Friend Tag can only be one of the following `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCES`
-- A friend can have any number of tags & courses (including 0)
+- A friend can have any number of tags & courses
 
 Examples:
 
-- `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 c/CS2103T c/CS2101 t/friends t/owesMoney f/CLOSE_FRIEND`
-- `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 f/FRIEND`
+- `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 c/CS2103T c/CS2101 t/owesMoney f/CLOSE_FRIEND`
+- `add n/Betsy Crowe e/betsycrowe@example.com a/Newgate Prison p/1234567 f/FRIEND`
 
 ### 3. Listing all friends : `list`
 
@@ -128,7 +128,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f
 Examples:
 
 - `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st friend to be `91234567` and `johndoe@example.com` respectively.
-- `edit 2 n/Betsy Crower t/` Edits the name of the 2nd friend to be `Betsy Crower` and clears all existing tags.
+- `edit 2 n/Betsy Crower` Edits the name of the 2nd friend to be `Betsy Crower`.
 
 ### 5. Finding friends: `find`
 
@@ -140,15 +140,14 @@ Format: `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`
 - The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 - At least one of the optional fields must be provided.
 - The name (`n/`) or courses (`c/`) or both is searched.
-- Only full words will be matched e.g. `Han` will not match `Hans`
+- Only full words will be matched e.g. `Han` will not match `Hans`, `2103` will not match `2103T`
 - Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
 Examples:
 
-- `find John` returns `john` and `John Doe`
-- `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+- `find John Baker` returns `John Doe` and `Alice Baker` and `John Baker`
+  ![result for 'find john baker'](images/findJohnBakerResult.png)
 
 ### 6. Deleting a friend : `delete`
 
@@ -187,6 +186,7 @@ NUSMeet automatically stores your contact as a JSON file at: `[JAR file location
 You can manually edit this file.
 
 **⚠️Caution:**
+
 - If file format is **invalid**, NUSMeet will **discard** all data and start with an empty data file at the next run.
 - Certain **incorrect** edits can cause **unexpected** behavior (e.g., invalid values).
 - Recommended to **backup** the file before making any changes
@@ -213,7 +213,7 @@ At the end of each semester, NUSMeet will automatically update all entries in yo
 
 ## 📖 Glossary
 
-| Word                 | Meaning                                                                                        |
+| Terms                | Definitions                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | **CLI**              | A text-based interface where users interact with an application                                |
 | **Command Terminal** | A console application where users enter commands.                                              |
