@@ -107,6 +107,7 @@ public class ModelManager implements Model {
         addressBook.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         sortFilteredPersonList(null); // null for unordered
+        logger.info("Sorting deactivated.");
     }
 
     @Override
@@ -132,11 +133,13 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
         filteredThenSortedPersons.setComparator(null); // null for unordered
+        logger.info("Sorting deactivated.");
     }
 
     @Override
     public void sortFilteredPersonList(Comparator<Person> comparator) {
         filteredThenSortedPersons.setComparator(comparator);
+        logger.warning("Sorting active!");
     }
 
     @Override
