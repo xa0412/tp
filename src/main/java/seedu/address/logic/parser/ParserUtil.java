@@ -2,10 +2,9 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -188,12 +187,13 @@ public class ParserUtil {
     /**
      * Parses {@code Collection<String> previousCourses} into a {@code List<PreviousCourse>}.
      */
-    public static List<PreviousCourse> parsePreviousCourses(Collection<String> previousCourses) throws ParseException {
+    public static LinkedHashSet<PreviousCourse> parsePreviousCourses(Collection<String> previousCourses)
+            throws ParseException {
         requireNonNull(previousCourses);
-        final List<PreviousCourse> previousCourseList = new ArrayList<>();
+        final LinkedHashSet<PreviousCourse> previousCourseSet = new LinkedHashSet<>();
         for (String courseName : previousCourses) {
-            previousCourseList.add(parsePreviousCourse(courseName));
+            previousCourseSet.add(parsePreviousCourse(courseName));
         }
-        return previousCourseList;
+        return previousCourseSet;
     }
 }
