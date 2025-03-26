@@ -2,8 +2,10 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -15,6 +17,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Friendship;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.PreviousCourse;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -168,5 +171,29 @@ public class ParserUtil {
             throw new ParseException(Friendship.MESSAGE_CONSTRAINTS);
         }
         return new Friendship(trimmedFriendship);
+    }
+
+    /**
+     * Parses a {@code String previousCourse} into a {@code PreviousCourse}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code previousCourse} is invalid.
+     */
+    public static PreviousCourse parsePreviousCourse(String previousCourse) throws ParseException {
+        requireNonNull(previousCourse);
+        String trimmedPreviousCourse = previousCourse.trim();
+        return new PreviousCourse(trimmedPreviousCourse);
+    }
+
+    /**
+     * Parses {@code Collection<String> previousCourses} into a {@code List<PreviousCourse>}.
+     */
+    public static List<PreviousCourse> parsePreviousCourses(Collection<String> previousCourses) throws ParseException {
+        requireNonNull(previousCourses);
+        final List<PreviousCourse> previousCourseList = new ArrayList<>();
+        for (String courseName : previousCourses) {
+            previousCourseList.add(parsePreviousCourse(courseName));
+        }
+        return previousCourseList;
     }
 }
