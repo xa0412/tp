@@ -10,7 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PREVIOUS_COURSE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -56,7 +56,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Set<Course> courseList = ParserUtil.parseCourses(argMultimap.getAllValues(PREFIX_COURSE));
         Friendship friendship = ParserUtil.parseFriendship(argMultimap.getValue(PREFIX_FRIENDSHIP).get());
-        List<PreviousCourse> previousCourseList = ParserUtil.parsePreviousCourses(
+        LinkedHashSet<PreviousCourse> previousCourseList = ParserUtil.parsePreviousCourses(
                 argMultimap.getAllValues(PREFIX_PREVIOUS_COURSE));
 
         Person person = new Person(name, phone, email, address, tagList, courseList, friendship, previousCourseList);
