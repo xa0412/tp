@@ -29,43 +29,20 @@ Follow these steps to install and run NUSMeet on your computer!
 6. Refer to the [Features](#-features) below for details of each command.
 
 ---
-## 💻 UI Overview
-![Ui](images/UiOverview.png)
-#### 1. File Tab
-The File tab allows you to exit the application by clicking on "Exit" instead of typing the command manually.
-#### 2. Help Tab
-The Help tab opens a pop-up displaying a message explaining how to access the help page. It can also be accessed by pressing F1 on your keyboard.
-#### 3. Person Card
-The Person Card displays the following user information:
-  - Name
-  - Tags
-    - <span style="color: #3e7b91"> Normal Tag (Blue) </span>: Provides additional information about your friend, such as skill level, hobbies, etc.
-    - <span style="color: #e74c3c"> Friendship Tag (Red) </span>: Represents the level of closeness to your friend
-    - <span style="color: #f1c40f">Courses Tag (Yellow) </span>: Indicates the current courses your friend is enrolled in
-    
-  - Phone Number
-  - Address
-  - Email
-  - Previous Courses 
-    - No Previous Courses: Displays "NIL"
-    - Has Previous Courses: Display most recent 5 courses
-    - Expanded Arrow: Display all previous courses throughout all semesters
-
----
 
 ## ⌨️ Command Overview
 
 Now that you have set up NUSMeet, let’s explore the key commands you can use!
 
-| Action                                      | Format, Examples                                                                                                                                                                                                   |
-| ------------------------------------------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **[Add](#2-adding-a-friend-add)**           | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURSE]…​ [o/PREVIOUS_COURSE]…​ [t/TAG]…​ ` <br> e.g., `add n/James Ho p/98105221 e/jamesho@example.com a/Blk 123 Clementi Rd, #12-27 f/FRIEND` |
-| **[Clear](#7-clearing-all-entries--clear)** | `clear`                                                                                                                                                                                                            |
-| **[Delete](#6-deleting-a-friend--delete)**  | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                |
-| **[Edit](#4-editing-a-friend--edit)**       | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                   |
-| **[Find](#5-finding-friends-find)**         | `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`<br> e.g., `find n/James Jake c/CS2101 ST2334`                                                                                                       |
-| **[List](#3-listing-all-friends--list)**    | `list`                                                                                                                                                                                                             |
-| **[Help](#1-viewing-help--help)**           | `help`                                                                                                                                                                                                             |
+| Action                                      | Format, Examples                                                                                                                                                                                        |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[Add](#2-adding-a-friend-add)**           | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [c/COURSE]…​ [t/TAG]…​ [f/FRIENDSHIP_LEVEL]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **[Clear](#7-clearing-all-entries--clear)** | `clear`                                                                                                                                                                                                 |
+| **[Delete](#6-deleting-a-friend--delete)**  | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                     |
+| **[Edit](#4-editing-a-friend--edit)**       | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                        |
+| **[Find](#5-finding-friends-find)**         | `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`<br> e.g., `find n/James Jake c/CS2101 ST2334`                                                                                            |
+| **[List](#3-listing-all-friends--list)**    | `list`                                                                                                                                                                                                  |
+| **[Help](#1-viewing-help--help)**           | `help`                                                                                                                                                                                                  |
 
 <box type="info" seamless>
 
@@ -79,12 +56,12 @@ Now that you have set up NUSMeet, let’s explore the key commands you can use!
 #### 2. Square Brackets `[ ]`
 
 - Items in square brackets are _optional_.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/NYP` or as `n/John Doe`.
+  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
 #### 3. Triple Dots `…​`
 
 - Items with `…`​ after them can be used _multiple times_ including zero times.<br>
-  e.g. `[c/COURSE]…​` can be used as `c/CS2103T`, `c/CS2103T c/CS2101` or 0 times etc.
+  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 #### 4. Ordering
 
@@ -115,20 +92,19 @@ Format: `help`
 
 Adds a friend to your contact book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURSE]…​ [o/PREVIOUS_COURSE]…​ [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [c/COURSE]…​ [t/TAG]…​ [f/FRIENDSHIP_LEVEL]`
 
 <box type="tip" seamless>
 
 **Note:**
 
-- The Friend Tag can only be one of the following `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCES`.
-- A friend can have any number of tags, courses & previous courses.
-- If a course or previous course is duplicated, it will only be displayed once instead of as separate entries
+- The Friend Tag can only be one of the following `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCES`
+- A friend can have any number of tags & courses
 
 Examples:
 
-- `add n/Alexis Yap p/97438807 e/alexis@example.com a/Blk 31 Geylang Street 28, #09-34 c/CS2103T o/CS2100 t/NYP f/FRIEND`
-- `add n/David e/david@example.com a/Blk 435 Serangoon North Street 21, #17-23 p/91890901 f/FRIEND`
+- `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 c/CS2103T c/CS2101 t/owesMoney f/CLOSE_FRIEND`
+- `add n/Betsy Crowe e/betsycrowe@example.com a/Newgate Prison p/1234567 f/FRIEND`
 
 ### 3. Listing all friends : `list`
 
@@ -170,7 +146,7 @@ Format: `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`
 
 Examples:
 
-- `find n/John Baker` returns `John Doe` and `Alice Baker` and `John Baker`
+- `find John Baker` returns `John Doe` and `Alice Baker` and `John Baker`
   ![result for 'find john baker'](images/findJohnBakerResult.png)
 
 ### 6. Deleting a friend : `delete`
@@ -219,36 +195,8 @@ You can manually edit this file.
 
 At the end of each semester, NUSMeet will automatically update all entries in your contact book. A friend's current courses will be cleared and moved to the "Previous Courses" section. This saves you time and effort, as you no longer need to manually update each contact.
 
-### 12. Features Coming Soon!
-
-- Finding friends using index number
-- Skill-Based Sorting & Searching
-
 ---
-## 📌 Tips
-To make the most out of NUSMeet, here are some tips to help you organize, manage and navigate the application efficiently!
 
-### 1. Personalize Your Tags
-- Use meaningful and consistent tags to categorize your contacts.
-- For example, you can include skill levels, hobbies to create more meaningful connections.
-### 2. Keep your Contact Book updated
-- Regularly update your contact book to reflect changes in friendships, courses and contact details.
-- Keeping your contact book updated improves our sorting algorithm, helping you find the best friend to discuss schoolwork with through accurate and up-to-date contact details.
-- Remove outdated contacts to keep your contact book relevant and concise.
-### 3. Be Specific & Detailed
-- Provide clear and relevant details to improve searching and sorting.
-    - Full Name - Helps distinguish contacts with similar names.
-    - Friendship - Specify the closeness of friendships to enhance sorting accuracy
-    - Courses - Ensure correct course codes (e.g., CS1231 vs. CS1231S) to find the right course mates.
-  
-### 4. Ensure Accuracy
-- Keep your system time is accurate to ensure automatic course archival functions properly.
-- Double-check the accuracy of names, tags, courses, phone numbers, emails, and addresses to ensure precise searches and avoid confusion.
-
-### 5. Utilize Search function
-- Use the find command to quickly locate contacts based on name or course
-- Be precise when entering names and course codes for the best search results.
----
 ## 📝 FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
