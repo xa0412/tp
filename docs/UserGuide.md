@@ -100,6 +100,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [c/COURSE]…​ [t/TAG]…
 
 - The Friend Tag can only be one of the following `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCES`
 - A friend can have any number of tags & courses
+  </box>
 
 Examples:
 
