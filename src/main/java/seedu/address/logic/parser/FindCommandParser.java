@@ -28,18 +28,32 @@ public class FindCommandParser implements Parser<FindCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_COURSE);
 
         List<String> nameKeywords = argMultimap.getValue(PREFIX_NAME)
+                .map(value -> value.trim())// Trim spaces
+                .filter(value -> !value.isEmpty())// Ensure it's not empty
                 .map(value -> Arrays.asList(value.split("\\s+")))
                 .orElse(new ArrayList<>());
 
         List<String> courseKeywords = argMultimap.getValue(PREFIX_COURSE)
+                .map(value -> value.trim())// Trim spaces
+                .filter(value -> !value.isEmpty())// Ensure it's not empty
                 .map(value -> Arrays.asList(value.split("\\s+")))
                 .orElse(new ArrayList<>());
 
-        if (nameKeywords.isEmpty() && courseKeywords.isEmpty()) {
+
+        // Filter out empty strings in case input was just whitespace
+        nameKeywords.removeIf(String::isEmpty);
+        courseKeywords.removeIf(String::isEmpty);
+
+        // If either n/ or c/ is provided but empty, throw exception
+        if (argMultimap.getValue(PREFIX_NAME).isPresent() && nameKeywords.isEmpty()
+                || argMultimap.getValue(PREFIX_COURSE).isPresent() && courseKeywords.isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
+        if (nameKeywords.isEmpty() && courseKeywords.isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        }
         return new FindCommand(new NameOrCourseContainsKeywordsPredicate(nameKeywords, courseKeywords));
     }
 
