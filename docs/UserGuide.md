@@ -1,8 +1,8 @@
 # NUSMeet User Guide
 
-**NUSMeet** is your go-to **Command Line Interface (CLI)** application for **keeping track** of your friends and schoolmates at NUS. No more scrambling to remember who’s taking the same module as you — just **_tag_**, **_filter_**, and **_find_** the right people to study with in seconds.
+**NUSMeet** is your go-to **Command Line Interface (CLI)** application for **keeping track** of your friends and schoolmates at NUS. No more scrambling to remember who's taking the same module as you — just **_tag_**, **_filter_**, and **_find_** the right people to study with in seconds.
 
-Designed for NUS students (by NUS students!) who **wants to meet people to discuss schoolwork** and prefer the speed of typing 🧑‍💻 over clicking 🖱️, NUSMeet makes **organizing your contacts effortless** so you can focus on what really matters — acing your studies with the right people by your side! 👫👫
+Designed for NUS students (by NUS students!) with **an established network of contacts** who **wants to meet people to discuss schoolwork** and prefer the speed of typing 🧑‍💻 over clicking 🖱️, NUSMeet makes **organizing your contacts effortless** so you can focus on what really matters — acing your studies with the right people by your side! 👫👫
 
 ---
 
@@ -154,9 +154,8 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f
 
 - Edits the friend at the specified `INDEX`. The index refers to the index number shown in the displayed friend list. The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
-- Existing values will be updated to the input values.
-- When editing tags, the existing tags of the friend will be removed i.e adding of tags is not cumulative.
-- You can remove all the friend’s tags by typing `t/` without
+- When editing tags, the existing tags will be replaced with the new tags provided.
+- You can remove all the friend's tags by typing `t/` without
   specifying any tags after it.
 
 Examples:
