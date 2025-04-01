@@ -20,7 +20,7 @@ Follow these steps to install and run NUSMeet on your computer!
 
 3. Move the downloaded file to a folder of your choice to be used as the _home folder_ for your NUSMeet application.
 
-4. Open a command terminal and navigate to the folder where you placed the `.jar` file using `cd /path/to/your/folder`. Type the `java -jar nusmeet.jar` command to run the application.<br>
+4. Open a command terminal and navigate to the folder where you placed the `.jar` file using `cd /path/to/your/folder`. Type the `java -jar NUSMeet.jar` command to run the application.<br>
    A **Graphical User Interface (GUI)** similar to the one shown below should appear in a few seconds.<br>
    ![Ui](images/Ui.png)
 
@@ -100,11 +100,14 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [c/COURSE]…​ [t/TAG]…
 
 - The Friend Tag can only be one of the following `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCES`
 - A friend can have any number of tags & courses
+  </box>
 
 Examples:
 
 - `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 c/CS2103T c/CS2101 t/owesMoney f/CLOSE_FRIEND`
 - `add n/Betsy Crowe e/betsycrowe@example.com a/Newgate Prison p/1234567 f/FRIEND`
+
+![help message](images/addFeatureExampleResult.png)
 
 ### 3. Listing all friends : `list`
 
@@ -130,6 +133,8 @@ Examples:
 - `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st friend to be `91234567` and `johndoe@example.com` respectively.
 - `edit 2 n/Betsy Crower` Edits the name of the 2nd friend to be `Betsy Crower`.
 
+![help message](images/editFeatureExampleResult.png)
+
 ### 5. Finding friends: `find`
 
 Finds friends who contain any of the given keywords and courses.
@@ -146,8 +151,9 @@ Format: `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`
 
 Examples:
 
-- `find John Baker` returns `John Doe` and `Alice Baker` and `John Baker`
-  ![result for 'find john baker'](images/findJohnBakerResult.png)
+- `find n/John Baker` returns `John Doe` and `Alice Baker` and `John Baker`
+
+![result for 'find john baker'](images/findJohnBakerResult.png)
 
 ### 6. Deleting a friend : `delete`
 
@@ -164,11 +170,14 @@ Examples:
 - `list` followed by `delete 2` deletes the 2nd friend in the address book.
 - `find Betsy` followed by `delete 1` deletes the 1st friend in the results of the `find` command.
 
+![help message](images/deleteFeatureExampleResult.png)
 ### 7. Clearing all entries : `clear`
 
 Clears all entries from your contact book.
 
 Format: `clear`
+
+![help message](images/clearFeatureExampleResult.png)
 
 ### 8. Exiting the program : `exit`
 
