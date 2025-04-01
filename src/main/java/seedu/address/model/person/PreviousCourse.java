@@ -7,6 +7,10 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable
  */
 public class PreviousCourse {
+    public static final String MESSAGE_CONSTRAINTS = "Previouse Courses names should be alphanumeric";
+    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
+
+
     private final String value;
 
     /**
@@ -17,6 +21,11 @@ public class PreviousCourse {
         requireNonNull(course);
         value = course;
     }
+
+    public static boolean isValidPreviousCourseName(String test) {
+        return test.matches(VALIDATION_REGEX);
+    }
+
 
     @Override
     public String toString() {

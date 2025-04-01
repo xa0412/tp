@@ -181,6 +181,9 @@ public class ParserUtil {
     public static PreviousCourse parsePreviousCourse(String previousCourse) throws ParseException {
         requireNonNull(previousCourse);
         String trimmedPreviousCourse = previousCourse.trim();
+        if (!PreviousCourse.isValidPreviousCourseName(previousCourse)) {
+            throw new ParseException(PreviousCourse.MESSAGE_CONSTRAINTS);
+        }
         return new PreviousCourse(trimmedPreviousCourse);
     }
 
