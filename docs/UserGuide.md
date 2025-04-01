@@ -20,7 +20,7 @@ Follow these steps to install and run NUSMeet on your computer!
 
 3. Move the downloaded file to a folder of your choice to be used as the _home folder_ for your NUSMeet application.
 
-4. Open a command terminal and navigate to the folder where you placed the `.jar` file using `cd /path/to/your/folder`. Type the `java -jar nusmeet.jar` command to run the application.<br>
+4. Open a command terminal and navigate to the folder where you placed the `.jar` file using `cd /path/to/your/folder`. Type the `java -jar NUSMeet.jar` command to run the application.<br>
    A **Graphical User Interface (GUI)** similar to the one shown below should appear in a few seconds.<br>
    ![Ui](images/Ui.png)
 
@@ -29,27 +29,35 @@ Follow these steps to install and run NUSMeet on your computer!
 6. Refer to the [Features](#-features) below for details of each command.
 
 ---
+
 ## 💻 UI Overview
+
 ![Ui](images/UiOverview.png)
+
 #### 1. File Tab
+
 The File tab allows you to exit the application by clicking on "Exit" instead of typing the command manually.
+
 #### 2. Help Tab
+
 The Help tab opens a pop-up displaying a message explaining how to access the help page. It can also be accessed by pressing F1 on your keyboard.
+
 #### 3. Person Card
+
 The Person Card displays the following user information:
-  - Name
-  - Tags
-    - <span style="color: #3e7b91"> Normal Tag (Blue) </span>: Provides additional information about your friend, such as skill level, hobbies, etc.
-    - <span style="color: #e74c3c"> Friendship Tag (Red) </span>: Represents the level of closeness to your friend
-    - <span style="color: #f1c40f">Courses Tag (Yellow) </span>: Indicates the current courses your friend is enrolled in
-    
-  - Phone Number
-  - Address
-  - Email
-  - Previous Courses 
-    - No Previous Courses: Displays "NIL"
-    - Has Previous Courses: Display most recent 5 courses
-    - Expanded Arrow: Display all previous courses throughout all semesters
+
+- Name
+- Tags
+  - <span style="color: #3e7b91"> Normal Tag (Blue) </span>: Provides additional information about your friend, such as skill level, hobbies, etc.
+  - <span style="color: #e74c3c"> Friendship Tag (Red) </span>: Represents the level of closeness to your friend
+  - <span style="color: #f1c40f">Courses Tag (Yellow) </span>: Indicates the current courses your friend is enrolled in
+- Phone Number
+- Address
+- Email
+- Previous Courses
+  - No Previous Courses: Displays "NIL"
+  - Has Previous Courses: Display most recent 5 courses
+  - Expanded Arrow: Display all previous courses throughout all semesters
 
 ---
 
@@ -58,7 +66,7 @@ The Person Card displays the following user information:
 Now that you have set up NUSMeet, let’s explore the key commands you can use!
 
 | Action                                      | Format, Examples                                                                                                                                                                                                   |
-| ------------------------------------------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **[Add](#2-adding-a-friend-add)**           | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURSE]…​ [o/PREVIOUS_COURSE]…​ [t/TAG]…​ ` <br> e.g., `add n/James Ho p/98105221 e/jamesho@example.com a/Blk 123 Clementi Rd, #12-27 f/FRIEND` |
 | **[Clear](#7-clearing-all-entries--clear)** | `clear`                                                                                                                                                                                                            |
 | **[Delete](#6-deleting-a-friend--delete)**  | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                |
@@ -130,6 +138,8 @@ Examples:
 - `add n/Alexis Yap p/97438807 e/alexis@example.com a/Blk 31 Geylang Street 28, #09-34 c/CS2103T o/CS2100 t/NYP f/FRIEND`
 - `add n/David e/david@example.com a/Blk 435 Serangoon North Street 21, #17-23 p/91890901 f/FRIEND`
 
+![help message](images/addFeatureExampleResult.png)
+
 ### 3. Listing all friends : `list`
 
 Shows a list of all your friends in your contact book.
@@ -153,6 +163,8 @@ Examples:
 
 - `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st friend to be `91234567` and `johndoe@example.com` respectively.
 - `edit 2 n/Betsy Crower` Edits the name of the 2nd friend to be `Betsy Crower`.
+
+![help message](images/editFeatureExampleResult.png)
 
 ### 5. Finding friends: `find`
 
@@ -188,11 +200,15 @@ Examples:
 - `list` followed by `delete 2` deletes the 2nd friend in the address book.
 - `find Betsy` followed by `delete 1` deletes the 1st friend in the results of the `find` command.
 
+![help message](images/deleteFeatureExampleResult.png)
+
 ### 7. Clearing all entries : `clear`
 
 Clears all entries from your contact book.
 
 Format: `clear`
+
+![help message](images/clearFeatureExampleResult.png)
 
 ### 8. Exiting the program : `exit`
 
@@ -225,30 +241,41 @@ At the end of each semester, NUSMeet will automatically update all entries in yo
 - Skill-Based Sorting & Searching
 
 ---
+
 ## 📌 Tips
+
 To make the most out of NUSMeet, here are some tips to help you organize, manage and navigate the application efficiently!
 
 ### 1. Personalize Your Tags
+
 - Use meaningful and consistent tags to categorize your contacts.
 - For example, you can include skill levels, hobbies to create more meaningful connections.
+
 ### 2. Keep your Contact Book updated
+
 - Regularly update your contact book to reflect changes in friendships, courses and contact details.
 - Keeping your contact book updated improves our sorting algorithm, helping you find the best friend to discuss schoolwork with through accurate and up-to-date contact details.
 - Remove outdated contacts to keep your contact book relevant and concise.
+
 ### 3. Be Specific & Detailed
+
 - Provide clear and relevant details to improve searching and sorting.
-    - Full Name - Helps distinguish contacts with similar names.
-    - Friendship - Specify the closeness of friendships to enhance sorting accuracy
-    - Courses - Ensure correct course codes (e.g., CS1231 vs. CS1231S) to find the right course mates.
-  
+  - Full Name - Helps distinguish contacts with similar names.
+  - Friendship - Specify the closeness of friendships to enhance sorting accuracy
+  - Courses - Ensure correct course codes (e.g., CS1231 vs. CS1231S) to find the right course mates.
+
 ### 4. Ensure Accuracy
+
 - Keep your system time is accurate to ensure automatic course archival functions properly.
 - Double-check the accuracy of names, tags, courses, phone numbers, emails, and addresses to ensure precise searches and avoid confusion.
 
 ### 5. Utilize Search function
+
 - Use the find command to quickly locate contacts based on name or course
 - Be precise when entering names and course codes for the best search results.
+
 ---
+
 ## 📝 FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
