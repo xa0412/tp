@@ -8,8 +8,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Guarantees: immutable
  */
 public class Course {
-    public static final String MESSAGE_CONSTRAINTS = "Courses names should be alphanumeric";
-    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
+    public static final String MESSAGE_CONSTRAINTS = "Course names should be alphanumeric and a maximum of "
+            + "10 characters long. It must also follow a structured format: a department code (letters),"
+            + " followed by a course number (digits), with an optional single-letter suffix. e.g. CS2030S, CFG1003";
+    public static final String VALIDATION_REGEX = "^(?=.{1,10}$)[A-Za-z]+[0-9]+[A-Za-z]?$";
 
     private final String value;
 
