@@ -57,7 +57,7 @@ The Person Card displays the following user information:
 - Previous Courses
   - No Previous Courses: Displays "NIL"
   - Has Previous Courses: Display most recent 5 courses
-  - Expanded Arrow: Display all previous courses throughout all semesters
+  - Expanded Arrow: Display all previous courses throughout all semesters when clicked
 
 ---
 
@@ -132,6 +132,11 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURS
 - The Friend Tag can only be one of the following `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCES`.
 - A friend can have any number of tags, courses & previous courses.
 - If a course or previous course is duplicated, it will only be displayed once instead of as separate entries
+- Names must be alphabetical and distinct.
+- Phone numbers must contain only digits and be between 3 to 15 digits long. It does not need to be distinct
+- Emails must follow the format local-part@domain. It does not need to be distinct
+- Course & Previous Course names should be alphanumeric and follow a structured format: a department code (letters), followed by a course number (digits), with an optional single-letter suffix e.g CS2030S or CFG1003"
+- Normal tags should be alphanumeric and can be up to 20 characters long
 
 Examples:
 
