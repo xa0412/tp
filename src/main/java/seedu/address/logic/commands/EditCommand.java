@@ -12,6 +12,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +31,7 @@ import seedu.address.model.person.Friendship;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.PreviousCourse;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -108,9 +110,12 @@ public class EditCommand extends Command {
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         Set<Course> courses = editPersonDescriptor.getCourses().orElse(personToEdit.getCourses());
         Friendship updatedFriendship = editPersonDescriptor.getFriendship().orElse(personToEdit.getFriendship());
+        LinkedHashSet<PreviousCourse> previousCourses = editPersonDescriptor.getPreviousCourses()
+                .map(set -> new LinkedHashSet<PreviousCourse>(set))
+                .orElse(personToEdit.getPreviousCourses());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
-                updatedTags, courses, updatedFriendship);
+                updatedTags, courses, updatedFriendship, previousCourses);
     }
 
     @Override
@@ -149,6 +154,7 @@ public class EditCommand extends Command {
         private Set<Course> courses;
         private Friendship friendship;
         private Set<Tag> tags;
+        private Set<PreviousCourse> previousCourses;
 
         public EditPersonDescriptor() {}
 
@@ -212,6 +218,10 @@ public class EditCommand extends Command {
             this.courses = (courses != null) ? new HashSet<>(courses) : null;
         }
 
+        /**
+         * Returns an unmodifiable course set, which throws {@code UnsupportedOperationException} if modification is
+         * attempted. Returns {@code Optional#empty()} if {@code course} is null.
+         */
         public Optional<Set<Course>> getCourses() {
             return (courses != null) ? Optional.of(Collections.unmodifiableSet(courses)) : Optional.empty();
         }
@@ -237,6 +247,23 @@ public class EditCommand extends Command {
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
+        /**
+         * Returns an unmodifiable previous course set, which throws {@code UnsupportedOperationException} if
+         * modification is attempted. Returns {@code Optional#empty()} if {@code previousCourses} is null.
+         */
+        public Optional<Set<PreviousCourse>> getPreviousCourses() {
+            return (previousCourses != null) ? Optional.of(Collections.unmodifiableSet(previousCourses))
+                    : Optional.empty();
+        }
+
+        /**
+         * Sets {@code courses} to this object's {@code courses}. A defensive copy of {@code courses} is used
+         * internally.
+         */
+        public void setPreviousCourses(Set<PreviousCourse> previousCourses) {
+            this.previousCourses = (previousCourses != null) ? new LinkedHashSet<>(previousCourses) : null;
         }
 
         @Override
