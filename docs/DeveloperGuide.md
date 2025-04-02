@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# NUSMeet Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -35,7 +35,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2425S2-CS2103T-T13-3/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2425S2-CS2103T-T13-3/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
 
 - At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 - At shut down, it shuts down the other components and invokes cleanup methods where necessary.
@@ -68,7 +68,7 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2425S2-CS2103T-T13-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
@@ -85,7 +85,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2425S2-CS2103T-T13-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -119,7 +119,7 @@ How the parsing works:
 
 ### Model component
 
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-T13-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
@@ -140,7 +140,7 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2425S2-CS2103T-T13-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
@@ -298,10 +298,10 @@ _{Explain here how the data archiving feature will be implemented}_
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​     | I want to …​                               | So that I can…​                                                                         |
-| -------- | ----------- | ------------------------------------------ | --------------------------------------------------------------------------------------- |
+| -------- | ----------- |--------------------------------------------|-----------------------------------------------------------------------------------------|
 | `* * *`  | NUS student | Find relevant schoolmate's email           | I can contact them for study sessions                                                   |
 | `* * *`  | NUS student | Find relevant schoolmate's phone numbers   | I can contact them for study sessions                                                   |
-| `* * *`  | NUS student | Find relevant schoolmate's module          | I can know which schoolmates take the same module                                       |
+| `* * *`  | NUS student | Find relevant schoolmate's course          | I can know which schoolmates take the same course                                       |
 | `* * *`  | NUS student | Add schoolmates                            | I can add schoolmate's contact to NUSMeet                                               |
 | `* * *`  | NUS student | Delete schoolmates                         | I can delete unwanted schoolmates                                                       |
 | `* * *`  | NUS Student | Add course tags to schoolmates             | I can easily track which course they are taking and contact them to discuss school work |
@@ -309,7 +309,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | NUS Student | Add normal tags to schoolmates             | I can make remarks on schoolmates                                                       |
 | `* * *`  | NUS Student | Add previous course to schoolmates         | I can know schoolmates previous course                                                  |
 | `* * *`  | CLI lover   | I want to type most of the time            | I can perform tasks with minimal time                                                   |
-| `* * *`  | CLI lover   | Type command to organize contacts          | I can organize my schoolmates in a friendly way                                         |
 | `* *`    | NUS student | Edit schoolmates name                      | I can correct them if there is a typo                                                   |
 | `* *`    | NUS Student | Edit schoolmates phone                     | I can correct them if there is a typo                                                   |
 | `* *`    | NUS Student | Edit schoolmates email                     | I can correct them if there is a typo                                                   |
@@ -357,17 +356,17 @@ _{More to be added}_
 
 **MSS:**
 
-1. User types the command to tag existing schoolmates with module codes and IDs.
+1. User types the command to tag existing schoolmates with course codes and IDs.
 2. NUSMeet validates the input and applies the tags.
 3. NUSMeet displays confirmation of successful tagging.  
    **Use case ends.**
 
 **Extensions:**
 
-- **2a.** NUSMeet detects invalid or duplicate module codes or IDs.
+- **2a.** NUSMeet detects invalid or duplicate course codes or IDs.
 
   - **2a1.** NUSMeet displays an error message with the correct command format.
-  - **2a2.** User re-enters corrected command with proper module codes and IDs.
+  - **2a2.** User re-enters corrected command with proper course codes and IDs.
     - Steps 2a1–2a2 repeat until input is valid.
     - **Use case resumes from step 2.**
 
@@ -376,19 +375,19 @@ _{More to be added}_
 
 ---
 
-### Use case: UC03 – Find schoolmates by Module
+### Use case: UC03 – Find schoolmates by course
 
 **Actor:** NUS Student
 
 **MSS:**
 
-1. User types the command to find schoolmates by module code(s).
+1. User types the command to find schoolmates by course code(s).
 2. NUSMeet validates the input and displays a list of matching schoolmates.  
    **Use case ends.**
 
 **Extensions:**
 
-- **2a.** NUSMeet detects invalid or incorrectly formatted module codes.
+- **2a.** NUSMeet detects invalid or incorrectly formatted course codes.
 
   - **2a1.** NUSMeet displays an error message indicating the correct format for the find command.
   - **2a2.** User re-enters the command with the corrected format.

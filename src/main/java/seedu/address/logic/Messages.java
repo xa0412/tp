@@ -45,10 +45,10 @@ public class Messages {
                 .append(person.getAddress())
                 .append("; Friendship: ")
                 .append(person.getFriendship())
-                .append("; Courses: ")
-                .append("; Previous Courses: ");
-        person.getPreviousCourses().forEach(previousCourse -> builder.append(previousCourse).append(", "));
+                .append("; Courses: ");
         person.getCourses().forEach(course -> builder.append(course).append(" "));
+        builder.append("; Previous Courses: ");
+        person.getPreviousCourses().forEach(previousCourse -> builder.append(previousCourse).append(", "));
         builder.append("; Tags: ");
         person.getTags().forEach(builder::append);
         return builder.toString();
