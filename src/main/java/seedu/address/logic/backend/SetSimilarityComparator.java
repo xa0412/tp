@@ -4,6 +4,9 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Compares two sets by their number of common elements with the provided {@code ref} set
+ */
 public class SetSimilarityComparator<T> implements Comparator<Set<T>> {
 
     private final Set<T> ref;
