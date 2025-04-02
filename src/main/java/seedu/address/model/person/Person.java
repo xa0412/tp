@@ -14,8 +14,8 @@ import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Person in the address book.
- * Guarantees: details are present and not null, field values are validated,
- * immutable.
+ *
+ * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Person {
 
@@ -35,44 +35,16 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                  Set<Course> courses, Friendship friendship) {
-        requireAllNonNull(name, phone, email, address, tags, courses, friendship);
+            Set<Course> courses, Friendship friendship, LinkedHashSet<PreviousCourse> previousCourses) {
+        requireAllNonNull(name, phone, email, address, tags, courses, friendship, previousCourses);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
         this.courses.addAll(courses);
-        // For testing purposes: To check whether the previous semester module is added
-        // on instead of cleared and create
-        // this.previousCourses.add(new PreviousCourse("2030S"));
-        this.friendship = friendship;
-    }
-
-    /**
-     * Represents a new Constructor to update the previous courses
-     *
-     * @param name
-     * @param phone
-     * @param email
-     * @param address
-     * @param tags
-     * @param courses
-     * @param friendshipType
-     * @param previousCourses
-     */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-            Set<Course> courses, Friendship friendshipType, LinkedHashSet<PreviousCourse> previousCourses) {
-        requireAllNonNull(name, phone, email, address, tags, courses, friendshipType);
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
-        this.courses.addAll(courses);
-        this.friendship = friendshipType;
         this.previousCourses.addAll(previousCourses);
-
+        this.friendship = friendship;
     }
 
     public Name getName() {
@@ -106,17 +78,14 @@ public class Person {
 
 
     /**
-     * Returns an immutable tag set, which throws
-     * {@code UnsupportedOperationException}
-     * if modification is attempted.
+     * Returns an immutable tag set, which throws {@code UnsupportedOperationException} if modification is attempted.
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
     }
 
     /**
-     * Returns true if both persons have the same name.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both persons have the same name. This defines a weaker notion of equality between two persons.
      */
     public boolean isSamePerson(Person otherPerson) {
         if (otherPerson == this) {
@@ -128,8 +97,8 @@ public class Person {
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both persons have the same identity and data fields. This defines a stronger notion of equality
+     * between two persons.
      */
     @Override
     public boolean equals(Object other) {
