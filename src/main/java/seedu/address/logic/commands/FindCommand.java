@@ -2,17 +2,19 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
-import seedu.address.logic.backend.PersonCoursesComparator;
+import seedu.address.logic.backend.SetSimilarityComparator;
 import seedu.address.model.Model;
 import seedu.address.model.course.Course;
 import seedu.address.model.person.NameOrCourseContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.PreviousCourse;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords. Keyword matching is
@@ -43,8 +45,14 @@ public class FindCommand extends Command {
                 .map(keyword -> new Course(keyword))
                 .collect(Collectors.toCollection(HashSet::new));
 
-        model.sortFilteredPersonList(
-                new PersonCoursesComparator(courses).thenComparing(Person::getFriendship));
+        Set<PreviousCourse> previousCourses = courses.stream()
+                .map(course -> new PreviousCourse(course.toString()))
+                .collect(Collectors.toCollection(HashSet::new));
+
+        model.sortFilteredPersonList(Comparator
+                .comparing(Person::getCourses, new SetSimilarityComparator<>(courses))
+                .thenComparing(Person::getPreviousCourses, new SetSimilarityComparator<>(previousCourses))
+                .thenComparing(Person::getFriendship));
 
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
