@@ -1,6 +1,6 @@
 # NUSMeet User Guide
 
-**NUSMeet** is your go-to **Command Line Interface (CLI)** application for **keeping track** of your friends and schoolmates at NUS. No more scrambling to remember who's taking the same module as you — just **_tag_**, **_filter_**, and **_find_** the right people to study with in seconds.
+**NUSMeet** is your go-to **Command Line Interface (CLI)** application for **keeping track** of your friends and schoolmates at NUS. No more scrambling to remember who's taking the same module as you — just **_tag_**, and **_find_** the right people to study with in seconds.
 
 Designed for NUS students (by NUS students!) with **an established network of contacts** who **wants to meet people to discuss schoolwork** and prefer the speed of typing 🧑‍💻 over clicking 🖱️, NUSMeet makes **organizing your contacts effortless** so you can focus on what really matters — acing your studies with the right people by your side! 👫👫
 
@@ -132,6 +132,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURS
 - The Friend Tag can only be one of the following `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCES`.
 - A friend can have any number of tags, courses & previous courses.
 - If a course or previous course is duplicated, it will only be displayed once instead of as separate entries
+</box>
 
 Examples:
 
