@@ -1,6 +1,7 @@
 package seedu.address.testutil;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import seedu.address.model.course.Course;
@@ -10,6 +11,7 @@ import seedu.address.model.person.Friendship;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.PreviousCourse;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -30,6 +32,7 @@ public class PersonBuilder {
     private Set<Tag> tags;
     private Set<Course> courses;
     private Friendship friendship;
+    private LinkedHashSet<PreviousCourse> previousCourses;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -42,6 +45,7 @@ public class PersonBuilder {
         tags = new HashSet<>();
         courses = new HashSet<>();
         friendship = new Friendship(Friendship.Level.FRIEND);
+        previousCourses = new LinkedHashSet<>();
     }
 
     /**
@@ -55,6 +59,7 @@ public class PersonBuilder {
         tags = new HashSet<>(personToCopy.getTags());
         courses = new HashSet<>(personToCopy.getCourses());
         friendship = personToCopy.getFriendship();
+        previousCourses = new LinkedHashSet<>(personToCopy.getPreviousCourses());
     }
 
     /**
@@ -66,8 +71,7 @@ public class PersonBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are
-     * building.
+     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
      */
     public PersonBuilder withTags(String... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
@@ -75,8 +79,7 @@ public class PersonBuilder {
     }
 
     /**
-     * Parses the {@code courses} into a {@code Set<Course>} and set it to the {@code Person} that
-     * we are building.
+     * Parses the {@code courses} into a {@code Set<Course>} and set it to the {@code Person} that we are building.
      */
     public PersonBuilder withCourses(String... courses) {
         this.courses = SampleDataUtil.getCourseSet(courses);
@@ -115,8 +118,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Parses the {@code courses} into a {@code Set<Course>} and set it to the {@code Person} that we are building.
+     */
+    public PersonBuilder withPreviousCourses(String... previousCourses) {
+        this.previousCourses = SampleDataUtil.getPreviousCourseSet(previousCourses);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags, courses, friendship);
+        return new Person(name, phone, email, address, tags, courses, friendship, previousCourses);
     }
 
 }
