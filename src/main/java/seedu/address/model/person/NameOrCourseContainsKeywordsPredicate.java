@@ -43,7 +43,12 @@ public class NameOrCourseContainsKeywordsPredicate implements Predicate<Person> 
                 .anyMatch(keyword -> person.getCourses().stream()
                         .anyMatch(course -> StringUtil.containsWordIgnoreCase(course.toString(), keyword)));
 
-        return matchesName || matchesCourse;
+        boolean matchesPreviousCourse = courseKeywords.stream()
+                .anyMatch(keyword -> person.getPreviousCourses().stream()
+                        .anyMatch(previousCourse -> StringUtil.containsWordIgnoreCase(previousCourse.toString(),
+                                keyword)));
+
+        return matchesName || matchesCourse || matchesPreviousCourse;
     }
 
     @Override
