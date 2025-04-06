@@ -238,7 +238,7 @@ Format: `delete INDEX`
 Examples:
 
 - `list` followed by `delete 2` deletes the 2nd friend in the address book.
-- `find Betsy` followed by `delete 1` deletes the 1st friend in the results of the `find` command.
+- `find n/Betsy` followed by `delete 1` deletes the 1st friend in the results of the `find` command.
 
 ![help message](images/deleteFeatureExampleResult.png).
 
