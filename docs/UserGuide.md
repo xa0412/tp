@@ -268,7 +268,7 @@ You can manually edit this file.
 **⚠️Caution:**
 
 - If file format is **invalid**, NUSMeet will **discard** all data and start with an empty data file at the next run.
-- Certain **incorrect** edits can cause **unexpected** behavior (e.g., invalid values).
+- Certain **incorrect** edits can cause **unexpected** behavior (e.g., invalid values, duplicate values).
 - Recommended to **backup** the file before making any changes.
 
 ### 11. Automatic Courses Archival
