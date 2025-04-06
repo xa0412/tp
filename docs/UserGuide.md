@@ -280,8 +280,8 @@ NUSMeet uses the system date to perform automatic courses archival at the end of
 
 ### 12. Features Coming Soon!
 
-- Finding friends using index number
-- Skill-Based Sorting & Searching
+- Finding friends using index number.
+- Skill-Based Sorting & Searching.
 
 ---
 
@@ -304,7 +304,7 @@ To make the most out of NUSMeet, here are some tips to help you organize, manage
 
 - Provide clear and relevant details to improve searching and sorting.
   - Full Name - Helps distinguish contacts with similar names.
-  - Friendship - Specify the closeness of friendships to enhance sorting accuracy
+  - Friendship - Specify the closeness of friendships to enhance sorting accuracy.
   - Courses - Ensure correct course codes (e.g., CS1231 vs. CS1231S) to find the right course mates.
 
 ### 4. Ensure Accuracy
@@ -314,7 +314,7 @@ To make the most out of NUSMeet, here are some tips to help you organize, manage
 
 ### 5. Utilize Search function
 
-- Use the find command to quickly locate contacts based on name or course
+- Use the find command to quickly locate contacts based on name or course.
 - Be precise when entering names and course codes for the best search results.
 
 ---
@@ -337,9 +337,9 @@ To make the most out of NUSMeet, here are some tips to help you organize, manage
 
 | Terms                | Definitions                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
-| **CLI (Command Line Interface)** | A text-based interface where users interact with an application.       |
-| **Command Terminal** | A console application where users enter commands.                                              |
-| **Java**             | A programming language required to run an application.                                         |
-| **JDK (Java Development Kit)**   | A software package needed to run Java applications.                      |
-| **JSON (JavaScript Object Notation)** | A lightweight data format used to store and exchange data.         |
+| **CLI (Command Line Interface)** | A text-based interface where users interact with an application. |
+| **Command Terminal** | A console application where users enter commands. |
+| **Java**             | A programming language required to run an application. |
+| **JDK (Java Development Kit)**   | A software package needed to run Java applications. |
+| **JSON (JavaScript Object Notation)** | A lightweight data format used to store and exchange data. |
 | **GUI (Graphical User Interface)** | A visual interface that allows users to interact with an application. |
