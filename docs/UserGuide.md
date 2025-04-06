@@ -273,7 +273,12 @@ You can manually edit this file.
 
 ### 11. Automatic Courses Archival
 
-At the end of each semester, NUSMeet will automatically update all entries in your contact book. A friend's current courses will be cleared and moved to the "Previous Courses" section. This saves you time and effort, as you no longer need to manually update each contact.
+NUSMeet uses the system date to perform automatic courses archival at the end of each academic semester. When a new semester begins, any courses your friends were taking in the previous semester will be automatically moved to their "Previous Courses" section, and their current courses list will be cleared. This saves you time and effort as you no longer need to manually update each contact.
+
+**Important notes:**
+- The archival is based on your computer's system date and occurs when you start the application.
+- You don't need to manually update each contact's courses - the system handles it for you!
+- Make sure your computer's system date is accurate to ensure this feature works correctly.
 
 ### 12. Features Coming Soon!
 
