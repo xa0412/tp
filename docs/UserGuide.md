@@ -211,6 +211,14 @@ Format: `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 - **Note:** Searching by courses (`c/`) will also include friends who have the specified courses in their previous courses.
 
+**Sorting Algorithm:**
+When searching with course keywords, the results are sorted in the following priority order:
+1. Friends with the most matching current courses (highest similarity with your search terms)
+2. If current course matches are equal, then by the most matching previous courses
+3. If both current and previous course matches are equal, then by friendship level (CLOSE_FRIEND > FRIEND > ACQUAINTANCES)
+
+This sorting ensures that the most relevant contacts for your search terms appear at the top of the results.
+
 Examples:
 
 - `find n/John Baker` returns `John Doe` and `Alice Baker` and `John Baker`
