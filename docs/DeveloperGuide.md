@@ -12,8 +12,8 @@
 ---
 
 ## **Acknowledgements**
-
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+ 
+- This project is built upon [SE-Educations's AddressBook Level-3](https://se-education.org/addressbook-level3/).
 
 ---
 
@@ -24,6 +24,12 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 ---
 
 ## **Design**
+<div markdown="span" class="alert alert-primary">
+
+💡**Tip:** The `.puml` files used to create diagrams in this document `docs/diagrams` folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+</div>
+
+---
 
 ### Architecture
 
@@ -74,7 +80,7 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/AY2
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2425S2-CS2103T-T13-3/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2425S2-CS2103T-T13-3/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -125,7 +131,7 @@ How the parsing works:
 
 The `Model` component,
 
-- stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
+- stores the NUSMeet data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
 - stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered then sorted_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 - stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 - does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
@@ -146,8 +152,8 @@ The `Model` component,
 
 The `Storage` component,
 
-- can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
-- inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+- can save NUSMeet, user preference and  user's last login data in JSON format, and read them back into corresponding objects.
+- inherits from `AddressBookStorage`, `UserPrefStorage` and `LoginBookStorage`  which means it can be treated as either one (if only the functionality of only one is needed).
 - depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
@@ -160,39 +166,42 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### \[Proposed\] Undo/redo feature
+### Automatic Courses Archival
 
+NUSMeet keeps track of the user’s last login timestamp and stores it in a JSON file. Upon login, NUSMeet retrieves the current system date and time and the stored last login timestamp, it then determines which academic period the user is currently in (Semester 1, Semester 2, Winter Break, or Summer Break). After which, NUSMeet will check whether the user has crossed into a new semester since their last login. If the previous semester has ended, NUSMeet will automatically archive the courses listed under the "Current Courses" field and append them to the beginning of the "Previous Courses" field.
+
+### \[Proposed\] Undo/redo feature
 #### Proposed Implementation
 
 The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
-- `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-- `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-- `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
+- `VersionedAddressBook#commit()` — Saves the current NUSMeet state in its history.
+- `VersionedAddressBook#undo()` — Restores the previous NUSMeet state from its history.
+- `VersionedAddressBook#redo()` — Restores a previously undone NUSMeet state from its history.
 
 These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
 
 Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
+Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial NUSMeet state, and the `currentStatePointer` pointing to that single address book state.
 
 <puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+Step 2. The user executes `delete 5` command to delete the 5th person in NUSMeet. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of NUSMeet after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
 
 <puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
 
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified NUSMeet state to be saved into the `addressBookStateList`.
 
 <puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
 
 <box type="info" seamless>
 
-**Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
+**Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the NUSMeet state will not be saved into the `addressBookStateList`.
 
 </box>
 
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
+Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous NUSMeet state, and restores the NUSMeet to that state.
 
 <puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
 
@@ -221,15 +230,15 @@ The `redo` command does the opposite — it calls `Model#redoAddressBook()`,
 
 <box type="info" seamless>
 
-**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest NUSMeet state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 
 </box>
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
+Step 5. The user then decides to execute the command `list`. Commands that do not modify NUSMeet, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
 
 <puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
 
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
+Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all NUSMeet states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
 
 <puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
 
@@ -241,7 +250,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 **Aspect: How undo & redo executes:**
 
-- **Alternative 1 (current choice):** Saves the entire address book.
+- **Alternative 1 (current choice):** Saves the entire NUSMeet application.
 
   - Pros: Easy to implement.
   - Cons: May have performance issues in terms of memory usage.
@@ -251,12 +260,7 @@ The following activity diagram summarizes what happens when a user executes a ne
   - Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
   - Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
+    
 ---
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -319,7 +323,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | NUS Student | Toggle the colour theme of the application | So that my eyes are comfortable while using the app                                     |
 | `*`      | NUS Student | Import contacts from a spreadsheet         | I can quickly add contacts I have collected                                             |
 
-_{More to be added}_
+
 
 ### Use cases
 
@@ -331,7 +335,7 @@ _{More to be added}_
 
 **MSS:**
 
-1. User types the command to add a new schoolmate along with details.
+1. User types the `add` command to add a new schoolmate along with details.
 2. NUSMeet validates the input and adds the schoolmate.
 3. NUSMeet displays confirmation of successful addition.  
    **Use case ends.**
@@ -350,32 +354,19 @@ _{More to be added}_
 
 ---
 
-### Use case: UC02 – Tag schoolmates with course
+### Use case: UC02 – List all Schoolmates
 
 **Actor:** NUS Student
 
 **MSS:**
 
-1. User types the command to tag existing schoolmates with course codes and IDs.
-2. NUSMeet validates the input and applies the tags.
-3. NUSMeet displays confirmation of successful tagging.  
+1. User types the `list` command.
+2. NUSMeet retrieves and displays all schoolmate in the contact book.
    **Use case ends.**
-
-**Extensions:**
-
-- **2a.** NUSMeet detects invalid or duplicate course codes or IDs.
-
-  - **2a1.** NUSMeet displays an error message with the correct command format.
-  - **2a2.** User re-enters corrected command with proper course codes and IDs.
-    - Steps 2a1–2a2 repeat until input is valid.
-    - **Use case resumes from step 2.**
-
-- **\*a.** At any time, User cancels the operation by discarding typed input.
-  - **Use case ends.**
 
 ---
 
-### Use case: UC03 – Find schoolmates by course
+### Use case: UC03 – Find Schoolmates by Course
 
 **Actor:** NUS Student
 
@@ -397,24 +388,68 @@ _{More to be added}_
 - **\*a.** At any time, User cancels the operation by discarding typed input.
   - **Use case ends.**
 
+---
+
+### Use case: UC04 - Edit a Schoolmate
+
+**Actor:** NUS Student
+
+**MSS:**
+
+1. User types the `edit` command with the respective parameters to edit a friend using the index in the contact book.
+2. NUSMeet validates the inputs.
+3. NUSMeet updates the schoolmate's details.
+4. NUSMeet displays confirmation of successful update.
+   **Use case ends.**
+**Extensions:**
+- **2a.** NUSMeet detects invalid or missing required fields
+
+    - **2a1.** NUSMeet displays an error message indicating the correct format for the edit command.
+    - **2a2.** User re-enters the command with the corrected format and details.
+        - Steps 2a1–2a2 repeat until input is valid.
+        - **Use case resumes from step 2.**
+- **\*a.** At any time, User cancels the operation by discarding typed input.
+    - **Use case ends.**
+
+---
+### Use case: UC05 - Delete a Schoolmate
+
+**Actor:** NUS Student
+
+**MSS:**
+
+1. User types the `delete' command with the schoolmate's index.
+2. NUSMeet validates the index.
+3. NUSMeet removes the respective schoolmate.
+4. NUSMeet displays confirmation of successful delete.
+
+   **Use case ends.**
+
+**Extensions:**
+- **2a.** NUSMeet detects invalid index
+
+    - **2a1.** NUSMeet displays an error message indicating the correct format for delete command.
+    - **2a2.** User re-enters the command with the corrected format.
+        - Steps 2a1–2a2 repeat until input is valid.
+        - **Use case resumes from step 2.**
+- **\*a.** At any time, User cancels the operation by discarding typed input.
+    - **Use case ends.**
+
+---
+
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-4.  The program should work on both 32-bit and 64-bit environments.
-5.  The response to any use action should become visible within 5 seconds.
-6.  The program should be usable by a novice who has never used a contact book application.
-7.  The source code should be open source.
-8.  The user interface should be intuitive enough for users who are not IT-savvy.
-9.  The command parameters should follow _CLI_-like conventions to ensure familiarity and minimize the learning curve for users.
-10. The program actions should be performed primarily using CLI so as to tailor to users who can type fast and prefer typing to other means of input.
-11. The data should be stored locally and should be in a human editable text file.
-12. The program should be for a single user.
-13. The program should work on a computer that has version 17 of Java.
-14. The program should work without requiring an installer.
+2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage. 
+3. The program should work on both 32-bit and 64-bit environments. 
+4. The response to any use action should become visible within 5 seconds. 
+5. The source code should be open source. 
+6. The data should be stored locally and should be in a human editable text file. 
+7. The program should be for a single user. 
+8. The program should work on a computer that has version 17 of Java. 
+9. The program should work without requiring an installer.
 
-_{More to be added}_
+
 
 ### Glossary
 
@@ -450,7 +485,6 @@ testers are expected to do more _exploratory_ testing.
    1. Re-launch the app by double-clicking the jar file.<br>
       Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
 
 ### Deleting a person
 
@@ -467,12 +501,11 @@ testers are expected to do more _exploratory_ testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Locate the JSON file and rename/delete it while the application is closed. Relaunch the application. 
+   2. A new data file is generated with sample data.
 
-1. _{ more test cases …​ }_
