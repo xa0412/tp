@@ -81,14 +81,14 @@ The Person Card displays the following user information:
 - Email.
 - Previous Courses.
   - No Previous Courses: Displays "NIL".
-  - Has Previous Courses: Displays 5 most recently **added** courses.
+  - Has Previous Courses: Displays the 5 most recently **added** courses.
   - Expanded Arrow: Display all previous courses throughout all semesters when clicked.
 
 ---
 
 ## ⌨️ Command Overview
 
-Now that you have set up NUSMeet, let’s explore the key commands you can use!
+Now that you have set up NUSMeet, let's explore the key commands you can use!
 
 | Action                                      | Format, Examples                                                                                                                                                                                                   |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -146,7 +146,7 @@ Format: `help`
 
 ### 2. Adding a friend: `add`
 
-Adds a friend to your contact book.
+Adds a friend to your contact book:
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURSE]…​ [o/PREVIOUS_COURSE]…​ [t/TAG]…​`
 
@@ -154,7 +154,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURS
 
 **Note:**
 
-- The Friend Tag can only be one of the following: `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCES`.
+- The Friendship Tag can only be one of the following: `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCE`.
 - A friend can have any number of tags, courses & previous courses.
 - If a course or previous course is duplicated, it will only be displayed once instead of as separate entries.
 - Names must be alphabetical (English only) and distinct.
@@ -164,10 +164,10 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURS
 - Normal tags should be alphanumeric and can be up to 20 characters long.
 </box>
 
-Examples:
+**Examples:**
 
-- `add n/Alexis Yap p/97438807 e/alexis@example.com a/Blk 31 Geylang Street 28, #09-34 c/CS2103T o/CS2100 t/NYP f/FRIEND`
-- `add n/David e/david@example.com a/Blk 435 Serangoon North Street 21, #17-23 p/91890901 f/FRIEND`
+- `add n/Alexis Yap p/97438807 e/alexis@example.com a/Blk 31 Geylang Street 28, #09-34 c/CS2103T o/CS2100 t/NYP f/FRIEND`.
+- `add n/David e/david@example.com a/Blk 435 Serangoon North Street 21, #17-23 p/91890901 f/FRIEND`.
 
 ![help message](images/addFeatureExampleResult.png)
 
@@ -179,17 +179,16 @@ Format: `list`
 
 ### 4. Editing a friend : `edit`
 
-Edits an existing friend's details in your contact book.
+Edits an existing friend's details in your contact book:
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP_LEVEL] [t/TAG]…​`
 
 - Edits the friend at the specified `INDEX`. The index refers to the index number shown in the displayed friend list. The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
 - Providing new tags will update the friend's tags accordingly.
-- You can remove all the friend's tags by typing `t/` without
-  specifying any tags after it.
+- You can remove all the friend's tags by typing `t/` without specifying any tags after it.
 
-Examples:
+**Examples:**
 
 - `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st friend to be `91234567` and `johndoe@example.com` respectively.
 - `edit 2 n/Betsy Crower` Edits the name of the 2nd friend to be `Betsy Crower`.
@@ -198,36 +197,35 @@ Examples:
 
 ### 5. Finding friends: `find`
 
-Finds friends who contain any of the given keywords and courses, including those who have the specified courses in their previous courses.
+Finds friends who contain any of the given keywords or courses, including those who have the specified courses in their previous courses:
 
 Format: `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`
 
-- The search is case-insensitive. e.g `hans` will match `Hans`
-- The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+- The search is case-insensitive, e.g., `hans` will match `Hans`.
+- The order of the keywords does not matter, e.g., `Hans Bo` will match `Bo Hans`.
 - At least one of the optional fields must be provided.
 - The name (`n/`) or courses (`c/`) or both is searched.
-- Only full words will be matched e.g. `Han` will not match `Hans`, `2103` will not match `2103T`
-- Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+- Only full words will be matched, e.g., `Han` will not match `Hans`, `2103` will not match `2103T`.
+- Persons matching at least one keyword will be returned (i.e., `OR` search), e.g., `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 - **Note:** Searching by courses (`c/`) will also include friends who have the specified courses in their previous courses.
 
 **Sorting Algorithm:**
 When searching with course keywords, the results are sorted in the following priority order:
 1. Friends with the most matching current courses (highest similarity with your search terms)
 2. If current course matches are equal, then by the most matching previous courses
-3. If both current and previous course matches are equal, then by friendship level (CLOSE_FRIEND > FRIEND > ACQUAINTANCES)
+3. If both current and previous course matches are equal, then by friendship level (CLOSE_FRIEND > FRIEND > ACQUAINTANCE)
 
 This sorting ensures that the most relevant contacts for your search terms appear at the top of the results.
 
-Examples:
+**Examples:**
 
-- `find n/John Baker` returns `John Doe` and `Alice Baker` and `John Baker`
+- `find n/John Baker` returns `John Doe` and `Alice Baker` and `John Baker`.
   ![result for 'find john baker'](images/findJohnBakerResult.png)
 - `find c/CS2101` returns friends who are currently taking CS2101 as well as those who have taken CS2101 in the past.
 
 ### 6. Deleting a friend : `delete`
 
-Deletes the specified friend from your contact book.
+Deletes the specified friend from your contact book:
 
 Format: `delete INDEX`
 
@@ -235,7 +233,7 @@ Format: `delete INDEX`
 - The index refers to the index number shown in the displayed friend list.
 - The index **must be a positive integer** 1, 2, 3, …​
 
-Examples:
+**Examples:**
 
 - `list` followed by `delete 2` deletes the 2nd friend in the address book.
 - `find n/Betsy` followed by `delete 1` deletes the 1st friend in the results of the `find` command.
@@ -244,7 +242,7 @@ Examples:
 
 ### 7. Clearing all entries : `clear`
 
-Clears all entries from your contact book.
+Clears all entries from your contact book:
 
 Format: `clear`
 
@@ -252,7 +250,7 @@ Format: `clear`
 
 ### 8. Exiting the program : `exit`
 
-Exits the program.
+Exits the program:
 
 Format: `exit`
 
@@ -262,7 +260,7 @@ NUSMeet automatically saves all changes to disk. There is no need to manually sa
 
 ### 10. Editing the data file
 
-NUSMeet automatically stores your contact as a JSON file at: `[JAR file location]/data/addressbook.json`.
+NUSMeet automatically stores your contact as a JSON file at `[JAR file location]/data/addressbook.json`.
 You can manually edit this file.
 
 **⚠️Caution:**
@@ -299,7 +297,7 @@ To make the most out of NUSMeet, here are some tips to help you organize, manage
 ### 2. Keep your Contact Book updated
 
 - Regularly update your contact book to reflect changes in friendships, courses and contact details.
-- Keeping your contact book updated improves our sorting algorithm, helping you find the best friend to discuss schoolwork with through accurate and up-to-date contact details.
+- Keeping your contact book updated improves our searching algorithm, helping you find the best friend to discuss schoolwork with through accurate and up-to-date contact details.
 - Remove outdated contacts to keep your contact book relevant and concise.
 
 ### 3. Be Specific & Detailed
