@@ -1,3 +1,28 @@
+# Table of Contents
+
+- [Quick Start](#-quick-start)
+- [UI Overview](#-ui-overview)
+- [Command Overview](#-command-overview)
+- [Features](#-features)
+  - [Viewing Help](#1-viewing-help--help)
+  - [Adding a Friend](#2-adding-a-friend-add)
+  - [Listing All Friends](#3-listing-all-friends--list)
+  - [Editing a Friend](#4-editing-a-friend--edit)
+  - [Finding Friends](#5-finding-friends-find)
+  - [Deleting a Friend](#6-deleting-a-friend--delete)
+  - [Clearing All Entries](#7-clearing-all-entries--clear)
+  - [Exiting the Program](#8-exiting-the-program--exit)
+  - [Saving Your Data](#9-saving-your-data)
+  - [Editing the Data File](#10-editing-the-data-file)
+  - [Automatic Courses Archival](#11-automatic-courses-archival)
+  - [Features Coming Soon](#12-features-coming-soon)
+- [Tips](#-tips)
+- [FAQ](#-faq)
+- [Known Issues](#-known-issues)
+- [Glossary](#-glossary)
+
+---
+
 # NUSMeet User Guide
 
 **NUSMeet** is your go-to **Command Line Interface (CLI)** application for **keeping track** of your friends and schoolmates at NUS. No more scrambling to remember who's taking the same module as you — just **_tag_**, and **_find_** the right people to study with in seconds.
