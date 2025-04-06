@@ -14,7 +14,7 @@ Follow these steps to install and run NUSMeet on your computer!
 
    - **Windows users:** Install the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html).
    - **Mac users:** Install the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
-   - **Linux users** Install the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html).
+   - **Linux users:** Install the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html).
 
 2. Download the latest `.jar` file [here](https://github.com/AY2425S2-CS2103T-T13-3/tp/releases).
 
@@ -22,7 +22,7 @@ Follow these steps to install and run NUSMeet on your computer!
 
 4. Open a command terminal and navigate to the folder where you placed the `.jar` file using `cd /path/to/your/folder`. Type the `java -jar NUSMeet.jar` command to run the application.<br>
    A **Graphical User Interface (GUI)** similar to the one shown below should appear in a few seconds.<br>
-   ![Ui](images/Ui.png)
+   ![Ui](images/Ui.png).
 
 5. Type the [command](#-command-overview) in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
 
@@ -46,18 +46,18 @@ The Help tab opens a pop-up displaying a message explaining how to access the he
 
 The Person Card displays the following user information:
 
-- Name
-- Tags
+- Name.
+- Tags.
   - <span style="color: #3e7b91"> Normal Tag (Blue) </span>: Provides additional information about your friend, such as skill level, hobbies, etc.
-  - <span style="color: #e74c3c"> Friendship Tag (Red) </span>: Represents the level of closeness to your friend
-  - <span style="color: #f1c40f">Courses Tag (Yellow) </span>: Indicates the current courses your friend is enrolled in
-- Phone Number
-- Address
-- Email
-- Previous Courses
-  - No Previous Courses: Displays "NIL"
-  - Has Previous Courses: Display most recent 5 courses
-  - Expanded Arrow: Display all previous courses throughout all semesters when clicked
+  - <span style="color: #e74c3c"> Friendship Tag (Red) </span>: Represents the level of closeness to your friend.
+  - <span style="color: #f1c40f">Courses Tag (Yellow) </span>: Indicates the current courses your friend is enrolled in.
+- Phone Number.
+- Address.
+- Email.
+- Previous Courses.
+  - No Previous Courses: Displays "NIL".
+  - Has Previous Courses: Displays 5 most recently **added** courses.
+  - Expanded Arrow: Display all previous courses throughout all semesters when clicked.
 
 ---
 
@@ -67,10 +67,10 @@ Now that you have set up NUSMeet, let’s explore the key commands you can use!
 
 | Action                                      | Format, Examples                                                                                                                                                                                                   |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **[Add](#2-adding-a-friend-add)**           | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURSE]…​ [o/PREVIOUS_COURSE]…​ [t/TAG]…​ ` <br> e.g., `add n/James Ho p/98105221 e/jamesho@example.com a/Blk 123 Clementi Rd, #12-27 f/FRIEND` |
+| **[Add](#2-adding-a-friend-add)**           | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURSE]…​ [o/PREVIOUS_COURSE]…​ [t/TAG]…​ ` <br> e.g., `add n/James Ho p/98105221 e/jamesho@example.com a/Blk 123 Clementi Rd, #12-27 f/FRIENDSHIP_LEVEL` |
 | **[Clear](#7-clearing-all-entries--clear)** | `clear`                                                                                                                                                                                                            |
 | **[Delete](#6-deleting-a-friend--delete)**  | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                |
-| **[Edit](#4-editing-a-friend--edit)**       | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                   |
+| **[Edit](#4-editing-a-friend--edit)**       | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP_LEVEL] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                   |
 | **[Find](#5-finding-friends-find)**         | `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`<br> e.g., `find n/James Jake c/CS2101 ST2334`                                                                                                       |
 | **[List](#3-listing-all-friends--list)**    | `list`                                                                                                                                                                                                             |
 | **[Help](#1-viewing-help--help)**           | `help`                                                                                                                                                                                                             |
@@ -129,14 +129,14 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURS
 
 **Note:**
 
-- The Friend Tag can only be one of the following `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCES`.
+- The Friend Tag can only be one of the following: `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCES`.
 - A friend can have any number of tags, courses & previous courses.
-- If a course or previous course is duplicated, it will only be displayed once instead of as separate entries
-- Names must be alphabetical and distinct.
-- Phone numbers must contain only digits and be between 3 to 15 digits long. It does not need to be distinct
-- Emails must follow the format local-part@domain. It does not need to be distinct
-- Course & Previous Course names should be alphanumeric and follow a structured format: a department code (letters), followed by a course number (digits), with an optional single-letter suffix e.g CS2030S or CFG1003"
-- Normal tags should be alphanumeric and can be up to 20 characters long
+- If a course or previous course is duplicated, it will only be displayed once instead of as separate entries.
+- Names must be alphabetical (English only) and distinct.
+- Phone numbers must contain only digits and be between 3 to 15 digits long. It does not need to be distinct.
+- Emails must follow the format local-part@domain. It does not need to be distinct.
+- Course & Previous Course names should be alphanumeric and follow a structured format: a department code (letters), followed by a course number (digits), with an optional single-letter suffix e.g., CS2030S or CFG1003.
+- Normal tags should be alphanumeric and can be up to 20 characters long.
 </box>
 
 Examples:
@@ -156,7 +156,7 @@ Format: `list`
 
 Edits an existing friend's details in your contact book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP_LEVEL] [t/TAG]…​`
 
 - Edits the friend at the specified `INDEX`. The index refers to the index number shown in the displayed friend list. The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
@@ -173,7 +173,7 @@ Examples:
 
 ### 5. Finding friends: `find`
 
-Finds friends who contain any of the given keywords and courses.
+Finds friends who contain any of the given keywords and courses, including those who have the specified courses in their previous courses.
 
 Format: `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`
 
@@ -184,11 +184,13 @@ Format: `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`
 - Only full words will be matched e.g. `Han` will not match `Hans`, `2103` will not match `2103T`
 - Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+- **Note:** Searching by courses (`c/`) will also include friends who have the specified courses in their previous courses.
 
 Examples:
 
 - `find n/John Baker` returns `John Doe` and `Alice Baker` and `John Baker`
   ![result for 'find john baker'](images/findJohnBakerResult.png)
+- `find c/CS2101` returns friends who are currently taking CS2101 as well as those who have taken CS2101 in the past.
 
 ### 6. Deleting a friend : `delete`
 
@@ -205,7 +207,7 @@ Examples:
 - `list` followed by `delete 2` deletes the 2nd friend in the address book.
 - `find Betsy` followed by `delete 1` deletes the 1st friend in the results of the `find` command.
 
-![help message](images/deleteFeatureExampleResult.png)
+![help message](images/deleteFeatureExampleResult.png).
 
 ### 7. Clearing all entries : `clear`
 
@@ -234,7 +236,7 @@ You can manually edit this file.
 
 - If file format is **invalid**, NUSMeet will **discard** all data and start with an empty data file at the next run.
 - Certain **incorrect** edits can cause **unexpected** behavior (e.g., invalid values).
-- Recommended to **backup** the file before making any changes
+- Recommended to **backup** the file before making any changes.
 
 ### 11. Automatic Courses Archival
 
@@ -299,9 +301,9 @@ To make the most out of NUSMeet, here are some tips to help you organize, manage
 
 | Terms                | Definitions                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
-| **CLI**              | A text-based interface where users interact with an application                                |
+| **CLI (Command Line Interface)** | A text-based interface where users interact with an application.       |
 | **Command Terminal** | A console application where users enter commands.                                              |
 | **Java**             | A programming language required to run an application.                                         |
-| **JDK**              | A software package needed to run Java applications.                                            |
-| **JSON**             | JavaScript Object Notation (JSON) is a lightweight data format used to store and exchange data |
-| **GUI**              | A visual interface that allows users to interact with an application.                          |
+| **JDK (Java Development Kit)**   | A software package needed to run Java applications.                      |
+| **JSON (JavaScript Object Notation)** | A lightweight data format used to store and exchange data.         |
+| **GUI (Graphical User Interface)** | A visual interface that allows users to interact with an application. |
