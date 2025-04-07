@@ -16,10 +16,10 @@
   - [Editing the Data File](#10-editing-the-data-file)
   - [Automatic Courses Archival](#11-automatic-courses-archival)
   - [Features Coming Soon](#12-features-coming-soon)
-- [Tips](#-tips)
-- [FAQ](#-faq)
-- [Known Issues](#-known-issues)
-- [Glossary](#-glossary)
+- [Tips](#tips)
+- [FAQ](#faq)
+- [Known Issues](#known-issues)
+- [Glossary](#glossary)
 
 ---
 
