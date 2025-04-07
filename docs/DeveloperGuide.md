@@ -16,31 +16,31 @@
 1. [Acknowledgements](#acknowledgements)
 2. [Settting up, getting started](#setting-up-getting-started)
 3. [Design](#design)
-    * [Architecture](#architecture)
-    * [UI Component](#ui-component)
-    * [Logic Component](#logic-component)
-    * [Model Component](#model-component)
-    * [Storage Component](#storage-component)
+   - [Architecture](#architecture)
+   - [UI Component](#ui-component)
+   - [Logic Component](#logic-component)
+   - [Model Component](#model-component)
+   - [Storage Component](#storage-component)
 4. [Implementation](#implementation)
-    * [Automatic Courses Archival](#automatic-courses-archival)
-    * [\[Proposed\] Undo/redo feature](#proposed-undoredo-feature)
+   - [Automatic Courses Archival](#automatic-courses-archival)
+   - [\[Proposed\] Undo/redo feature](#proposed-undoredo-feature)
 5. [Documentation, logging, testing, configuration, dev-ops](#documentation-logging-testing-configuration-dev-ops)
 6. [Appendix: Requirements](#appendix-requirements)
-    * [Product Scope](#product-scope)
-    * [User Stories](#user-stories)
-    * [Use Cases](#use-cases)
-    * [Non-Functional Requirements](#non-functional-requirements)
-    * [Glossary](#glossary)  
+   - [Product Scope](#product-scope)
+   - [User Stories](#user-stories)
+   - [Use Cases](#use-cases)
+   - [Non-Functional Requirements](#non-functional-requirements)
+   - [Glossary](#glossary)
 7. [Appendix: Instructions for manual testing](#appendix-instructions-for-manual-testing)
-    * [Launch and Shutdown](#launch-and-shutdown)
-    * [Deleting a Person](#deleting-a-person)
-    * [Saving Data](#saving-data)
+   - [Launch and Shutdown](#launch-and-shutdown)
+   - [Deleting a Person](#deleting-a-person)
+   - [Saving Data](#saving-data)
 8. [Appendix: Planned Enhancements](#appendix-planned-enhancements)
 
 ---
 
 ## **Acknowledgements**
- 
+
 - This project is built upon [SE-Educations's AddressBook Level-3](https://se-education.org/addressbook-level3/).
 
 ---
@@ -52,9 +52,11 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 ---
 
 ## **Design**
+
 <div markdown="span" class="alert alert-primary">
 
 💡**Tip:** The `.puml` files used to create diagrams in this document `docs/diagrams` folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+
 </div>
 
 ---
@@ -180,8 +182,8 @@ The `Model` component,
 
 The `Storage` component,
 
-- can save NUSMeet, user preference and  user's last login data in JSON format, and read them back into corresponding objects.
-- inherits from `AddressBookStorage`, `UserPrefStorage` and `LoginBookStorage`  which means it can be treated as either one (if only the functionality of only one is needed).
+- can save NUSMeet, user preference and user's last login data in JSON format, and read them back into corresponding objects.
+- inherits from `AddressBookStorage`, `UserPrefStorage` and `LoginBookStorage` which means it can be treated as either one (if only the functionality of only one is needed).
 - depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
@@ -199,6 +201,7 @@ This section describes some noteworthy details on how certain features are imple
 NUSMeet keeps track of the user’s last login timestamp and stores it in a JSON file. Upon login, NUSMeet retrieves the current system date and time and the stored last login timestamp, it then determines which academic period the user is currently in (Semester 1, Semester 2, Winter Break, or Summer Break). After which, NUSMeet will check whether the user has crossed into a new semester since their last login. If the previous semester has ended, NUSMeet will automatically archive the courses listed under the "Current Courses" field and append them to the beginning of the "Previous Courses" field.
 
 ### \[Proposed\] Undo/redo feature
+
 #### Proposed Implementation
 
 The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
@@ -288,7 +291,6 @@ The following activity diagram summarizes what happens when a user executes a ne
   - Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
   - Cons: We must ensure that the implementation of each individual command are correct.
 
-    
 ---
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -330,7 +332,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​     | I want to …​                               | So that I can…​                                                                         |
-| -------- | ----------- |--------------------------------------------|-----------------------------------------------------------------------------------------|
+| -------- | ----------- | ------------------------------------------ | --------------------------------------------------------------------------------------- |
 | `* * *`  | NUS student | Find relevant schoolmate's email           | I can contact them for study sessions                                                   |
 | `* * *`  | NUS student | Find relevant schoolmate's phone numbers   | I can contact them for study sessions                                                   |
 | `* * *`  | NUS student | Find relevant schoolmate's course          | I can know which schoolmates take the same course                                       |
@@ -350,8 +352,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | NUS Student | Edit schoolmates normal tag                | I can correct them if there is a typo                                                   |
 | `*`      | NUS Student | Toggle the colour theme of the application | So that my eyes are comfortable while using the app                                     |
 | `*`      | NUS Student | Import contacts from a spreadsheet         | I can quickly add contacts I have collected                                             |
-
-
 
 ### Use cases
 
@@ -429,17 +429,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. NUSMeet updates the schoolmate's details.
 4. NUSMeet displays confirmation of successful update.
    **Use case ends.**
-**Extensions:**
+   **Extensions:**
+
 - **2a.** NUSMeet detects invalid or missing required fields
 
-    - **2a1.** NUSMeet displays an error message indicating the correct format for the edit command.
-    - **2a2.** User re-enters the command with the corrected format and details.
-        - Steps 2a1–2a2 repeat until input is valid.
-        - **Use case resumes from step 2.**
+  - **2a1.** NUSMeet displays an error message indicating the correct format for the edit command.
+  - **2a2.** User re-enters the command with the corrected format and details.
+    - Steps 2a1–2a2 repeat until input is valid.
+    - **Use case resumes from step 2.**
+
 - **\*a.** At any time, User cancels the operation by discarding typed input.
-    - **Use case ends.**
+  - **Use case ends.**
 
 ---
+
 ### Use case: UC05 - Delete a Schoolmate
 
 **Actor:** NUS Student
@@ -454,30 +457,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    **Use case ends.**
 
 **Extensions:**
+
 - **2a.** NUSMeet detects invalid index
 
-    - **2a1.** NUSMeet displays an error message indicating the correct format for delete command.
-    - **2a2.** User re-enters the command with the corrected format.
-        - Steps 2a1–2a2 repeat until input is valid.
-        - **Use case resumes from step 2.**
+  - **2a1.** NUSMeet displays an error message indicating the correct format for delete command.
+  - **2a2.** User re-enters the command with the corrected format.
+    - Steps 2a1–2a2 repeat until input is valid.
+    - **Use case resumes from step 2.**
+
 - **\*a.** At any time, User cancels the operation by discarding typed input.
-    - **Use case ends.**
+  - **Use case ends.**
 
 ---
 
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage. 
-3. The program should work on both 32-bit and 64-bit environments. 
-4. The response to any use action should become visible within 5 seconds. 
-5. The source code should be open source. 
-6. The data should be stored locally and should be in a human editable text file. 
-7. The program should be for a single user. 
-8. The program should work on a computer that has version 17 of Java. 
-9. The program should work without requiring an installer.
-
-
+2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+3.  The program should work on both 32-bit and 64-bit environments.
+4.  The response to any use action should become visible within 5 seconds.
+5.  The source code should be open source.
+6.  The data should be stored locally and should be in a human editable text file.
+7.  The program should be for a single user.
+8.  The program should work on a computer that has version 17 of Java.
+9.  The program should work without requiring an installer.
 
 ### Glossary
 
@@ -513,7 +516,6 @@ testers are expected to do more _exploratory_ testing.
    1. Re-launch the app by double-clicking the jar file.<br>
       Expected: The most recent window size and location is retained.
 
-
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
@@ -529,24 +531,23 @@ testers are expected to do more _exploratory_ testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-   1. Locate the JSON file and rename/delete it while the application is closed. Relaunch the application. 
+   1. Locate the JSON file and rename/delete it while the application is closed. Relaunch the application.
    2. A new data file is generated with sample data.
-
 
 ## **Appendix: Planned Enhancements**
 
 Team Size: 5
 
 The following are features / improvements our team has planned to implement in the future due to lack of time.
+
 1. **Implement validation logic to enforce prerequisite rules between courses**: The current courses input accepts prerequisites to previous courses. We plan to compile a list of courses and its prerequisites to be used as a validation check before accepting courses inputs.
 2. **Implement stricter course code validation**: The current and previous courses input accepts any course codes that follows the regex, but may not be an actual course in NUS. We plan to use the compiled list of courses for validation checks.
 3. **Edit specific tags**: The current editing tags feature requires the user to re-enter all of their tags, even though the user only wants to edit a specific tag. We plan to implement a new prefix that allows users to edit a specific tag, without having to re-enter the existing tags.
 4. **Implement editing of previous courses**: The current edit feature does not support the editing of previous courses. We plan to include this feature in subsequent iterations.
 5. **Implement stricter duplication checks for contacts**:The current application allows for multiple contacts with the same name (different case sensitivity) and phone number to be added to the contact book. We plan to enforce stricter duplication checks by combining the name and phone number as a primary key, such that the same name and phone number will be flagged as the same contact.
 6. **Implement less restrictive name validation**: The current symbols allowed when adding a name are `.'-`. As of now, we do not allow `/` to be included in the name field as it affects the parsing logic of our application. We plan to allow for more symbols to be included without affecting the logic in subsequent iterations.
-
+7. **Implement more restrictive address validation**: The current application allows for addresses to be comprised of all symbols. We plan to enforce addresses to minimally contain alphabets and numbers.
