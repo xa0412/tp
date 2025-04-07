@@ -73,7 +73,7 @@ The Person Card displays the following user information:
 
 - Name.
 - Tags.
-  - <span style="color: #3e7b91"> Normal Tag (Blue) </span>: Provides additional information about your friend, such as skill level, hobbies, etc.
+  - <span style="color: #3e7b91"> Normal Tag (Blue) </span>: Provides additional meaningful information about your friend, such as skill level, hobbies, etc.
   - <span style="color: #e74c3c"> Friendship Tag (Red) </span>: Represents the level of closeness to your friend.
   - <span style="color: #f1c40f">Courses Tag (Yellow) </span>: Indicates the current courses your friend is enrolled in.
 - Phone Number.
@@ -154,14 +154,14 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURS
 
 **Note:**
 
-- The Friendship Tag can only be one of the following: `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCE`.
+- The Friendship_Level Tag can only be one of the following: `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCE`.
 - A friend can have any number of tags, courses & previous courses.
 - If a course or previous course is duplicated, it will only be displayed once instead of as separate entries.
-- Names must be alphabetical (English only) and distinct.
-- Phone numbers must contain only digits and be between 3 to 15 digits long. It does not need to be distinct.
+- Names should only be between 1 to 50 characters long and starting with alphabetical characters. It should contain spaces, and 3 type of special character (. ' -) and it should not be blank.
+- Phone numbers must contain only digits and "+". It must be between 3 to 15 digits long and it does not need to be distinct.
 - Emails must follow the format local-part@domain. It does not need to be distinct.
 - Course & Previous Course names should be alphanumeric and follow a structured format: a department code (letters), followed by a course number (digits), with an optional single-letter suffix e.g., CS2030S or CFG1003.
-- Normal tags should be alphanumeric and can be up to 20 characters long.
+- Normal tags should be alphanumeric and can be up to 50 characters long with spacing.
 </box>
 
 **Examples:**
@@ -183,7 +183,7 @@ Edits an existing friend's details in your contact book:
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP_LEVEL] [t/TAG]…​`
 
-- Edits the friend at the specified `INDEX`. The index refers to the index number shown in the displayed friend list. The index **must be a positive integer** 1, 2, 3, …​
+- Edits the friend at the specified `INDEX`. The index refers to the index number **currently** shown in the displayed friend list. The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
 - Providing new tags will update the friend's tags accordingly.
 - You can remove all the friend's tags by typing `t/` without specifying any tags after it.
@@ -207,7 +207,7 @@ Format: `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`
 - The name (`n/`) or courses (`c/`) or both is searched.
 - Only full words will be matched, e.g., `Han` will not match `Hans`, `2103` will not match `2103T`.
 - Persons matching at least one keyword will be returned (i.e., `OR` search), e.g., `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
-- **Note:** Searching by courses (`c/`) will also include friends who have the specified courses in their previous courses.
+- Searching by courses (`c/`) will also include friends who have the specified courses in their previous courses.
 
 **Sorting Algorithm:**
 When searching with course keywords, the results are sorted in the following priority order:
@@ -265,8 +265,8 @@ You can manually edit this file.
 
 **⚠️Caution:**
 
-- If file format is **invalid** (e.g., invalid values, duplicate values), NUSMeet will **discard** all data and start with an empty data file at the next run.
-- Certain **incorrect** edits can cause **unexpected** behavior.
+- If file format is **invalid**, NUSMeet will **discard** all data and start with an empty data file at the next run.
+- Certain **incorrect** edits (e.g., invalid values, duplicate values). can cause **unexpected** behavior (e.g. error loading data file).
 - Recommended to **backup** the file before making any changes.
 
 ### 11. Automatic Courses Archival
