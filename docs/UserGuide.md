@@ -4,14 +4,14 @@
 - [UI Overview](#-ui-overview)
 - [Command Overview](#-command-overview)
 - [Features](#-features)
-  - [Viewing Help](#1-viewing-help--help)
+  - [Viewing Help](#1-viewing-help-help)
   - [Adding a Friend](#2-adding-a-friend-add)
-  - [Listing All Friends](#3-listing-all-friends--list)
-  - [Editing a Friend](#4-editing-a-friend--edit)
+  - [Listing All Friends](#3-listing-all-friends-list)
+  - [Editing a Friend](#4-editing-a-friend-edit)
   - [Finding Friends](#5-finding-friends-find)
-  - [Deleting a Friend](#6-deleting-a-friend--delete)
-  - [Clearing All Entries](#7-clearing-all-entries--clear)
-  - [Exiting the Program](#8-exiting-the-program--exit)
+  - [Deleting a Friend](#6-deleting-a-friend-delete)
+  - [Clearing All Entries](#7-clearing-all-entries-clear)
+  - [Exiting the Program](#8-exiting-the-program-exit)
   - [Saving Your Data](#9-saving-your-data)
   - [Editing the Data File](#10-editing-the-data-file)
   - [Automatic Courses Archival](#11-automatic-courses-archival)
@@ -90,15 +90,15 @@ The Person Card displays the following user information:
 
 Now that you have set up NUSMeet, let's explore the key commands you can use!
 
-| Action                                      | Format, Examples                                                                                                                                                                                                   |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **[Add](#2-adding-a-friend-add)**           | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURSE]…​ [o/PREVIOUS_COURSE]…​ [t/TAG]…​ ` <br> e.g., `add n/James Ho p/98105221 e/jamesho@example.com a/Blk 123 Clementi Rd, #12-27 f/FRIEND` |
-| **[Clear](#7-clearing-all-entries--clear)** | `clear`                                                                                                                                                                                                            |
-| **[Delete](#6-deleting-a-friend--delete)**  | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                |
-| **[Edit](#4-editing-a-friend--edit)**       | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP_LEVEL] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                   |
-| **[Find](#5-finding-friends-find)**         | `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`<br> e.g., `find n/James Jake c/CS2101 ST2334`                                                                                                       |
-| **[List](#3-listing-all-friends--list)**    | `list`                                                                                                                                                                                                             |
-| **[Help](#1-viewing-help--help)**           | `help`                                                                                                                                                                                                             |
+| Action                                 | Format, Examples                                                                                                                                                                                                   |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **[Add](#2-adding-a-friend-add)**      | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURSE]…​ [o/PREVIOUS_COURSE]…​ [t/TAG]…​ ` <br> e.g., `add n/James Ho p/98105221 e/jamesho@example.com a/Blk 123 Clementi Rd, #12-27 f/FRIEND` |
+| **[Clear](#7-clearing-all-entries-clear)** | `clear`                                                                                                                                                                                                            |
+| **[Delete](#6-deleting-a-friend-delete)** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                |
+| **[Edit](#4-editing-a-friend-edit)**   | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP_LEVEL] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                   |
+| **[Find](#5-finding-friends-find)**    | `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`<br> e.g., `find n/James Jake c/CS2101 ST2334`                                                                                                       |
+| **[List](#3-listing-all-friends-list)** | `list`                                                                                                                                                                                                             |
+| **[Help](#1-viewing-help-help)**       | `help`                                                                                                                                                                                                             |
 
 <box type="info" seamless>
 
@@ -158,7 +158,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURS
 - A friend can have any number of tags, courses & previous courses.
 - If a course or previous course is duplicated, it will only be displayed once instead of as separate entries.
 - Names should only be between 1 to 50 characters long and starting with alphabetical characters. It is able to contain spaces, 3 type of special character (. ' -) and it should not be blank.
-- Phone numbers must contain only digits and "+". It must be between 3 to 15 digits long and it does not need to be distinct.
+- Phone numbers must start with "+" and contain only digits. It must be between 3 to 15 digits long and it does not need to be distinct.
 - Emails must follow the format local-part@domain. It does not need to be distinct.
 - Course & Previous Course names should be alphanumeric and follow a structured format: a department code (letters), followed by a course number (digits), with an optional single-letter suffix e.g., CS2030S or CFG1003.
 - Normal tags should be alphanumeric and can be up to 50 characters long with spacing.

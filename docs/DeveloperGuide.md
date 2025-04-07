@@ -23,7 +23,7 @@
     * [Storage Component](#storage-component)
 4. [Implementation](#implementation)
     * [Automatic Courses Archival](#automatic-courses-archival)
-    * [\[Proposed\] Undo/redo feature](#proposed-undoredo-feature)
+    * [\[Proposed\] Undo/redo feature](#proposed-undo-redo-feature)
 5. [Documentation, logging, testing, configuration, dev-ops](#documentation-logging-testing-configuration-dev-ops)
 6. [Appendix: Requirements](#appendix-requirements)
     * [Product Scope](#product-scope)
