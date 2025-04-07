@@ -1,25 +1,25 @@
 # Table of Contents
 
-- [Quick Start](#quick-start)
-- [UI Overview](#ui-overview)
-- [Command Overview](#command-overview)
-- [Features](#features)
-  - [Viewing Help](#1-viewing-help--help)
+- [Quick Start](#-quick-start)
+- [UI Overview](#-ui-overview)
+- [Command Overview](#-command-overview)
+- [Features](#-features)
+  - [Viewing Help](#1-viewing-help-help)
   - [Adding a Friend](#2-adding-a-friend-add)
-  - [Listing All Friends](#3-listing-all-friends--list)
-  - [Editing a Friend](#4-editing-a-friend--edit)
+  - [Listing All Friends](#3-listing-all-friends-list)
+  - [Editing a Friend](#4-editing-a-friend-edit)
   - [Finding Friends](#5-finding-friends-find)
-  - [Deleting a Friend](#6-deleting-a-friend--delete)
-  - [Clearing All Entries](#7-clearing-all-entries--clear)
-  - [Exiting the Program](#8-exiting-the-program--exit)
+  - [Deleting a Friend](#6-deleting-a-friend-delete)
+  - [Clearing All Entries](#7-clearing-all-entries-clear)
+  - [Exiting the Program](#8-exiting-the-program-exit)
   - [Saving Your Data](#9-saving-your-data)
   - [Editing the Data File](#10-editing-the-data-file)
   - [Automatic Courses Archival](#11-automatic-courses-archival)
   - [Features Coming Soon](#12-features-coming-soon)
-- [Tips](#tips)
-- [FAQ](#faq)
-- [Known Issues](#known-issues)
-- [Glossary](#glossary)
+- [Tips](#-tips)
+- [FAQ](#-faq)
+- [Known Issues](#-known-issues)
+- [Glossary](#-glossary)
 
 ---
 
@@ -49,9 +49,9 @@ Follow these steps to install and run NUSMeet on your computer!
    A **Graphical User Interface (GUI)** similar to the one shown below should appear in a few seconds.<br>
    ![Ui](images/Ui.png).
 
-5. Type the [command](#command-overview) in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the [command](#-command-overview) in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
 
-6. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#-features) below for details of each command.
 
 ---
 
@@ -90,15 +90,15 @@ The Person Card displays the following user information:
 
 Now that you have set up NUSMeet, let's explore the key commands you can use!
 
-| Action                                      | Format, Examples                                                                                                                                                                                                   |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **[Add](#2-adding-a-friend-add)**           | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURSE]…​ [o/PREVIOUS_COURSE]…​ [t/TAG]…​ ` <br> e.g., `add n/James Ho p/98105221 e/jamesho@example.com a/Blk 123 Clementi Rd, #12-27 f/FRIEND` |
-| **[Clear](#7-clearing-all-entries--clear)** | `clear`                                                                                                                                                                                                            |
-| **[Delete](#6-deleting-a-friend--delete)**  | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                |
-| **[Edit](#4-editing-a-friend--edit)**       | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP_LEVEL] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                             |
-| **[Find](#5-finding-friends-find)**         | `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`<br> e.g., `find n/James Jake c/CS2101 ST2334`                                                                                                       |
-| **[List](#3-listing-all-friends--list)**    | `list`                                                                                                                                                                                                             |
-| **[Help](#1-viewing-help--help)**           | `help`                                                                                                                                                                                                             |
+| Action                                 | Format, Examples                                                                                                                                                                                                   |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **[Add](#2-adding-a-friend-add)**      | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURSE]…​ [o/PREVIOUS_COURSE]…​ [t/TAG]…​ ` <br> e.g., `add n/James Ho p/98105221 e/jamesho@example.com a/Blk 123 Clementi Rd, #12-27 f/FRIEND` |
+| **[Clear](#7-clearing-all-entries-clear)** | `clear`                                                                                                                                                                                                            |
+| **[Delete](#6-deleting-a-friend-delete)** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                |
+| **[Edit](#4-editing-a-friend-edit)**   | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COURSE]…​ [f/FRIENDSHIP_LEVEL] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                   |
+| **[Find](#5-finding-friends-find)**    | `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`<br> e.g., `find n/James Jake c/CS2101 ST2334`                                                                                                       |
+| **[List](#3-listing-all-friends-list)** | `list`                                                                                                                                                                                                             |
+| **[Help](#1-viewing-help-help)**       | `help`                                                                                                                                                                                                             |
 
 <box type="info" seamless>
 
@@ -158,11 +158,11 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURS
 - A friend can have any number of tags, courses & previous courses.
 - If a course or previous course is duplicated, it will only be displayed once instead of as separate entries.
 - Names should only be between 1 to 50 characters long and starting with alphabetical characters. It is able to contain spaces, 3 type of special character (. ' -) and it should not be blank.
-- Phone numbers must contain only digits and "+". It must be between 3 to 15 digits long and it does not need to be distinct.
+- Phone numbers must start with "+" and contain only digits. It must be between 3 to 15 digits long and it does not need to be distinct.
 - Emails must follow the format local-part@domain. It does not need to be distinct.
 - Course & Previous Course names should be alphanumeric and follow a structured format: a department code (letters), followed by a course number (digits), with an optional single-letter suffix e.g., CS2030S or CFG1003.
 - Normal tags should be alphanumeric and can be up to 50 characters long with spacing.
-  </box>
+</box>
 
 **Examples:**
 
@@ -211,7 +211,6 @@ Format: `find [n/KEYWORD [MORE_KEYWORDS]] [c/KEYWORD [MORE_KEYWORDS]]`
 
 **Sorting Algorithm:**
 When searching with course keywords, the results are sorted in the following priority order:
-
 1. Friends with the most matching current courses (highest similarity with your search terms)
 2. If current course matches are equal, then by the most matching previous courses
 3. If both current and previous course matches are equal, then by friendship level (CLOSE_FRIEND > FRIEND > ACQUAINTANCE)
@@ -275,7 +274,6 @@ You can manually edit this file.
 NUSMeet uses the system date to perform automatic courses archival at the end of each academic semester. When a new semester begins, any courses your friends were taking in the previous semester will be automatically moved to their "Previous Courses" section, and their current courses list will be cleared. This saves you time and effort as you no longer need to manually update each contact.
 
 **Important notes:**
-
 - The archival is based on your computer's system date and occurs when you start the application.
 - You don't need to manually update each contact's courses - the system handles it for you!
 - Make sure your computer's system date is accurate to ensure this feature works correctly.
@@ -337,11 +335,11 @@ To make the most out of NUSMeet, here are some tips to help you organize, manage
 
 ## 📖 Glossary
 
-| Terms                                 | Definitions                                                           |
-| ------------------------------------- | --------------------------------------------------------------------- |
-| **CLI (Command Line Interface)**      | A text-based interface where users interact with an application.      |
-| **Command Terminal**                  | A console application where users enter commands.                     |
-| **Java**                              | A programming language required to run an application.                |
-| **JDK (Java Development Kit)**        | A software package needed to run Java applications.                   |
-| **JSON (JavaScript Object Notation)** | A lightweight data format used to store and exchange data.            |
-| **GUI (Graphical User Interface)**    | A visual interface that allows users to interact with an application. |
+| Terms                | Definitions                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| **CLI (Command Line Interface)** | A text-based interface where users interact with an application. |
+| **Command Terminal** | A console application where users enter commands. |
+| **Java**             | A programming language required to run an application. |
+| **JDK (Java Development Kit)**   | A software package needed to run Java applications. |
+| **JSON (JavaScript Object Notation)** | A lightweight data format used to store and exchange data. |
+| **GUI (Graphical User Interface)** | A visual interface that allows users to interact with an application. |
