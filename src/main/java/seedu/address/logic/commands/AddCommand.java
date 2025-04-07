@@ -50,7 +50,7 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New friend added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This friend already exists in the address book";
-    public static final String MESSAGE_DUPLICATE_COURSE = "Current course cannot already exist in previous courses: %1$s";
+    public static final String MESSAGE_DUPLICATE_COURSE = "Current course already exists in previous courses: %1$s";
 
 
     private final Person toAdd;
