@@ -36,7 +36,6 @@ Designed for NUS students (by NUS students!), NUSMeet is perfect for those with 
 Follow these steps to install and run NUSMeet on your computer!
 
 1. Before running NUSMeet, ensure that you have **Java `17` or above** installed in your Computer.<br>
-
    - **Windows users:** Install the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html).
    - **Mac users:** Install the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
    - **Linux users:** Install the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html).
