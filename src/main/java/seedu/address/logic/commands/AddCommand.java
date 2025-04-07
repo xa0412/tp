@@ -48,9 +48,9 @@ public class AddCommand extends Command {
             + PREFIX_PREVIOUS_COURSE + "CS1010 "
             + PREFIX_FRIENDSHIP + "CLOSE_FRIEND";
 
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
-    public static final String MESSAGE_DUPLICATE_COURSE = "Current course cannot duplicate a previous course: %1$s";
+    public static final String MESSAGE_SUCCESS = "New friend added: %1$s";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This friend already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_COURSE = "Current course cannot already exist in previous courses: %1$s";
 
     private final Person toAdd;
 
