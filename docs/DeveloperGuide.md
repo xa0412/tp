@@ -35,6 +35,7 @@
     * [Launch and Shutdown](#launch-and-shutdown)
     * [Deleting a Person](#deleting-a-person)
     * [Saving Data](#saving-data)
+8. [Appendix: Planned Enhancements](#appendix-planned-enhancements)
 
 ---
 
@@ -535,4 +536,17 @@ testers are expected to do more _exploratory_ testing.
 
    1. Locate the JSON file and rename/delete it while the application is closed. Relaunch the application. 
    2. A new data file is generated with sample data.
+
+
+## **Appendix: Planned Enhancements**
+
+Team Size: 5
+
+The following are features / improvements our team has planned to implement in the future due to lack of time.
+1. **Implement validation logic to enforce prerequisite rules between courses**: The current courses input accepts prerequisites to previous courses. We plan to compile a list of courses and its prerequisites to be used as a validation check before accepting courses inputs.
+2. **Implement stricter course code validation**: The current and previous courses input accepts any course codes that follows the regex, but may not be an actual course in NUS. We plan to use the compiled list of courses for validation checks.
+3. **Edit specific tags**: The current editing tags feature requires the user to re-enter all of their tags, even though the user only wants to edit a specific tag. We plan to implement a new prefix that allows users to edit a specific tag, without having to re-enter the existing tags.
+4. **Implement editing of previous courses**: The current edit feature does not support the editing of previous courses. We plan to include this feature in subsequent iterations.
+5. **Implement stricter duplication checks for contacts**:The current application allows for multiple contacts with the same name (different case sensitivity) and phone number to be added to the contact book. We plan to enforce stricter duplication checks by combining the name and phone number as a primary key, such that the same name and phone number will be flagged as the same contact.
+6. **Implement less restrictive name validation**: The current symbols allowed when adding a name are `.'-`. As of now, we do not allow `/` to be included in the name field as it affects the parsing logic of our application. We plan to allow for more symbols to be included without affecting the logic in subsequent iterations.
 
