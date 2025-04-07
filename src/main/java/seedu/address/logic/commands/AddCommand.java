@@ -10,10 +10,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PREVIOUS_COURSE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.Set;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.course.Course;
 import seedu.address.model.person.Person;
 
 /**
@@ -46,6 +49,7 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_COURSE = "Current course cannot duplicate a previous course: %1$s";
 
     private final Person toAdd;
 
@@ -63,6 +67,17 @@ public class AddCommand extends Command {
 
         if (model.hasPerson(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        }
+
+        // Check if any current course duplicates a previous course
+        Set<String> previousCourseValues = toAdd.getPreviousCourses().stream()
+                .map(pc -> pc.toString())
+                .collect(java.util.stream.Collectors.toSet());
+
+        for (Course course : toAdd.getCourses()) {
+            if (previousCourseValues.contains(course.toString())) {
+                throw new CommandException(String.format(MESSAGE_DUPLICATE_COURSE, course.toString()));
+            }
         }
 
         model.addPerson(toAdd);
