@@ -11,6 +11,33 @@
 
 ---
 
+## **Table of Contents**
+
+1. [Acknowledgements](#acknowledgements)
+2. [Settting up, getting started](#setting-up-getting-started)
+3. [Design](#design)
+    * [Architecture](#architecture)
+    * [UI Component](#ui-component)
+    * [Logic Component](#logic-component)
+    * [Model Component](#model-component)
+    * [Storage Component](#storage-component)
+4. [Implementation](#implementation)
+    * [Automatic Courses Archival](#automatic-courses-archival)
+    * [\[Proposed\] Undo/redo feature](#proposed-undoredo-feature)
+5. [Documentation, logging, testing, configuration, dev-ops](#documentation-logging-testing-configuration-dev-ops)
+6. [Appendix: Requirements](#appendix-requirements)
+    * [Product Scope](#product-scope)
+    * [User Stories](#user-stories)
+    * [Use Cases](#use-cases)
+    * [Non-Functional Requirements](#non-functional-requirements)
+    * [Glossary](#glossary)  
+7. [Appendix: Instructions for manual testing](#appendix-instructions-for-manual-testing)
+    * [Launch and Shutdown](#launch-and-shutdown)
+    * [Deleting a Person](#deleting-a-person)
+    * [Saving Data](#saving-data)
+
+---
+
 ## **Acknowledgements**
  
 - This project is built upon [SE-Educations's AddressBook Level-3](https://se-education.org/addressbook-level3/).
