@@ -1,6 +1,7 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's course in the address book
@@ -21,6 +22,8 @@ public class PreviousCourse {
      */
     public PreviousCourse(String course) {
         requireNonNull(course);
+        course = course.toUpperCase();
+        checkArgument(isValidPreviousCourseName(course),MESSAGE_CONSTRAINTS);
         value = course;
     }
 
