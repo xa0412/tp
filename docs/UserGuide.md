@@ -157,7 +157,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FRIENDSHIP_LEVEL [c/COURS
 - The Friendship_Level Tag can only be one of the following: `CLOSE_FRIEND`, `FRIEND`, `ACQUAINTANCE`.
 - A friend can have any number of tags, courses & previous courses.
 - If a course or previous course is duplicated, it will only be displayed once instead of as separate entries.
-- Names should only be between 1 to 50 characters long and starting with alphabetical characters. It should contain spaces, and 3 type of special character (. ' -) and it should not be blank.
+- Names should only be between 1 to 50 characters long and starting with alphabetical characters. It is able to contain spaces, 3 type of special character (. ' -) and it should not be blank.
 - Phone numbers must contain only digits and "+". It must be between 3 to 15 digits long and it does not need to be distinct.
 - Emails must follow the format local-part@domain. It does not need to be distinct.
 - Course & Previous Course names should be alphanumeric and follow a structured format: a department code (letters), followed by a course number (digits), with an optional single-letter suffix e.g., CS2030S or CFG1003.
