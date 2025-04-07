@@ -23,7 +23,7 @@ public class PreviousCourse {
     public PreviousCourse(String course) {
         requireNonNull(course);
         course = course.toUpperCase();
-        checkArgument(isValidPreviousCourseName(course),MESSAGE_CONSTRAINTS);
+        checkArgument(isValidPreviousCourseName(course), MESSAGE_CONSTRAINTS);
         value = course;
     }
 
