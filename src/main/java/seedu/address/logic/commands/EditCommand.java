@@ -56,9 +56,10 @@ public class EditCommand extends Command {
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Friend: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This friend already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_COURSE = "Current course already exists in previous courses: %1$s";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
@@ -93,14 +94,16 @@ public class EditCommand extends Command {
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
+        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS,
+                Messages.format(editedPerson)));
     }
 
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit} edited with
      * {@code editPersonDescriptor}.
      */
-    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
+    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor)
+            throws CommandException {
         assert personToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
@@ -113,6 +116,23 @@ public class EditCommand extends Command {
         LinkedHashSet<PreviousCourse> previousCourses = editPersonDescriptor.getPreviousCourses()
                 .map(set -> new LinkedHashSet<PreviousCourse>(set))
                 .orElse(personToEdit.getPreviousCourses());
+
+        // Check if any courses duplicate a previous course
+        Set<String> previousCourseValues = previousCourses.stream()
+                .map(pc -> pc.toString())
+                .collect(java.util.stream.Collectors.toSet());
+
+        Set<String> duplicateCourses = new HashSet<>();
+        for (Course course : courses) {
+            if (previousCourseValues.contains(course.toString())) {
+                duplicateCourses.add(course.toString());
+            }
+        }
+
+        if (!duplicateCourses.isEmpty()) {
+            throw new CommandException(String.format(MESSAGE_DUPLICATE_COURSE,
+                    String.join(", ", duplicateCourses)));
+        }
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
                 updatedTags, courses, updatedFriendship, previousCourses);
