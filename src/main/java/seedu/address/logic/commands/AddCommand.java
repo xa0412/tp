@@ -23,7 +23,7 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a friend to the address book. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
@@ -44,8 +44,8 @@ public class AddCommand extends Command {
             + PREFIX_PREVIOUS_COURSE + "CS1010 "
             + PREFIX_FRIENDSHIP + "CLOSE_FRIEND";
 
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    public static final String MESSAGE_SUCCESS = "New friend added: %1$s";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This friend already exists in the address book";
 
     private final Person toAdd;
 
