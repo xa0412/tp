@@ -10,6 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PREVIOUS_COURSE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -74,10 +75,16 @@ public class AddCommand extends Command {
                 .map(pc -> pc.toString())
                 .collect(java.util.stream.Collectors.toSet());
 
+        Set<String> duplicateCourses = new HashSet<>();
         for (Course course : toAdd.getCourses()) {
             if (previousCourseValues.contains(course.toString())) {
-                throw new CommandException(String.format(MESSAGE_DUPLICATE_COURSE, course.toString()));
+                duplicateCourses.add(course.toString());
             }
+        }
+
+        if (!duplicateCourses.isEmpty()) {
+            throw new CommandException(String.format(MESSAGE_DUPLICATE_COURSE,
+                    String.join(", ", duplicateCourses)));
         }
 
         model.addPerson(toAdd);

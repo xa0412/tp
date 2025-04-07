@@ -122,10 +122,16 @@ public class EditCommand extends Command {
                 .map(pc -> pc.toString())
                 .collect(java.util.stream.Collectors.toSet());
 
+        Set<String> duplicateCourses = new HashSet<>();
         for (Course course : courses) {
             if (previousCourseValues.contains(course.toString())) {
-                throw new CommandException(String.format(MESSAGE_DUPLICATE_COURSE, course.toString()));
+                duplicateCourses.add(course.toString());
             }
+        }
+
+        if (!duplicateCourses.isEmpty()) {
+            throw new CommandException(String.format(MESSAGE_DUPLICATE_COURSE,
+                    String.join(", ", duplicateCourses)));
         }
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
