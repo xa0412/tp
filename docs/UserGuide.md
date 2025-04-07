@@ -1,9 +1,9 @@
 # Table of Contents
 
-- [Quick Start](#-quick-start)
-- [UI Overview](#-ui-overview)
-- [Command Overview](#-command-overview)
-- [Features](#-features)
+- [Quick Start](#quick-start)
+- [UI Overview](#ui-overview)
+- [Command Overview](#command-overview)
+- [Features](#features)
   - [Viewing Help](#1-viewing-help-help)
   - [Adding a Friend](#2-adding-a-friend-add)
   - [Listing All Friends](#3-listing-all-friends-list)
