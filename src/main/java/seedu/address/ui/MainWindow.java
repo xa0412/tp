@@ -143,6 +143,7 @@ public class MainWindow extends UiPart<Stage> {
         if (!helpWindow.isShowing()) {
             helpWindow.show();
         } else {
+            // Solution below adapted from chatGPT
             Stage helpStage = helpWindow.getRoot();
             if (helpStage.isIconified()) {
                 helpStage.setIconified(false);

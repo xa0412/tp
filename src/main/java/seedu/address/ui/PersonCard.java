@@ -95,6 +95,7 @@ public class PersonCard extends UiPart<Region> {
         previousCourses.setText("Previous Courses: " + recentCoursesText);
         detailedCourses.setText(previousCoursesText);
 
+        // Solution below adapted from chatGPT
         // Add general tags (Blue)
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
